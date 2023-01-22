@@ -1,9 +1,16 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import { App } from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App component', () => {
+    test('renders main page', () => {
+        render(<App />);
+        const mainPage = screen.getByText('MAGIC');
+        expect(mainPage).toBeInTheDocument();
+    });
+
+    test('renders footer', () => {
+        render(<App />);
+        const footer = screen.getByText('Alberto Rocha Lopez 2023');
+        expect(footer).toBeInTheDocument();
+    });
 });
