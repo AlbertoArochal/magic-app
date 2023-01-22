@@ -10,10 +10,10 @@ export const Footer = () => {
                     <img src="../src/assets/img/github.png" alt="github link" />
                 </a>
                 <a href="*" className="Links__linkedin">
-                    <img src="../src/assets/img/linkedin.png" alt="" />
+                    <img src="../src/assets/img/linkedin.png" alt="linkedin" />
                 </a>
                 <a href="mailto:arochaldev@gmail.com" className="Links__mail">
-                    <img src="../src/assets/img/mail.png" alt="" />
+                    <img src="../src/assets/img/mail.png" alt="mail" />
                 </a>
             </div>
         </div>
