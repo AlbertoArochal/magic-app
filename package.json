@@ -32,7 +32,7 @@
     "test": "react-scripts test test --coverage --watchAll",
     "eject": "react-scripts eject",
     "test:all": "react-scripts test --watchAll --collect-coverage",
-    "test:prod": "react-scripts test --coverage --watchAll=false",
+    "test:prod": "react-scripts test --watchAll --collect-coverage --watchAll=false",
     "lint": "eslint .",
     "start:dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "json-server": "node server.js",
