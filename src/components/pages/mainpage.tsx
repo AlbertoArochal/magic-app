@@ -1,4 +1,5 @@
 import { Header } from '../header/header';
+import fivecolors from '../../assets/img/fivecolors.png';
 export const MainPage = () => {
     return (
         <>
@@ -6,11 +7,7 @@ export const MainPage = () => {
             <div className="Intro">
                 <h1 className="Intro__h1">
                     WHERE <p className="Intro__p"> MAGIC</p> <br />{' '}
-                    <img
-                        src="../src/assets/img/fivecolors.png"
-                        alt="five colors icons"
-                    />{' '}
-                    <br />
+                    <img src={fivecolors} alt="five colors icons" /> <br />
                     TURN BACK TIME
                 </h1>
                 <div className="Intro__article">
@@ -20,7 +17,7 @@ export const MainPage = () => {
                         Sign Up! it was cool in the 90s!
                     </p>
                 </div>
-                <button>Sign Up Now "{'>'}"</button>
+                <button>Sign Up Now {'>'}</button>
             </div>
         </>
     );
