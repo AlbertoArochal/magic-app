@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { MainPage } from './mainPage';
+import { MainPage } from './mainpage';
 
 describe('MainPage', () => {
     it('should render the page correctly', () => {
