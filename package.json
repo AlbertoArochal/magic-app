@@ -51,8 +51,7 @@
       "sourceType": "module"
     },
     "plugins": [
-      "@typescript-eslint",
-      "@babel/plugin-syntax-jsx"
+      "@typescript-eslint"
     ],
     "rules": {
       "testing-library/no-render-in-setup": "off"
@@ -81,8 +80,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-syntax-jsx": "^7.18.6",
-    "@babel/preset-react": "^7.18.6",
     "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
