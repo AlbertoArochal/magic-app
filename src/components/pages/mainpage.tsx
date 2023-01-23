@@ -4,20 +4,24 @@ export const MainPage = () => {
     return (
         <>
             <Header />
-            <div className="Intro">
-                <h1 className="Intro__h1">
-                    WHERE <p className="Intro__p"> MAGIC</p> <br />{' '}
+            <div className="Mainpage">
+                <div className="Intro">
+                    <div className="Intro__title">
+                        <h1 className="Intro__h1">
+                            WHERE <p className="Intro__p"> Magic</p> <br />{' '}
+                        </h1>{' '}
+                    </div>
                     <img src={fivecolors} alt="five colors icons" /> <br />
-                    TURN BACK TIME
-                </h1>
-                <div className="Intro__article">
-                    <p className="Intro__text">
-                        Welcome to the place where you will learn how to play
-                        Magic The Gathering they way you first experienced it.
-                        Sign Up! it was cool in the 90s!
-                    </p>
+                    <h2>TURN BACK TIME</h2>
+                    <div className="Intro__article">
+                        <p className="Intro__text">
+                            Welcome to the place where you will learn how to
+                            play Magic The Gathering they way you first
+                            experienced it. Sign Up! it was cool in the 90s!
+                        </p>
+                    </div>
+                    <button>Sign Up Now {'>'}</button>
                 </div>
-                <button>Sign Up Now {'>'}</button>
             </div>
         </>
     );

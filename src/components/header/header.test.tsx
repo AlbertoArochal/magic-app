@@ -10,6 +10,6 @@ describe('Header', () => {
         expect(screen.getByText('Year')).toBeInTheDocument();
         expect(screen.getByText('Secret Lair')).toBeInTheDocument();
         expect(screen.getByText('My Decks')).toBeInTheDocument();
-        expect(screen.getByText('Profile')).toBeInTheDocument();
+        expect(screen.getByText('PROFILE')).toBeInTheDocument();
     });
 });

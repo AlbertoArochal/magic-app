@@ -4,7 +4,7 @@ import { App } from './App';
 describe('App component', () => {
     test('renders main page', () => {
         render(<App />);
-        const mainPage = screen.getByText('MAGIC');
+        const mainPage = screen.getByText('Magic');
         expect(mainPage).toBeInTheDocument();
     });
 
