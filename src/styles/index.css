@@ -146,6 +146,9 @@ h6 {
   font-size: larger;
   color: white;
 }
+.Header .Burger__menu {
+  display: none;
+}
 .Header img {
   max-width: 50px;
   margin: 1rem 1.5rem;
@@ -153,6 +156,9 @@ h6 {
 .Header .decks:hover {
   color: #fcc7c7;
   text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}
+.Header .Burger__button {
+  display: none;
 }
 .Header .Header__links {
   margin: 1rem 3rem;
@@ -175,6 +181,87 @@ h6 {
 .Header a:hover {
   font-size: 1.7rem;
   color: #fcc7c7;
+}
+
+@media only screen and (max-width: 768px) {
+  .Header .Header__links {
+    display: none;
+  }
+  .Header .Burger__button {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    display: block;
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    right: 0.5rem;
+    margin: 1rem 0;
+  }
+  .Header .Burger__button i {
+    transition: transform 0.3s ease-in-out;
+  }
+  .Header .Burger__button i.is-open {
+    transform: rotate(45deg);
+  }
+  .Header .Burger__menu {
+    display: block;
+    background-color: #d9d9d9;
+    box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+    height: 98vh;
+    width: 90vw;
+    padding-top: 2rem;
+    right: 0;
+    border: 1px solid black;
+  }
+  .Header .Burger__menu * {
+    display: block;
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 2rem;
+  }
+  .Header .Burger__menu a {
+    border: #000 solid 1px;
+    width: 90%;
+    margin: 2rem auto;
+    box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+    color: #000;
+    text-shadow: none;
+  }
+  .Header .Burger__menu button {
+    border: #000 solid 1px;
+    width: 90%;
+    margin: 2rem auto;
+    box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  }
+  .Header .Burger__menu .home {
+    background-color: #fda3ff;
+  }
+  .Header .Burger__menu .secret {
+    background-color: #f98484;
+  }
+  .Header .Burger__menu .year {
+    background-color: #fffa83;
+  }
+  .Header .fa-bars {
+    color: #000;
+    cursor: pointer;
+    position: relative;
+  }
+  .Header .fa-times {
+    color: #000;
+    cursor: pointer;
+    position: relative;
+  }
+  .Footer {
+    display: none;
+  }
+  .Intro__title {
+    display: none;
+  }
+  .Intro__subtitle {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
