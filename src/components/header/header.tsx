@@ -1,6 +1,5 @@
-import { Link, Router } from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);

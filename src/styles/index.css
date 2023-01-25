@@ -106,7 +106,6 @@ h6 {
   position: relative;
   width: 35%;
   padding: 0px 0px 1rem 0px;
-  border-radius: 4px;
   background: #fcc7c7;
   border: 1px solid #333;
   border-radius: 1.5rem;
@@ -114,17 +113,6 @@ h6 {
   margin: 2rem;
   display: flexbox;
   justify-content: center;
-}
-.timeline__content::after {
-  content: "";
-  position: absolute;
-  border-style: solid;
-  width: 0;
-  height: 0;
-  top: 30px;
-  right: -15px;
-  border-width: 10px 0 10px 15px;
-  border-color: transparent transparent transparent #fcc7c7;
 }
 .timeline__content::after {
   content: "";
@@ -222,7 +210,6 @@ h6 {
   width: 70%;
   max-width: 360px;
   border-radius: 90px;
-  font-family: Roboto;
   font-size: 26px;
   cursor: pointer;
   box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
