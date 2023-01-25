@@ -1,16 +1,26 @@
-import { render, screen } from '@testing-library/react';
 import { App } from './App';
+import { render, screen } from '@testing-library/react';
+import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 
-describe('App component', () => {
-    test('renders main page', () => {
+jest.mock('./components/footer/footer', () => ({
+    Footer: () => (
+        <div>
+            <div>Alberto Rocha Lopez</div>
+            <div>
+                <ul>
+                    <li>Github</li>
+                    <li>Linkedin</li>
+                    <li>Mail</li>
+                </ul>
+            </div>
+        </div>
+    ),
+}));
+describe('App', () => {
+    it('should render the app correctly', () => {
         render(<App />);
-        const mainPage = screen.getByText('Magic');
-        expect(mainPage).toBeInTheDocument();
-    });
-
-    test('renders footer', () => {
-        render(<App />);
-        const footer = screen.getByText('Alberto Rocha Lopez 2023');
-        expect(footer).toBeInTheDocument();
+        mockAllIsIntersecting(true);
+        expect(screen.getByText('Secret Lair')).toBeInTheDocument();
+        expect(screen.getByText('PROFILE')).toBeInTheDocument();
     });
 });

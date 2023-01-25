@@ -1,6 +1,10 @@
 import { Link, Router } from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
+import React, { useState } from 'react';
+
 export const Header = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <div className="Header">
             <div className="Header__logo">
@@ -15,6 +19,33 @@ export const Header = () => {
                 <button className="Header__button decks">My Decks</button>
                 <button className="Header__button profile">PROFILE</button>
             </div>
+            <button
+                className="Burger__button"
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                {isOpen ? (
+                    <i className="fas fa-times"></i>
+                ) : (
+                    <i className="fas fa-bars"></i>
+                )}
+            </button>
+            {isOpen && (
+                <div className="Burger__menu Burger__menu-open ">
+                    <nav>
+                        <a className="home" href="/">
+                            Home
+                        </a>
+                        <a className="year" href="/">
+                            Year
+                        </a>
+                        <a className="secret" href="/">
+                            Secret Lair
+                        </a>
+                    </nav>
+                    <button className="Header__button decks">My Decks</button>
+                    <button className="Header__button profile">PROFILE</button>
+                </div>
+            )}
         </div>
     );
 };

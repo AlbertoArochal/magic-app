@@ -1,5 +1,6 @@
 import { Header } from '../header/header';
 import fivecolors from '../../assets/img/fivecolors.png';
+import { Timeline } from '../timeline/timeline';
 export const MainPage = () => {
     return (
         <>
@@ -12,7 +13,7 @@ export const MainPage = () => {
                         </h1>{' '}
                     </div>
                     <img src={fivecolors} alt="five colors icons" /> <br />
-                    <h2>TURN BACK TIME</h2>
+                    <h2 className="Intro__subtitle">TURN BACK TIME</h2>
                     <div className="Intro__article">
                         <p className="Intro__text">
                             Welcome to the place where you will learn how to
@@ -22,6 +23,7 @@ export const MainPage = () => {
                     </div>
                     <button>Sign Up Now {'>'}</button>
                 </div>
+                <Timeline />
             </div>
         </>
     );
