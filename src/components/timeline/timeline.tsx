@@ -8,8 +8,8 @@ export const Timeline = () => {
     let toggle = 'right';
     return (
         <section className="timeline">
-            <div className="container">
-                <div className="timeline__item">
+            <div className="container" key={'container'}>
+                <div className="timeline__item" key={new Date().getTime()}>
                     {years.map((year) => (
                         <>
                             <Slide
@@ -22,7 +22,6 @@ export const Timeline = () => {
                             >
                                 <div
                                     className="timeline__img"
-                                    id={year.toString()}
                                     key={year.toString() + 'Div'}
                                 ></div>
 
