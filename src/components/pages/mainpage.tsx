@@ -1,5 +1,6 @@
 import { Header } from '../header/header';
 import fivecolors from '../../assets/img/fivecolors.png';
+import { Timeline } from '../timeline/timeline';
 export const MainPage = () => {
     return (
         <>
@@ -22,6 +23,7 @@ export const MainPage = () => {
                     </div>
                     <button>Sign Up Now {'>'}</button>
                 </div>
+                <Timeline />
             </div>
         </>
     );
