@@ -1,6 +1,8 @@
-import { screen, render } from '@testing-library/react';
+import { screen, render, fireEvent } from '@testing-library/react';
 import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
-
+import { auth } from '../firebase/firebase';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { set, ref } from 'firebase/database';
 import { Header } from './header';
 
 const intersectionObserverMock = () => ({
@@ -20,5 +22,17 @@ describe('Header', () => {
         expect(screen.getByText('Secret Lair')).toBeInTheDocument();
         expect(screen.getByText('My Decks')).toBeInTheDocument();
         expect(screen.getByText('PROFILE')).toBeInTheDocument();
+    });
+    test('toggles the menu when the button is clicked', () => {
+        render(<Header />);
+
+        const button = screen.getByTestId('burger-button');
+        fireEvent.click(button);
+        expect(screen.getByTestId('burger-menu')).toHaveClass(
+            'Burger__menu-open'
+        );
+        expect(screen.getByTestId('burger-menu')).toHaveClass(
+            'Burger__menu-open'
+        );
     });
 });

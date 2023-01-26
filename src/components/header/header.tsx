@@ -1,5 +1,6 @@
 import logo from '../../assets/img/logo.png';
 import { useState } from 'react';
+import { signInWithGoogle } from '../helpers/signwithgoogle';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,10 +17,16 @@ export const Header = () => {
                     <a href="/">Secret Lair</a>
                 </nav>
                 <button className="Header__button decks">My Decks</button>
-                <button className="Header__button profile">PROFILE</button>
+                <button
+                    onClick={signInWithGoogle}
+                    className="Header__button profile"
+                >
+                    PROFILE
+                </button>
             </div>
             <button
                 className="Burger__button"
+                {...{ 'data-testid': 'burger-button' }}
                 onClick={() => setIsOpen(!isOpen)}
             >
                 {isOpen ? (
@@ -29,7 +36,10 @@ export const Header = () => {
                 )}
             </button>
             {isOpen && (
-                <div className="Burger__menu Burger__menu-open ">
+                <div
+                    {...{ 'data-testid': 'burger-menu' }}
+                    className="Burger__menu Burger__menu-open"
+                >
                     <nav>
                         <a className="home" href="/">
                             Home
@@ -42,7 +52,13 @@ export const Header = () => {
                         </a>
                     </nav>
                     <button className="Header__button decks">My Decks</button>
-                    <button className="Header__button profile">PROFILE</button>
+                    <button
+                        onClick={signInWithGoogle}
+                        className="Header__button profile"
+                        {...{ 'data-testid': 'profile-button' }}
+                    >
+                        PROFILE
+                    </button>
                 </div>
             )}
         </div>
