@@ -1,6 +1,8 @@
 import { screen, render, fireEvent } from '@testing-library/react';
 import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
-
+import { auth } from '../firebase/firebase';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { set, ref } from 'firebase/database';
 import { Header } from './header';
 
 const intersectionObserverMock = () => ({

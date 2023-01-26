@@ -1,34 +1,9 @@
 import logo from '../../assets/img/logo.png';
 import { useState } from 'react';
-import { auth, Firedb } from '../firebase/firebase';
-import { signInWithPopup } from 'firebase/auth';
-import { provider } from '../firebase/firebase';
-import { set, ref } from 'firebase/database';
+import { signInWithGoogle } from '../helpers/signwithgoogle';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-
-    const signInWithGoogle = () => {
-        console.log('sign in with google');
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                const name = result.user.displayName;
-                const email = result.user.email;
-                const profilePic = result.user.photoURL;
-                console.log(result);
-                const user = {
-                    uid: result.user.uid,
-                    name,
-                    email,
-                    profilePic,
-                    decks: { deck1: ['necropotency'] },
-                };
-                set(ref(Firedb, 'users/' + result.user.uid), user);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
 
     return (
         <div className="Header">
@@ -80,6 +55,7 @@ export const Header = () => {
                     <button
                         onClick={signInWithGoogle}
                         className="Header__button profile"
+                        {...{ 'data-testid': 'profile-button' }}
                     >
                         PROFILE
                     </button>
