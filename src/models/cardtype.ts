@@ -33,22 +33,3 @@ export type creatureType = {
     toughness: string;
     flavor_text: string;
 };
-
-export type cardListType = {
-    cards: cardType[];
-};
-
-export type creatureListType = {
-    cards: creatureType[];
-};
-
-export type playerType = {
-    name: string;
-    uid: string;
-    decklist: decktype[];
-};
-
-export type decktype = {
-    name: string;
-    cards: cardType[];
-};

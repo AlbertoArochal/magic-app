@@ -1,11 +1,13 @@
 import { MainPage } from './components/pages/mainpage';
 import { Footer } from './components/footer/footer';
-
+import { UserProvider } from './context/usercontext';
 export const App = () => {
     return (
         <div>
-            <MainPage />
-            <Footer />
+            <UserProvider>
+                <MainPage />
+                <Footer />
+            </UserProvider>
         </div>
     );
 };

@@ -1,11 +1,13 @@
 import Necropotence from '../../assets/img/necropotence.jpeg';
 import { Slide } from 'react-awesome-reveal';
+import { getCardImage } from '../helpers/getcardimage';
 export const Timeline = () => {
     const years = [];
     for (let i = 1993; i <= 2023; i++) {
         years.push(i);
     }
     let toggle = 'right';
+
     return (
         <section className="timeline">
             <div className="container" key={'container'}>
