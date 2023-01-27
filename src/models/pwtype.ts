@@ -1,4 +1,4 @@
-import { decktype } from '../components/types/types';
+import { deckType } from './decktype';
 
 export type pwType = {
     username: string;
@@ -6,5 +6,5 @@ export type pwType = {
     email: string;
     profilePic: string;
     displayName: string;
-    decks: decktype[];
+    decks: deckType[];
 };

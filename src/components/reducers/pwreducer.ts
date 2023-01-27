@@ -9,6 +9,6 @@ export const pwReducer = (state = initialState, action: any) => {
         case 'LOGOUT':
             return { ...state, user: null };
         default:
-            throw new Error();
+            return state;
     }
 };

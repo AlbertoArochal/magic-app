@@ -1,6 +1,7 @@
 import Necropotence from '../../assets/img/necropotence.jpeg';
 import { Slide } from 'react-awesome-reveal';
-import { getCardImage } from '../helpers/getcardimage';
+import { GetSets } from '../helpers/getsets';
+
 export const Timeline = () => {
     const years = [];
     for (let i = 1993; i <= 2023; i++) {
@@ -38,7 +39,7 @@ export const Timeline = () => {
                                     />
                                     <h2 className="date">{year}</h2>
                                     <p>
-                                        Lorem ipsum dolor sit, amet consectetur
+                                        Lorem, ipsum dolor sit amet consectetur
                                         adipisicing elit.
                                     </p>
                                     <div className="button__container">
