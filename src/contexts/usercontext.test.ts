@@ -1,11 +1,9 @@
-import { userContext } from './usercontext';
-
-import { pwReducer } from '../components/reducers/pwreducer';
+import { pwReducer, initialState } from '../components/reducers/pwreducer';
 
 describe('pwReducer', () => {
     it('should return the initial state', () => {
-        const expectedState = { user: {} };
-        const state = pwReducer(undefined, {});
+        const expectedState = initialState;
+        const state = pwReducer(undefined, { type: null, payload: null });
         expect(state).toEqual(expectedState);
     });
 
@@ -13,13 +11,12 @@ describe('pwReducer', () => {
         const user = { name: 'John Doe' };
         const action = { type: 'LOGIN', payload: user };
         const expectedState = { user };
-        const state = pwReducer({ user: {} }, action);
+        const state = pwReducer(initialState, action);
         expect(state).toEqual(expectedState);
     });
-
     it('should handle the LOGOUT action', () => {
         const action = { type: 'LOGOUT' };
-        const expectedState = { user: null };
+        const expectedState = { user: {} };
         const state = pwReducer({ user: { name: 'John Doe' } }, action);
         expect(state).toStrictEqual(expectedState);
     });
