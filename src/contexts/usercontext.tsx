@@ -4,7 +4,7 @@ import { pwType } from '../models/pwtype';
 export const userContext = createContext({
     user: initialState.user,
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    setUser: (user: pwType) => {},
+    setUser: (user: any) => {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     logout: () => {},
 });
@@ -18,7 +18,7 @@ export const UserProvider = ({ children }: any) => {
         <userContext.Provider
             value={{
                 user: loginUser.user,
-                setUser: (user: pwType) =>
+                setUser: (user: any) =>
                     loginDispatch({ type: 'LOGIN', payload: user }),
                 logout: () => loginDispatch({ type: 'LOGOUT' }),
             }}

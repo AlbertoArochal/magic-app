@@ -1,5 +1,5 @@
 export const initialState = {
-    user: {},
+    user: null as any,
 };
 
 export const pwReducer = (state = initialState, action: any) => {
@@ -7,7 +7,7 @@ export const pwReducer = (state = initialState, action: any) => {
         case 'LOGIN':
             return { ...state, user: action.payload };
         case 'LOGOUT':
-            return { ...state, user: null };
+            return { ...state, user: {} };
         default:
             return state;
     }

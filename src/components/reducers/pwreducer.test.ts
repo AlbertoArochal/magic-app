@@ -17,6 +17,6 @@ describe('pwreducer', () => {
             pwReducer(initialState, {
                 type: 'LOGOUT',
             })
-        ).toEqual({ user: null });
+        ).toEqual({ user: {} });
     });
 });

@@ -1,9 +1,26 @@
 import logo from '../../assets/img/logo.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { signInWithGoogle } from '../helpers/signwithgoogle';
+import { useContext } from 'react';
+import { userContext } from '../../contexts/usercontext';
+import { getAuth } from 'firebase/auth';
+import { ProfilePic } from '../profilepic/profilepic';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { user, setUser } = useContext(userContext);
+
+    useEffect(() => {
+        const auth = getAuth();
+        auth.onAuthStateChanged((user: any) => {
+            if (user) {
+                setUser(user);
+            } else {
+                setUser(null);
+            }
+        });
+    }, [setUser]);
 
     return (
         <div className="Header">
@@ -17,12 +34,16 @@ export const Header = () => {
                     <a href="/">Secret Lair</a>
                 </nav>
                 <button className="Header__button decks">My Decks</button>
-                <button
-                    onClick={signInWithGoogle}
-                    className="Header__button profile"
-                >
-                    PROFILE
-                </button>
+                <div className="header__pwp">
+                    <button
+                        onClick={signInWithGoogle}
+                        className="Header__button profile"
+                    >
+                        PROFILE
+                    </button>
+
+                    <ProfilePic />
+                </div>
             </div>
             <button
                 className="Burger__button"

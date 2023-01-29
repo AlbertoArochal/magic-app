@@ -6,9 +6,13 @@ export const GetSets = (year: number) => {
         sets.forEach((set) => {
             const date = new Date(set.released_at);
             if (date.getFullYear() === year) {
-                collection.push(set);
+                collection.push({
+                    name: set.name,
+                    icon: set.icon_svg_uri,
+                });
             }
         });
+
         return collection;
     });
     return collections;

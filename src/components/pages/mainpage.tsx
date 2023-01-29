@@ -3,7 +3,6 @@ import fivecolors from '../../assets/img/fivecolors.png';
 import { Timeline } from '../timeline/timeline';
 import { getSets } from 'scryfall-client/dist/api-routes/sets';
 export const MainPage = () => {
-    getSets().then((res) => res.map);
     return (
         <>
             <Header />

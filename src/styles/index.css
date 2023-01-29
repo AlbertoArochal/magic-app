@@ -285,7 +285,7 @@ h6 {
   display: none;
 }
 .Header .Header__links {
-  margin: 1rem 3rem;
+  margin: -0.7rem 3rem;
 }
 .Header button {
   margin: 0.3rem 1rem;
@@ -305,6 +305,26 @@ h6 {
 .Header a:hover {
   font-size: 1.7rem;
   color: #fcc7c7;
+}
+
+.header__pwp {
+  display: flexbox;
+  align-items: center;
+}
+.header__pwp .ProfilePic {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 1.5rem;
+}
+.header__pwp .ProfilePic .ProfilePicImg {
+  width: 4.5rem;
+  height: 4rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid black;
+  margin: 0;
+  max-width: 4rem;
 }
 
 @media only screen and (max-width: 768px) {

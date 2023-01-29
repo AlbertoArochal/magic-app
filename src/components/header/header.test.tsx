@@ -1,9 +1,7 @@
 import { screen, render, fireEvent } from '@testing-library/react';
 import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
-import { auth } from '../firebase/firebase';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { set, ref } from 'firebase/database';
 import { Header } from './header';
+import { MemoryRouter } from 'react-router-dom';
 
 const intersectionObserverMock = () => ({
     observe: () => null,
@@ -15,7 +13,11 @@ window.IntersectionObserver = jest
 describe('Header', () => {
     it('should render the header correctly', () => {
         mockAllIsIntersecting(true);
-        render(<Header />);
+        render(
+            <MemoryRouter>
+                <Header />
+            </MemoryRouter>
+        );
 
         expect(screen.getByText('Home')).toBeInTheDocument();
         expect(screen.getByText('Year')).toBeInTheDocument();
@@ -24,7 +26,11 @@ describe('Header', () => {
         expect(screen.getByText('PROFILE')).toBeInTheDocument();
     });
     test('toggles the menu when the button is clicked', () => {
-        render(<Header />);
+        render(
+            <MemoryRouter>
+                <Header />
+            </MemoryRouter>
+        );
 
         const button = screen.getByTestId('burger-button');
         fireEvent.click(button);
