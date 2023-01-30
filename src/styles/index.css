@@ -254,6 +254,88 @@ h6 {
   font-weight: 500;
 }
 
+.Profile {
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  top: 14rem;
+  position: relative;
+}
+.Profile .Profile__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+  border: 2px solid #333;
+  width: 65%;
+  height: 50%;
+  background-color: #d9d9d9;
+  border-radius: 0.8rem;
+  position: relative;
+}
+.Profile .Profile__container .Profile__container::after {
+  content: "";
+  position: absolute;
+  left: 0.3rem;
+  top: 0.2rem;
+  width: 100%;
+  height: 100%;
+  background-color: #fbf683;
+  z-index: -1;
+  border: 1px solid #333;
+  border-radius: 1.5rem;
+}
+.Profile .Profile__container .Profile__headline {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 60%;
+  height: 20%;
+  margin: 1rem 0rem 1rem 3rem;
+  border-bottom: #000 4px solid;
+}
+.Profile .Profile__container .Profile__buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin: 0rem 0rem 3rem 0rem;
+}
+.Profile .Profile__container button {
+  background-color: #795bf0;
+  color: #fff;
+  font-weight: 400;
+  height: 63px;
+  width: 40%;
+  max-width: 360px;
+  border-radius: 90px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+}
+.Profile .Profile__container button:hover {
+  font-size: 1.7rem;
+}
+.Profile .Profile__container .ProfilePic {
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #333;
+  position: relative;
+  top: -12rem;
+  left: -22rem;
+}
+.Profile .Profile__container .ProfilePic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #333;
+}
+
 .Header {
   width: 100%;
   position: fixed;

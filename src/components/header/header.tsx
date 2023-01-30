@@ -5,7 +5,6 @@ import { useContext } from 'react';
 import { userContext } from '../../contexts/usercontext';
 import { getAuth } from 'firebase/auth';
 import { ProfilePic } from '../profilepic/profilepic';
-import { Link } from 'react-router-dom';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +35,13 @@ export const Header = () => {
                 <button className="Header__button decks">My Decks</button>
                 <div className="header__pwp">
                     <button
-                        onClick={signInWithGoogle}
+                        onClick={() => {
+                            if (!user) {
+                                signInWithGoogle();
+                            } else {
+                                window.location.href = '/profile';
+                            }
+                        }}
                         className="Header__button profile"
                     >
                         PROFILE
