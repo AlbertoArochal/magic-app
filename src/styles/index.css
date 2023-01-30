@@ -257,10 +257,10 @@ h6 {
 .Profile {
   display: flexbox;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
   top: 14rem;
+  align-items: center;
   position: relative;
+  margin: auto;
 }
 .Profile .Profile__container {
   display: flex;
@@ -270,13 +270,13 @@ h6 {
   margin: auto;
   position: relative;
   border: 2px solid #333;
-  width: 65%;
-  height: 50%;
+  width: 40%;
+  height: fit-content;
   background-color: #d9d9d9;
   border-radius: 0.8rem;
   position: relative;
 }
-.Profile .Profile__container .Profile__container::after {
+.Profile .Profile__container::after {
   content: "";
   position: absolute;
   left: 0.3rem;
@@ -286,7 +286,7 @@ h6 {
   background-color: #fbf683;
   z-index: -1;
   border: 1px solid #333;
-  border-radius: 1.5rem;
+  border-radius: 0.8rem;
 }
 .Profile .Profile__container .Profile__headline {
   display: flex;
@@ -294,14 +294,22 @@ h6 {
   align-items: center;
   width: 60%;
   height: 20%;
-  margin: 1rem 0rem 1rem 3rem;
+  margin: 3rem 0rem 1rem 3rem;
   border-bottom: #000 4px solid;
 }
 .Profile .Profile__container .Profile__buttons {
   display: flex;
   justify-content: space-around;
   width: 80%;
-  margin: 0rem 0rem 3rem 0rem;
+  margin: auto;
+  margin-bottom: 3rem;
+  position: relative;
+}
+.Profile .Profile__container .Profile__userdata {
+  display: flexbox;
+  width: 80%;
+  margin: 2rem 0rem 0rem 10rem;
+  font-size: 1.2rem;
 }
 .Profile .Profile__container button {
   background-color: #795bf0;
@@ -325,7 +333,7 @@ h6 {
   object-fit: cover;
   border: 1px solid #333;
   position: relative;
-  top: -12rem;
+  top: -15rem;
   left: -22rem;
 }
 .Profile .Profile__container .ProfilePic img {
