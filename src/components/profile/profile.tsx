@@ -1,8 +1,12 @@
 import { ProfilePic } from '../profilepic/profilepic';
 import { userContext } from '../../contexts/usercontext';
 import { useContext } from 'react';
+import { LogDelete } from '../hooks/logdelete/logdelete';
+
 export const Profile = () => {
     const { user } = useContext(userContext);
+    const { logOutHandler, deleteUserHandler } = LogDelete();
+
     return (
         <div className="Profile">
             <div className="Profile__container">
@@ -18,8 +22,16 @@ export const Profile = () => {
 
                 <ProfilePic />
                 <div className="Profile__buttons">
-                    <button className="Profile__SignOut">Sign Out</button>
-                    <button className="Profile__DeleteAccount">
+                    <button
+                        onClick={logOutHandler}
+                        className="Profile__SignOut"
+                    >
+                        Sign Out
+                    </button>
+                    <button
+                        onClick={deleteUserHandler}
+                        className="Profile__DeleteAccount"
+                    >
                         Delete Account
                     </button>
                 </div>

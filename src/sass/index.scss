@@ -285,6 +285,11 @@ h6 {
   position: relative;
   margin: auto;
 
+  .Profile__decorations {
+    height: 3rem;
+    width: 3rem;
+  }
+
   .Profile__container {
     display: flex;
     flex-direction: column;

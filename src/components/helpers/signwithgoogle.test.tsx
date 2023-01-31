@@ -1,4 +1,4 @@
-import { auth, Firedb } from '../firebase/firebase';
+import { auth } from '../firebase/firebase';
 import { signInWithPopup } from 'firebase/auth';
 import { provider } from '../firebase/firebase';
 import { set, ref } from 'firebase/database';

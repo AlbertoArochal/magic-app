@@ -19,7 +19,7 @@ export const Header = () => {
                 setUser(null);
             }
         });
-    }, [setUser]);
+    }, []);
 
     return (
         <div className="Header">
