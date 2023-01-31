@@ -7,7 +7,7 @@ export const pwReducer = (state = initialState, action: any) => {
         case 'LOGIN':
             return { ...state, user: action.payload };
         case 'LOGOUT':
-            return { ...state, user: {} };
+            return { ...state, user: null };
         default:
             return state;
     }
