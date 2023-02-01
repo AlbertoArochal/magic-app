@@ -16,8 +16,14 @@ describe('pwReducer', () => {
     });
     it('should handle the LOGOUT action', () => {
         const action = { type: 'LOGOUT' };
+        const expectedState = { user: null };
+        const state = pwReducer(initialState, action);
+        expect(state).toStrictEqual(expectedState);
+    });
+    it('should return the initial state if the action type is unknown', () => {
+        const action = { type: 'UNKNOWN' };
         const expectedState = initialState;
-        const state = pwReducer({ user: { name: 'John Doe' } }, action);
+        const state = pwReducer(undefined, action);
         expect(state).toStrictEqual(expectedState);
     });
 });

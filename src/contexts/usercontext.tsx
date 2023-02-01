@@ -1,6 +1,5 @@
 import { createContext, useReducer } from 'react';
 import { pwReducer, initialState } from '../components/reducers/pwreducer';
-import { pwType } from '../models/pwtype';
 export const userContext = createContext({
     user: initialState.user,
     // eslint-disable-next-line @typescript-eslint/no-empty-function

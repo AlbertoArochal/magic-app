@@ -2,6 +2,7 @@ import { screen, render, fireEvent } from '@testing-library/react';
 import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 import { Header } from './header';
 import { MemoryRouter } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const intersectionObserverMock = () => ({
     observe: () => null,
@@ -40,5 +41,25 @@ describe('Header', () => {
         expect(screen.getByTestId('burger-menu')).toHaveClass(
             'Burger__menu-open'
         );
+    });
+
+    const user = {
+        name: 'Test User',
+    };
+
+    const auth = {
+        onAuthStateChanged: jest.fn((cb) => cb(user)),
+    };
+
+    it('should set a new user on the global state user when the auth state changes', () => {
+        render(
+            <MemoryRouter>
+                <Header />
+            </MemoryRouter>
+        );
+        auth.onAuthStateChanged((user) => {
+            expect(auth.onAuthStateChanged).toHaveBeenCalled();
+            expect(auth.onAuthStateChanged).toHaveBeenCalledWith(user);
+        });
     });
 });
