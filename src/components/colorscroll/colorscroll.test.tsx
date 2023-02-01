@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
-import { ColorScroll } from './colorScroll';
+import { ColorScroll } from './colorscroll';
 
 afterEach(cleanup);
 
