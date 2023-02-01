@@ -15,8 +15,6 @@ export const Header = () => {
         auth.onAuthStateChanged((user: any) => {
             if (user) {
                 setUser(user);
-            } else {
-                setUser(null);
             }
         });
     }, []);
@@ -29,7 +27,7 @@ export const Header = () => {
             <div className="Header__links">
                 <nav>
                     <a href="/">Home</a>
-                    <a href="/">Year</a>
+                    <a href="/Years">Year</a>
                     <a href="/">Secret Lair</a>
                 </nav>
                 <button className="Header__button decks">My Decks</button>

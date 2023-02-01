@@ -450,6 +450,66 @@ h6 {
   }
 }
 
+/// Year Page Related Styles ///
+
+.Year__container {
+  position: relative;
+
+  display: flex;
+  width: 100%;
+  height: 30vh;
+  top: 14rem;
+  justify-content: start;
+  align-items: center;
+  .YearButton {
+    height: 80%;
+    background-image: url('../assets/img/necropotence.jpeg');
+    width: 20rem;
+    margin-left: 15rem;
+    background-size: cover;
+    border: #000 solid 2px;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    color: white;
+    transition: filter 0.2s ease-in-out;
+    &.YearButton::after {
+      content: '';
+      position: absolute;
+      left: 0.3rem;
+      top: 1.1rem;
+      width: 20rem;
+      margin-left: 15rem;
+      height: 80%;
+      z-index: -1;
+      background-color: #fbf683;
+      border: 1px solid #333;
+      border-radius: 0.8rem;
+    }
+  }
+}
+
+.ColorScroll__container {
+  width: 120vw;
+  height: 17vh;
+  margin-top: 22rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #6e61ff;
+  overflow: visible;
+}
+
+.ColorScroll__button {
+  width: 18vw;
+  margin-right: 3rem;
+  height: 15rem;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  border: 1px solid #333;
+  box-shadow: $strong-shadow;
+  margin-top: -3rem;
+}
+
 @media only screen and (max-width: 768px) {
   .Header {
     .Header__links {
