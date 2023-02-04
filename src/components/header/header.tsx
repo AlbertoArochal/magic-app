@@ -1,10 +1,11 @@
 import logo from '../../assets/img/logo.png';
 import { useEffect, useState } from 'react';
-import { signInWithGoogle } from '../helpers/signwithgoogle';
+import { signInWithGoogle } from '../services/signwithgoogle';
 import { useContext } from 'react';
 import { userContext } from '../../contexts/usercontext';
 import { getAuth } from 'firebase/auth';
 import { ProfilePic } from '../profilepic/profilepic';
+import { ProfileButton } from '../profilebutton/profilebutton';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,18 +33,7 @@ export const Header = () => {
                 </nav>
                 <button className="Header__button decks">My Decks</button>
                 <div className="header__pwp">
-                    <button
-                        onClick={() => {
-                            if (!user) {
-                                signInWithGoogle();
-                            } else {
-                                window.location.href = '/profile';
-                            }
-                        }}
-                        className="Header__button profile"
-                    >
-                        PROFILE
-                    </button>
+                    <ProfileButton />
 
                     <ProfilePic />
                 </div>

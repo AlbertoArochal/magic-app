@@ -1,12 +1,12 @@
-import { pwReducer, initialState } from './pwreducer';
+import { PlanesWalkerReducer, initialState } from './planeswalkerreducer';
 
-describe('pwreducer', () => {
+describe('PlanesWalkerReducer', () => {
     it('should return the initial state', () => {
-        expect(pwReducer(undefined, {})).toEqual(initialState);
+        expect(PlanesWalkerReducer(undefined, {})).toEqual(initialState);
     });
     it('should handle LOGIN', () => {
         expect(
-            pwReducer(initialState, {
+            PlanesWalkerReducer(initialState, {
                 type: 'LOGIN',
                 payload: { name: 'test' },
             })
@@ -14,7 +14,7 @@ describe('pwreducer', () => {
     });
     it('should handle LOGOUT', () => {
         expect(
-            pwReducer(initialState, {
+            PlanesWalkerReducer(initialState, {
                 type: 'LOGOUT',
             })
         ).toEqual(initialState);

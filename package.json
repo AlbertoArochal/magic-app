@@ -33,7 +33,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build-css": "nodemon -e scss -x \"sass --watch src/sass/index.scss:src/styles/index.css\"",
-    "test": "react-scripts test test --coverage --watchAll",
+    "test": "react-scripts test test --coverage --watchAll --runInBand",
     "eject": "react-scripts eject",
     "test:all": "react-scripts test --watchAll --collect-coverage",
     "test:prod": "react-scripts test --watchAll --collect-coverage --watchAll=false",

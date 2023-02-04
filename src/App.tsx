@@ -1,6 +1,6 @@
 import { MainPage } from './components/pages/mainpage';
 import { Footer } from './components/footer/footer';
-import { UserProvider } from './contexts/usercontext';
+import { UserProvider } from './contexts/provider';
 export const App = () => {
     return (
         <div>
