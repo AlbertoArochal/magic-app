@@ -1,8 +1,8 @@
 import { userContext } from '../../../contexts/usercontext';
 import { getAuth } from 'firebase/auth';
-import { deleteUser } from '../../helpers/deleteuser';
+import { deleteUser } from '../../services/deleteuser';
 import { useContext } from 'react';
-export const LogDelete = () => {
+export const useLogDelete = () => {
     const { user, logout } = useContext(userContext);
 
     const logOutHandler = () => {

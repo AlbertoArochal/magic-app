@@ -1,6 +1,6 @@
 import Necropotence from '../../assets/img/necropotence.jpeg';
 import { Slide } from 'react-awesome-reveal';
-import { GetSets } from '../helpers/getsets';
+import { GetSets } from '../services/getsets';
 
 export const Timeline = () => {
     const years = [];

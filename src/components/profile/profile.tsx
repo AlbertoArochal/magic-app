@@ -1,11 +1,11 @@
 import { ProfilePic } from '../profilepic/profilepic';
 import { userContext } from '../../contexts/usercontext';
 import { useContext } from 'react';
-import { LogDelete } from '../hooks/logdelete/logdelete';
+import { useLogDelete } from '../hooks/logdelete/uselogdelete';
 
 export const Profile = () => {
     const { user } = useContext(userContext);
-    const { logOutHandler, deleteUserHandler } = LogDelete();
+    const { logOutHandler, deleteUserHandler } = useLogDelete();
 
     return (
         <div className="Profile">

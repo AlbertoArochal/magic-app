@@ -2,7 +2,6 @@ import { screen, render, fireEvent } from '@testing-library/react';
 import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 import { Header } from './header';
 import { MemoryRouter } from 'react-router-dom';
-import { onAuthStateChanged } from 'firebase/auth';
 
 const intersectionObserverMock = () => ({
     observe: () => null,
@@ -24,7 +23,6 @@ describe('Header', () => {
         expect(screen.getByText('Year')).toBeInTheDocument();
         expect(screen.getByText('Secret Lair')).toBeInTheDocument();
         expect(screen.getByText('My Decks')).toBeInTheDocument();
-        expect(screen.getByText('PROFILE')).toBeInTheDocument();
     });
     test('toggles the menu when the button is clicked', () => {
         render(

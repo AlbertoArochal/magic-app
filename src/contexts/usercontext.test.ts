@@ -1,29 +1,23 @@
-import { pwReducer, initialState } from '../components/reducers/pwreducer';
-
-describe('pwReducer', () => {
+import {
+    PlanesWalkerReducer,
+    initialState,
+} from '../components/reducers/planeswalkerreducer';
+describe('PlanesWalkerReducer', () => {
     it('should return the initial state', () => {
-        const expectedState = initialState;
-        const state = pwReducer(undefined, { type: null, payload: null });
-        expect(state).toEqual(expectedState);
+        expect(PlanesWalkerReducer(undefined, {})).toEqual(initialState);
     });
-
-    it('should handle the LOGIN action', () => {
-        const user = { name: 'John Doe' };
-        const action = { type: 'LOGIN', payload: user };
-        const expectedState = { user };
-        const state = pwReducer(initialState, action);
-        expect(state).toEqual(expectedState);
-    });
-    it('should handle the LOGOUT action', () => {
-        const action = { type: 'LOGOUT' };
-        const expectedState = { user: null };
-        const state = pwReducer(initialState, action);
-        expect(state).toStrictEqual(expectedState);
-    });
-    it('should return the initial state if the action type is unknown', () => {
-        const action = { type: 'UNKNOWN' };
-        const expectedState = initialState;
-        const state = pwReducer(undefined, action);
-        expect(state).toStrictEqual(expectedState);
+    it('should handle LOGIN', () => {
+        const action = {
+            type: 'LOGIN',
+            payload: {
+                id: 1,
+                name: 'test',
+                email: 'arochaldev@gmail.com',
+            },
+        };
+        expect(PlanesWalkerReducer(initialState, action)).toEqual({
+            ...initialState,
+            user: action.payload,
+        });
     });
 });

@@ -1,28 +1,84 @@
-import { useContext } from 'react';
+import React from 'react';
+import { screen, render, act } from '@testing-library/react';
 import { userContext } from '../../../contexts/usercontext';
-import { LogDelete } from './logdelete';
-import { screen, render, fireEvent } from '@testing-library/react';
+import { useLogDelete } from './uselogdelete';
 
-describe('LogDelete', () => {
-    jest.mock('../../../contexts/usercontext' as any, () => ({
-        userContext: {
-            user: {
-                uid: '1234567890',
-            },
-        },
-    }));
+describe('useLogDelete hook', () => {
+    it('should sign out the user and delete it from the database', async () => {
+        const deleteUser = jest.fn(() => Promise.resolve(true));
+        const getAuth = jest.fn().mockImplementation(() => ({
+            signOut: jest.fn(),
+        }));
 
-    const useContext = jest.fn();
-    useContext.mockReturnValue({
-        user: {
-            uid: '1234567890',
-        },
+        const logout = jest.fn();
+        const setUser = jest.fn();
+
+        const TestComponent = () => {
+            const hook = useLogDelete();
+            return <button onClick={hook.deleteUserHandler} />;
+        };
+        const Wrapper = ({ children }: any) => (
+            <userContext.Provider
+                value={{
+                    user: { uid: '123' },
+                    logout,
+                    setUser,
+                }}
+            >
+                {children}
+            </userContext.Provider>
+        );
+
+        render(
+            <Wrapper>
+                <TestComponent />
+            </Wrapper>
+        );
+        const button = screen.getByRole('button');
+
+        await act(async () => {
+            button.click();
+        });
+
+        expect(deleteUser).not.toHaveBeenCalled();
+        expect(logout).not.toHaveBeenCalled();
     });
+    it('logOutHandler should be called when the user is not logged in', async () => {
+        const deleteUser = jest.fn(() => Promise.resolve(true));
+        const getAuth = jest.fn().mockImplementation(() => ({
+            signOut: jest.fn(),
+        }));
 
-    it('should be defined', () => {
-        expect(LogDelete).toBeDefined();
-    });
-    it('should be a function', () => {
-        expect(typeof LogDelete).toBe('function');
+        const logout = jest.fn();
+        const setUser = jest.fn();
+
+        const TestComponent = () => {
+            const hook = useLogDelete();
+            return <button onClick={hook.logOutHandler} />;
+        };
+        const Wrapper = ({ children }: any) => (
+            <userContext.Provider
+                value={{
+                    user: null,
+                    logout,
+                    setUser,
+                }}
+            >
+                {children}
+            </userContext.Provider>
+        );
+
+        render(
+            <Wrapper>
+                <TestComponent />
+            </Wrapper>
+        );
+        const button = screen.getByRole('button');
+
+        await act(async () => {
+            button.click();
+        });
+
+        expect(logout).toHaveBeenCalled();
     });
 });
