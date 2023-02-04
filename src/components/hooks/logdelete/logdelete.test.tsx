@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen, render, act } from '@testing-library/react';
 import { userContext } from '../../../contexts/usercontext';
-import { useLogDelete } from './useLogDelete';
+import { useLogDelete } from './uselogdelete';
 
 describe('useLogDelete hook', () => {
     it('should sign out the user and delete it from the database', async () => {
