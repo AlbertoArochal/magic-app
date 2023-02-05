@@ -26,13 +26,19 @@ export const useCards = () => {
 
     const GetCardsByYear = async (year: number, page = 1) => {
         const cards: CardType[] = [];
-        const cardList = await scryfall.search('year:' + year.toString(), {
-            page: page,
+        const cardList: CardType[] = await scryfall.get('cards/search', {
+            q:
+                'date%3E%3D' +
+                year.toString() +
+                '+date%3C%3D' +
+                (year + 1).toString() +
+                '&order=released&dir=asc',
         });
-        cardList.forEach((card) => {
+        cardList.forEach((card: any) => {
             cards.push({
                 name: card.name,
                 released_at: card.released_at,
+                type: card.type,
                 image_uris: {
                     small: card.image_uris.small,
                     large: card.image_uris.large,
@@ -56,7 +62,6 @@ export const useCards = () => {
         const cards = await scryfall.get('cards/search', {
             q: 'Year:' + year.toString(),
         });
-        console.log(cards);
         return cards;
     };
 

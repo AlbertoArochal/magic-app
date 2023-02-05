@@ -2,6 +2,7 @@ import Necropotence from '../../assets/img/necropotence.jpeg';
 import { useContext } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useCards } from '../hooks/logdelete/useCards';
+import { useNavigate } from 'react-router-dom';
 interface Props {
     year: string;
 }
@@ -10,9 +11,13 @@ export const YearCard = ({ year }: Props) => {
     const { collections } = useContext(CardContext);
     const { GetCardsByYear } = useCards();
     const sets = collections;
+    const navigate = useNavigate();
 
     const setCardsHandler = (year: number, page = 1) => {
         GetCardsByYear(year, page);
+        setTimeout(() => {
+            return navigate('/years');
+        }, 600);
     };
 
     return (

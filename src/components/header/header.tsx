@@ -29,14 +29,13 @@ export const Header = () => {
             </div>
             <div className="Header__links">
                 <nav>
-                    <a className="home" href="/">
-                        Home
-                    </a>
+                    <Link to="/">
+                        <p className="home">Home</p>
+                    </Link>
                     <YearLink />
-                    <a className="secret" href="/">
-                        Secret Lair
-                    </a>
+                    <p className="secret">Secret Lair</p>
                 </nav>
+
                 <button className="Header__button decks">My Decks</button>
                 <div className="header__pwp">
                     <ProfileButton />

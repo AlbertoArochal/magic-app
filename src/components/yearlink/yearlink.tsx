@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
+
 export const YearLink = () => {
     return (
-        <a className="year" href="/years">
-            Year
-        </a>
+        <Link to="/years" className="year">
+            <p className="year">Year</p>
+        </Link>
     );
 };
