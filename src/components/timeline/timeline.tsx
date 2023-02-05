@@ -4,11 +4,11 @@ import { useCards } from '../hooks/logdelete/useCards';
 import { useEffect } from 'react';
 
 export const Timeline = () => {
-    const { GetSets, collections } = useCards();
+    const { GetSets, collections, GetCardsByYear, GetCardsByDate } = useCards();
 
     useEffect(() => {
         GetSets();
-    }, [GetSets]);
+    }, []);
 
     const years = [];
     for (let i = 1993; i <= 2023; i++) {

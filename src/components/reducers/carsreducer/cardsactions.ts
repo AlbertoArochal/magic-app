@@ -4,3 +4,10 @@ export const addCollection = (collection: any) => {
         payload: collection,
     };
 };
+
+export const addCards = (cards: any) => {
+    return {
+        type: 'SET_CARDS',
+        payload: cards,
+    };
+};

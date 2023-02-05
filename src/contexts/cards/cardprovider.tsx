@@ -1,10 +1,19 @@
-import { CardsReducer } from '../../components/reducers/carsreducer/cardsreducer';
+import {
+    CollectionsReducer,
+    CardsReducer,
+} from '../../components/reducers/carsreducer/cardsreducer';
 import { useReducer } from 'react';
+import { CardType } from '../../models/cardtype';
+import { initialCards } from './cardcontext';
 
 import { CardContext } from './cardcontext';
 export const CardProvider = ({ children }: any) => {
-    const [collections, collectionsDispatch] = useReducer(CardsReducer, {
+    const [collections, collectionsDispatch] = useReducer(CollectionsReducer, {
         collections: [],
+    });
+
+    const [cards, cardsDispatch] = useReducer(CardsReducer, {
+        ...initialCards,
     });
 
     return (
@@ -15,6 +24,12 @@ export const CardProvider = ({ children }: any) => {
                     collectionsDispatch({
                         type: 'SET_COLLECTIONS',
                         payload: collections,
+                    }),
+                cards: cards.cards,
+                setCards: (cards: CardType[]) =>
+                    cardsDispatch({
+                        type: 'SET_CARDS',
+                        payload: cards,
                     }),
             }}
         >

@@ -1,5 +1,6 @@
 import scryfall from 'scryfall-client';
 import { useCallback } from 'react';
+import { CardType } from '../../../models/cardtype';
 import {
     CardContext,
     CollectionType,
@@ -7,9 +8,9 @@ import {
 import { useContext } from 'react';
 
 export const useCards = () => {
-    const { collections, setCollections } = useContext(CardContext);
+    const { collections, setCollections, setCards } = useContext(CardContext);
 
-    const GetSets = useCallback(async () => {
+    const GetSets = async () => {
         const collections = await scryfall.getSets();
         const collection: CollectionType[] = [];
         collections.forEach((set) => {
@@ -21,7 +22,43 @@ export const useCards = () => {
                 });
         });
         setCollections(collection);
-    }, []);
+    };
 
-    return { collections, GetSets };
+    const GetCardsByYear = async (year: number, page = 1) => {
+        const cards: CardType[] = [];
+        const cardList = await scryfall.search('year:' + year.toString(), {
+            page: page,
+        });
+        cardList.forEach((card) => {
+            cards.push({
+                name: card.name,
+                released_at: card.released_at,
+                image_uris: {
+                    small: card.image_uris.small,
+                    large: card.image_uris.large,
+                    art_crop: card.image_uris.art_crop,
+                },
+                mana_cost: card.mana_cost,
+                oracle_text: card.oracle_text,
+                type_line: card.type_line,
+                color_identity: card.color_identity,
+                artist: card.artist,
+                set_name: card.set_name,
+                power: card.power,
+                toughness: card.toughness,
+                flavor_text: card.flavor_text,
+            });
+        });
+        setCards(cards);
+    };
+
+    const GetCardsByDate = async (year: number) => {
+        const cards = await scryfall.get('cards/search', {
+            q: 'Year:' + year.toString(),
+        });
+        console.log(cards);
+        return cards;
+    };
+
+    return { collections, GetSets, GetCardsByYear, GetCardsByDate };
 };

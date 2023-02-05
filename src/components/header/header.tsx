@@ -6,6 +6,7 @@ import { userContext } from '../../contexts/user/usercontext';
 import { getAuth } from 'firebase/auth';
 import { ProfilePic } from '../profilepic/profilepic';
 import { ProfileButton } from '../profilebutton/profilebutton';
+import { YearLink } from '../yearlink/yearlink';
 import { Link } from 'react-router-dom';
 
 export const Header = () => {
@@ -31,9 +32,7 @@ export const Header = () => {
                     <a className="home" href="/">
                         Home
                     </a>
-                    <a className="year" href="/">
-                        Year
-                    </a>
+                    <YearLink />
                     <a className="secret" href="/">
                         Secret Lair
                     </a>

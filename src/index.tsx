@@ -5,17 +5,20 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { MagicRouter } from './router/magicrouter';
 import { UserProvider } from './contexts/user/provider';
+import { CardProvider } from './contexts/cards/cardprovider';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <React.StrictMode>
-        <UserProvider>
-            <BrowserRouter>
-                <MagicRouter />
-            </BrowserRouter>
-        </UserProvider>
+        <CardProvider>
+            <UserProvider>
+                <BrowserRouter>
+                    <MagicRouter />
+                </BrowserRouter>
+            </UserProvider>
+        </CardProvider>
     </React.StrictMode>
 );
 
