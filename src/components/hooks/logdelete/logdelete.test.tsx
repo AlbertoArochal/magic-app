@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen, render, act } from '@testing-library/react';
-import { userContext } from '../../../contexts/usercontext';
+import { userContext } from '../../../contexts/user/usercontext';
 import { useLogDelete } from './uselogdelete';
 
 describe('useLogDelete hook', () => {
@@ -17,7 +17,7 @@ describe('useLogDelete hook', () => {
             const hook = useLogDelete();
             return <button onClick={hook.deleteUserHandler} />;
         };
-        const Wrapper = ({ children }: any) => (
+        const Wrapper = ({ children }) => (
             <userContext.Provider
                 value={{
                     user: { uid: '123' },

@@ -2,7 +2,8 @@ import { userContext } from './usercontext';
 import {
     PlanesWalkerReducer,
     initialState,
-} from '../components/reducers/planeswalkerreducer';
+} from '../../components/reducers/planeswalkerreducer';
+
 import { useReducer } from 'react';
 
 export const UserProvider = ({ children }: any) => {

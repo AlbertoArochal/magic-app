@@ -1,4 +1,4 @@
-import { userContext } from '../../../contexts/usercontext';
+import { userContext } from '../../../contexts/user/usercontext';
 import { getAuth } from 'firebase/auth';
 import { deleteUser } from '../../services/deleteuser';
 import { useContext } from 'react';

@@ -8,10 +8,9 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  color: #333;
-  background-color: #e1ecfe;
+  color: rgb(0, 0, 0);
+  background-color: #fef9ed;
   overflow-x: hidden;
-  background-image: url("../assets/img/grid.png");
 }
 
 h1,
@@ -189,30 +188,73 @@ h6 {
   margin-left: 20px;
 }
 
+.Intro__container {
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: center;
+  height: 26rem;
+  background-color: #f16b4d;
+}
+
 .Intro {
-  background-color: #f1f6f1;
+  background-color: #faca52;
   padding: 2rem;
   text-align: center;
-  border: 1px solid #333;
-  height: fit-content;
-  margin: 5rem auto;
+  border-top: 4px dashed #333;
+  border-bottom: 4px dashed #333;
+  border-width: 5px;
+  height: 25rem;
+  margin: 9rem auto auto auto;
+  display: flex;
+  justify-content: space-evenly;
+  justify-items: center;
 }
 .Intro img {
   width: 100%;
   max-width: 470px;
   margin: 0;
 }
+.Intro .Intro__left {
+  display: flexbox;
+  max-width: 50%;
+  align-self: flex-start;
+  position: relative;
+}
+.Intro .Intro__right {
+  display: flexbox;
+  max-width: 50%;
+  align-self: flex-end;
+  position: relative;
+}
+.Intro .Intro__right .right__img {
+  background-color: rgb(127, 217, 209);
+  shape-outside: ellipse(20rem 20rem at 5% 0%);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  display: block;
+  position: relative;
+  margin: auto;
+}
+.Intro .Intro__right .right__img::after {
+  content: "";
+  position: absolute;
+  left: 3rem;
+  top: 0;
+  width: 120%;
+  height: 120%;
+  z-index: 0;
+  background-color: black;
+}
 .Intro button {
-  background-color: #795bf0;
+  background-color: black;
   color: #fff;
-  font-weight: 400;
+  font-weight: 300;
   height: 63px;
   width: 70%;
   max-width: 360px;
-  border-radius: 90px;
   font-size: 26px;
   cursor: pointer;
-  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  box-shadow: 0.2rem 0.2rem 0rem 0rem tomato;
 }
 .Intro button:hover {
   font-size: 30px;
@@ -239,10 +281,17 @@ h6 {
 .Intro__title {
   max-width: max-content;
   padding: 0.5rem 1rem;
+  color: black;
   margin: auto;
 }
 .Intro__title * {
   display: inline-block;
+}
+
+.Intro__text::after {
+  content: " 90s!";
+  font-size: 2.5rem;
+  color: #333;
 }
 
 .Intro__article {
@@ -356,6 +405,7 @@ h6 {
   justify-content: space-between;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  z-index: 1;
 }
 .Header * {
   display: inline-block;
@@ -384,21 +434,26 @@ h6 {
 .Header button {
   margin: 0.3rem 1rem;
   padding: 0.3rem 1.5rem;
-  color: black;
-  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  color: rgb(245, 243, 243);
+  background-color: black;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem tomato;
   font-family: "Space Grotesk", sans-serif;
   cursor: pointer;
+  text-transform: lowercase;
 }
 .Header .decks {
-  background-color: #33c64b;
+  background-color: #bdf3c6;
+  color: #000;
 }
 .Header a {
   margin: auto 0.8rem;
-  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  color: #000;
+  padding: 0 1rem;
 }
 .Header a:hover {
-  font-size: 1.7rem;
-  color: #fcc7c7;
+  background-color: #bdf3c6;
+  border: #000 1px solid;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem tomato;
 }
 
 .header__pwp {
@@ -494,7 +549,19 @@ h6 {
   margin-bottom: 3rem;
 }
 
-@media only screen and (max-width: 768px) {
+.description {
+  margin: 1rem 1rem;
+}
+.description .Description__container {
+  display: flex;
+}
+.description .Description__container .icon {
+  width: 2rem;
+  height: 2rem;
+  margin: 0 0.5rem;
+}
+
+@media only screen and (max-width: 1000px) {
   .Header .Header__links {
     display: none;
   }

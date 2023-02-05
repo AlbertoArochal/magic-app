@@ -2,14 +2,15 @@ import logo from '../../assets/img/logo.png';
 import { useEffect, useState } from 'react';
 import { signInWithGoogle } from '../services/signwithgoogle';
 import { useContext } from 'react';
-import { userContext } from '../../contexts/usercontext';
+import { userContext } from '../../contexts/user/usercontext';
 import { getAuth } from 'firebase/auth';
 import { ProfilePic } from '../profilepic/profilepic';
 import { ProfileButton } from '../profilebutton/profilebutton';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { user, setUser } = useContext(userContext);
+    const { setUser } = useContext(userContext);
 
     useEffect(() => {
         const auth = getAuth();
@@ -27,9 +28,15 @@ export const Header = () => {
             </div>
             <div className="Header__links">
                 <nav>
-                    <a href="/">Home</a>
-                    <a href="/Years">Year</a>
-                    <a href="/">Secret Lair</a>
+                    <a className="home" href="/">
+                        Home
+                    </a>
+                    <a className="year" href="/">
+                        Year
+                    </a>
+                    <a className="secret" href="/">
+                        Secret Lair
+                    </a>
                 </nav>
                 <button className="Header__button decks">My Decks</button>
                 <div className="header__pwp">
