@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { render } from '@testing-library/react';
-import { CardContext, initialCollections, initialCards } from './CardContext';
+import { CardContext, initialCollections, initialCards } from './cardContext';
 import { CardType } from '../../models/cardtype';
 import { cardsmock } from '../../mocks/cardsmock';
 
