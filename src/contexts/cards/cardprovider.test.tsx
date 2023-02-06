@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, act, screen } from '@testing-library/react';
-import { CardProvider } from './cardProvider';
+import { CardProvider } from './cardprovider';
 import { CardContext } from './cardcontext';
 import { cardsmock } from '../../mocks/cardsmock';
 import { useEffect } from 'react';
