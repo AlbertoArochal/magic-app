@@ -13,11 +13,11 @@ export const YearCard = ({ year }: Props) => {
     const sets = collections;
     const navigate = useNavigate();
 
-    const setCardsHandler = (year: number, page = 1) => {
-        GetCardsByYear(year, page);
+    const setCardsHandler = async (year: number, page = 1) => {
+        await GetCardsByYear(year, page);
         setTimeout(() => {
-            return navigate('/years');
-        }, 3000);
+            navigate('/years');
+        }, 0);
     };
 
     return (
