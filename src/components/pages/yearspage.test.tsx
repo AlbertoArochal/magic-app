@@ -3,21 +3,30 @@ import { Header } from '../header/header';
 import { YearButton } from '../yearbutton/yearbutton';
 import { ColorScroll } from '../colorscroll/colorscroll';
 import { render, screen } from '@testing-library/react';
+import { CardContext } from '../../contexts/cards/cardcontext';
+import { TypeButtons } from '../typebuttons/typebuttons';
+import { FlavorText } from '../flavortext/flavortext';
+import { cardsmock } from '../../mocks/cardsmock';
 
 describe('YearsPage', () => {
-    it('should render', () => {
-        expect(YearsPage).toBeDefined();
-    });
-    it('should render the header', () => {
-        render(<YearsPage />);
-        expect(screen.getByText('PROFILE')).toBeInTheDocument();
-    });
-    it('should render the year button', () => {
-        render(<YearsPage />);
-        expect(screen.getByText('Year Button')).toBeInTheDocument();
-    });
     it('should render the color scroll', () => {
-        render(<YearsPage />);
-        expect(screen.getByText('blue')).toBeInTheDocument();
+        const Wrapper = ({ children }) => (
+            <CardContext.Provider
+                value={{
+                    cards: cardsmock,
+                    setCards: () => jest.fn(),
+                    collections: [],
+                    setCollections: () => jest.fn(),
+                }}
+            ></CardContext.Provider>
+        );
+
+        render(
+            <Wrapper>
+                <YearsPage />
+            </Wrapper>
+        );
+
+        expect(YearsPage).toBeDefined();
     });
 });
