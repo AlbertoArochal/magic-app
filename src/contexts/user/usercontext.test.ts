@@ -1,7 +1,7 @@
 import {
     PlanesWalkerReducer,
     initialState,
-} from '../components/reducers/planeswalkerreducer';
+} from '../../components/reducers/planeswalkerreducer';
 describe('PlanesWalkerReducer', () => {
     it('should return the initial state', () => {
         expect(PlanesWalkerReducer(undefined, {})).toEqual(initialState);

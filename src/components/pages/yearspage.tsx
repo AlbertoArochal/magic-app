@@ -2,15 +2,17 @@ import { Header } from '../header/header';
 import { YearButton } from '../yearbutton/yearbutton';
 import { ColorScroll } from '../colorscroll/colorscroll';
 import { TypeButtons } from '../typebuttons/typebuttons';
+import { FlavorText } from '../flavortext/flavortext';
+import { Footer } from '../footer/footer';
 export const YearsPage = () => {
     return (
         <>
             <Header />
-            <div>
-                <YearButton />
-                <ColorScroll />
-                <TypeButtons />
-            </div>
+            <YearButton />
+            <FlavorText />
+            <ColorScroll />
+            <TypeButtons />
+            <Footer />
         </>
     );
 };

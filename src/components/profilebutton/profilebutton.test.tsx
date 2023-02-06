@@ -1,6 +1,6 @@
 import { ProfileButton } from './profilebutton';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { userContext } from '../../contexts/usercontext';
+import { userContext } from '../../contexts/user/usercontext';
 import { signInWithPopup } from 'firebase/auth';
 
 jest.mock('firebase/auth');

@@ -1,4 +1,4 @@
-import { userContext } from '../../contexts/usercontext';
+import { userContext } from '../../contexts/user/usercontext';
 import { useContext } from 'react';
 
 export const ProfilePic = () => {

@@ -1,4 +1,4 @@
-export type cardType = {
+export type CardType = {
     name: string;
     released_at: string;
     image_uris: {
@@ -12,10 +12,12 @@ export type cardType = {
     color_identity: string[];
     artist: string;
     set_name: string;
+    power: string;
+    toughness: string;
     flavor_text: string;
 };
 
-export type creatureType = {
+export type CreatureType = {
     name: string;
     released_at: string;
     image_uris: {

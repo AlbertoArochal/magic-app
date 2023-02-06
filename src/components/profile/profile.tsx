@@ -1,5 +1,5 @@
 import { ProfilePic } from '../profilepic/profilepic';
-import { userContext } from '../../contexts/usercontext';
+import { userContext } from '../../contexts/user/usercontext';
 import { useContext } from 'react';
 import { useLogDelete } from '../hooks/logdelete/uselogdelete';
 

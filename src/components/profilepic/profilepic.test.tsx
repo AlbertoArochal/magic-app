@@ -1,12 +1,12 @@
 import { ProfilePic } from './profilepic';
 import { render, screen, cleanup, fireEvent } from '@testing-library/react';
-import { userContext } from '../../contexts/usercontext';
+import { userContext } from '../../contexts/user/usercontext';
 describe('ProfilePic', () => {
     it('should render successfully', () => {
         const { baseElement } = render(<ProfilePic />);
         expect(baseElement).toBeTruthy();
     });
-    jest.mock('../../contexts/usercontext', () => {
+    jest.mock('../../contexts/user/usercontext', () => {
         return {
             userContext: {
                 user: {

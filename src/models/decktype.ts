@@ -1,6 +1,6 @@
-import { cardType } from './cardtype';
+import { CardType } from './cardtype';
 
 export type deckType = {
     name: string;
-    cards: cardType[];
+    cards: CardType[];
 };

@@ -8,10 +8,9 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  color: #333;
-  background-color: #e1ecfe;
+  color: rgb(0, 0, 0);
+  background-color: #fef9ed;
   overflow-x: hidden;
-  background-image: url("../assets/img/grid.png");
 }
 
 h1,
@@ -189,30 +188,73 @@ h6 {
   margin-left: 20px;
 }
 
+.Intro__container {
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: center;
+  height: 26rem;
+  background-color: #f16b4d;
+}
+
 .Intro {
-  background-color: #f1f6f1;
+  background-color: #faca52;
   padding: 2rem;
   text-align: center;
-  border: 1px solid #333;
-  height: fit-content;
-  margin: 5rem auto;
+  border-top: 4px dashed #333;
+  border-bottom: 4px dashed #333;
+  border-width: 5px;
+  height: 25rem;
+  margin: 9rem auto auto auto;
+  display: flex;
+  justify-content: space-evenly;
+  justify-items: center;
 }
 .Intro img {
   width: 100%;
   max-width: 470px;
   margin: 0;
 }
+.Intro .Intro__left {
+  display: flexbox;
+  max-width: 50%;
+  align-self: flex-start;
+  position: relative;
+}
+.Intro .Intro__right {
+  display: flexbox;
+  max-width: 50%;
+  align-self: flex-end;
+  position: relative;
+}
+.Intro .Intro__right .right__img {
+  background-color: rgb(127, 217, 209);
+  shape-outside: ellipse(20rem 20rem at 5% 0%);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  display: block;
+  position: relative;
+  margin: auto;
+}
+.Intro .Intro__right .right__img::after {
+  content: "";
+  position: absolute;
+  left: 3rem;
+  top: 0;
+  width: 120%;
+  height: 120%;
+  z-index: 0;
+  background-color: black;
+}
 .Intro button {
-  background-color: #795bf0;
+  background-color: black;
   color: #fff;
-  font-weight: 400;
+  font-weight: 300;
   height: 63px;
   width: 70%;
   max-width: 360px;
-  border-radius: 90px;
   font-size: 26px;
   cursor: pointer;
-  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  box-shadow: 0.2rem 0.2rem 0rem 0rem tomato;
 }
 .Intro button:hover {
   font-size: 30px;
@@ -239,10 +281,17 @@ h6 {
 .Intro__title {
   max-width: max-content;
   padding: 0.5rem 1rem;
+  color: black;
   margin: auto;
 }
 .Intro__title * {
   display: inline-block;
+}
+
+.Intro__text::after {
+  content: " 90s!";
+  font-size: 2.5rem;
+  color: #333;
 }
 
 .Intro__article {
@@ -356,6 +405,7 @@ h6 {
   justify-content: space-between;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  z-index: 1;
 }
 .Header * {
   display: inline-block;
@@ -384,21 +434,28 @@ h6 {
 .Header button {
   margin: 0.3rem 1rem;
   padding: 0.3rem 1.5rem;
-  color: black;
-  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  color: rgb(245, 243, 243);
+  background-color: black;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem tomato;
   font-family: "Space Grotesk", sans-serif;
   cursor: pointer;
+  text-transform: lowercase;
 }
 .Header .decks {
-  background-color: #33c64b;
+  background-color: #bdf3c6;
+  color: #000;
 }
-.Header a {
+.Header p {
   margin: auto 0.8rem;
-  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  color: #000;
+  padding: 0 1rem;
+  font-size: 1.6rem;
+  font-weight: 500;
 }
-.Header a:hover {
-  font-size: 1.7rem;
-  color: #fcc7c7;
+.Header p:hover {
+  background-color: #bdf3c6;
+  border: #000 1px solid;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem tomato;
 }
 
 .header__pwp {
@@ -432,50 +489,67 @@ h6 {
 }
 .Year__container .YearButton {
   height: 80%;
-  background-image: url("../assets/img/necropotence.jpeg");
-  width: 20rem;
+  width: 24rem;
   margin-left: 15rem;
   background-size: cover;
   border: #000 solid 2px;
   border-radius: 0.8rem;
   cursor: pointer;
+  object-fit: cover;
   color: white;
-  transition: filter 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-.Year__container .YearButton.YearButton::after {
-  content: "";
-  position: absolute;
-  left: 0.3rem;
-  top: 1.1rem;
-  width: 20rem;
-  margin-left: 15rem;
-  height: 80%;
-  z-index: -1;
-  background-color: #fbf683;
-  border: 1px solid #333;
-  border-radius: 0.8rem;
+.Year__container .YearButton:hover {
+  filter: brightness(1.2);
+  transform: scale(1.02);
+}
+.Year__container .YearButton__title {
+  position: relative;
+  z-index: 1;
+  left: -7rem;
+  top: 5rem;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: white;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
 .ColorScroll__container {
-  width: 120vw;
+  width: 100%;
   height: 17vh;
   margin-top: 22rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #6e61ff;
+  background-color: #faca52;
   overflow: visible;
+  border-bottom: 7px tomato solid;
 }
-
-.ColorScroll__button {
-  width: 18vw;
-  margin-right: 3rem;
+.ColorScroll__container .ColorScroll__button {
+  width: 14vw;
   height: 15rem;
   cursor: pointer;
   border-radius: 0.8rem;
   border: 1px solid #333;
   box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
   margin-top: -3rem;
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+}
+.ColorScroll__container .ColorScroll__button:hover {
+  filter: brightness(1.2);
+  transform: scale(1.02);
+}
+.ColorScroll__container .ColorScroll__title {
+  position: relative;
+  z-index: 1;
+  left: -3rem;
+  top: 9rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 90rem;
+  margin: 0;
+  padding: 0;
 }
 
 .TypeButtons {
@@ -485,6 +559,13 @@ h6 {
   display: flexbox;
   justify-content: space-around;
   align-items: center;
+  margin-left: -2rem;
+  overflow: visible;
+  margin-bottom: 5rem;
+}
+.TypeButtons .Typebutton__container {
+  width: fit-content;
+  margin: auto;
 }
 .TypeButtons .TypeButton {
   display: block;
@@ -492,9 +573,41 @@ h6 {
   width: 56rem;
   height: 10rem;
   margin-bottom: 3rem;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem tomato;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.TypeButtons .TypeButton:hover {
+  filter: brightness(1.2);
+  transform: scale(1.02);
+}
+.TypeButtons .Typebutton__text {
+  position: relative;
+  width: fit-content;
+  z-index: 1;
+  top: 9rem;
+  left: 20rem;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: white;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
-@media only screen and (max-width: 768px) {
+.description {
+  margin: 1rem 2rem;
+}
+.description .Description__container {
+  display: flex;
+}
+.description .Description__container .icon {
+  width: 2rem;
+  height: 2rem;
+  margin: 0 0.5rem;
+}
+
+@media only screen and (max-width: 1000px) {
   .Header .Header__links {
     display: none;
   }

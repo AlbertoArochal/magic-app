@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { userContext } from '../../contexts/usercontext';
+import { userContext } from '../../contexts/user/usercontext';
 import { signInWithGoogle } from '../services/signwithgoogle';
 
 export const ProfileButton = () => {

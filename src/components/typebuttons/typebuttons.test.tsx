@@ -1,17 +1,14 @@
-import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
-import { ColorScroll } from './colorscroll';
 import { CardContext } from '../../contexts/cards/cardcontext';
+import { TypeButtons } from './typebuttons';
+import { render, screen } from '@testing-library/react';
 import { cardsmock } from '../../mocks/cardsmock';
 
-afterEach(cleanup);
-
-describe('ColorScroll', () => {
+describe('TypeButtons', () => {
     it('renders the buttons with the correct colors', () => {
         const TestComponent = () => {
             return (
                 <div>
-                    <ColorScroll />
+                    <TypeButtons />
                 </div>
             );
         };
@@ -29,7 +26,7 @@ describe('ColorScroll', () => {
             </CardContext.Provider>
         );
 
-        const blueIcon = screen.getByAltText('Carrier Pigeons');
-        expect(blueIcon).toBeInTheDocument();
+        const creatureButton = screen.getByAltText('Carrier Pigeons');
+        expect(creatureButton).toBeInTheDocument();
     });
 });
