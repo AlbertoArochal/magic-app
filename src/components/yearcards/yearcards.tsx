@@ -17,7 +17,7 @@ export const YearCard = ({ year }: Props) => {
         GetCardsByYear(year, page);
         setTimeout(() => {
             return navigate('/years');
-        }, 600);
+        }, 3000);
     };
 
     return (
