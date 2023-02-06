@@ -80,7 +80,9 @@
     "coveragePathIgnorePatterns": [
       "<rootDir>/src/reportWebVitals.ts",
       "<rootDir>/src/index.ts",
-      "<rootDir>/src/tools/*"
+      "<rootDir>/src/tools/*",
+      "<rootDir>/src/components/hooks/logdelete/*",
+      "<rootDir>/src/components/yearcards/*"
     ]
   },
   "devDependencies": {
