@@ -20,7 +20,6 @@ export const cardsmock: CardType[] = [
         released_at: '1996-06-10',
         set_name: 'Alliances',
         toughness: '1',
-        type: undefined,
         type_line: 'Creature — Bird',
     },
     {
@@ -42,7 +41,6 @@ export const cardsmock: CardType[] = [
         released_at: '1996-06-10',
         set_name: 'Alliances',
         toughness: '1',
-        type: undefined,
         type_line: 'Creature — Bird',
     },
     {
@@ -64,7 +62,6 @@ export const cardsmock: CardType[] = [
         released_at: '1996-06-10',
         set_name: 'Alliances',
         toughness: '1',
-        type: undefined,
         type_line: 'Creature — Bird',
     },
     {
@@ -86,7 +83,6 @@ export const cardsmock: CardType[] = [
         released_at: '1996-06-10',
         set_name: 'Alliances',
         toughness: '1',
-        type: undefined,
         type_line: 'Creature — Bird',
     },
     {
@@ -108,7 +104,6 @@ export const cardsmock: CardType[] = [
         released_at: '1996-06-10',
         set_name: 'Alliances',
         toughness: '1',
-        type: undefined,
         type_line: 'Creature — Bird',
     },
     {
@@ -130,7 +125,6 @@ export const cardsmock: CardType[] = [
         released_at: '1996-06-10',
         set_name: 'Alliances',
         toughness: '1',
-        type: undefined,
         type_line: 'Creature — Bird',
     },
     {
@@ -152,7 +146,6 @@ export const cardsmock: CardType[] = [
         released_at: '1996-06-10',
         set_name: 'Alliances',
         toughness: '1',
-        type: undefined,
         type_line: 'Creature — Bird',
     },
 ];

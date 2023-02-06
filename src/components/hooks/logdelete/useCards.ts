@@ -1,5 +1,4 @@
 import scryfall from 'scryfall-client';
-import { useCallback } from 'react';
 import { CardType } from '../../../models/cardtype';
 import {
     CardContext,
@@ -34,11 +33,10 @@ export const useCards = () => {
                 (year + 1).toString() +
                 '&order=released&dir=asc',
         });
-        cardList.forEach((card: any) => {
+        cardList.forEach((card: CardType) => {
             cards.push({
                 name: card.name,
                 released_at: card.released_at,
-                type: card.type,
                 image_uris: {
                     small: card.image_uris.small,
                     large: card.image_uris.large,

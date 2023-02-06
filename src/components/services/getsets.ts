@@ -1,4 +1,5 @@
 import scryfall from 'scryfall-client';
+import { CollectionType } from '../../contexts/cards/cardcontext';
 
 export const GetSets = (year: number) => {
     const collections = scryfall.getSets().then((sets) => {

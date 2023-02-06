@@ -6,7 +6,6 @@ export type CardType = {
         large: string;
         art_crop: string;
     };
-    type: string;
     mana_cost: string;
     oracle_text: string;
     type_line: string;
