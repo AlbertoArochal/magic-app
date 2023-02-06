@@ -1,8 +1,7 @@
 import { useContext } from 'react';
 import { render } from '@testing-library/react';
-import { CardContext, initialCollections, initialCards } from './cardContext';
+import { CardContext, initialCollections, initialCards } from './cardcontext';
 import { CardType } from '../../models/cardtype';
-import { cardsmock } from '../../mocks/cardsmock';
 
 describe('CardContext', () => {
     it('should set and update collections and cards', () => {
