@@ -1,6 +1,7 @@
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useContext } from 'react';
 import { CardType } from '../../models/cardtype';
+import { Link } from 'react-router-dom';
 
 export const YearButton = () => {
     const { cards } = useContext(CardContext);
@@ -13,7 +14,10 @@ export const YearButton = () => {
 
     return (
         <div className="Year__container">
-            <img src={image.card} alt={image.name} className="YearButton" />
+            <Link to="/catalogue">
+                <img src={image.card} alt={image.name} className="YearButton" />
+            </Link>
+
             <h1 className="YearButton__title">{year}</h1>
         </div>
     );

@@ -488,8 +488,8 @@ h6 {
   align-items: center;
 }
 .Year__container .YearButton {
-  height: 80%;
-  width: 24rem;
+  max-height: 70%;
+  width: 45%;
   margin-left: 15rem;
   background-size: cover;
   border: #000 solid 2px;
@@ -506,12 +506,13 @@ h6 {
 .Year__container .YearButton__title {
   position: relative;
   z-index: 1;
-  left: -7rem;
-  top: 5rem;
+  left: -20rem;
+  top: 6.5rem;
   font-size: 2.5rem;
   font-weight: 400;
   color: white;
   text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  text-decoration: none;
 }
 
 .ColorScroll__container {
@@ -538,7 +539,6 @@ h6 {
 }
 .ColorScroll__container .ColorScroll__button:hover {
   filter: brightness(1.2);
-  transform: scale(1.02);
 }
 .ColorScroll__container .ColorScroll__title {
   position: relative;
@@ -605,6 +605,49 @@ h6 {
   width: 2rem;
   height: 2rem;
   margin: 0 0.5rem;
+}
+
+.Catalogue__container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background-color: tomato;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 70%;
+  height: 70%;
+  position: relative;
+  top: 10rem;
+}
+.Catalogue__container .Catalogue__card {
+  width: 14rem;
+  display: inline-block;
+  margin: 1rem;
+  border-radius: 0.8rem;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.Catalogue__container .Catalogue__card:hover {
+  filter: brightness(1.2);
+  transform: scale(1.02);
+}
+.Catalogue__container .Catalogue__card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.8rem;
+}
+.Catalogue__container .Catalogue__card__title {
+  position: relative;
+  z-index: 1;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: white;
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
 @media only screen and (max-width: 1000px) {
