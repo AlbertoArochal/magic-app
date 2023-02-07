@@ -41,6 +41,7 @@ export const YearCard = ({ year }: Props) => {
                                     alt={set.name}
                                     className="icon"
                                     key={year.toString() + set.name + 'img'}
+                                    loading="lazy"
                                 />
                                 <h4 key={year.toString() + set.name + 'h4'}>
                                     {set.name}

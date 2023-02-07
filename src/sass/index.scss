@@ -525,9 +525,10 @@ h6 {
   top: 14rem;
   justify-content: start;
   align-items: center;
+
   .YearButton {
-    height: 80%;
-    width: 24rem;
+    max-height: 70%;
+    width: 45%;
     margin-left: 15rem;
     background-size: cover;
     border: #000 solid 2px;
@@ -544,12 +545,13 @@ h6 {
   .YearButton__title {
     position: relative;
     z-index: 1;
-    left: -7rem;
-    top: 5rem;
+    left: -20rem;
+    top: 6.5rem;
     font-size: 2.5rem;
     font-weight: 400;
     color: white;
     text-shadow: $text-stroke;
+    text-decoration: none;
   }
 }
 
@@ -575,7 +577,6 @@ h6 {
     transition: all 0.3s ease-in-out;
     &:hover {
       filter: brightness(1.2);
-      transform: scale(1.02);
     }
   }
   .ColorScroll__title {
@@ -647,6 +648,51 @@ h6 {
       height: 2rem;
       margin: 0 0.5rem;
     }
+  }
+}
+
+/// Catalogue Page Related Styles ///
+
+.Catalogue__container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background-color: tomato;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 70%;
+  height: 70%;
+  position: relative;
+  top: 10rem;
+  .Catalogue__card {
+    width: 14rem;
+    display: inline-block;
+    margin: 1rem;
+    border-radius: 0.8rem;
+    box-shadow: $strong-shadow;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      filter: brightness(1.2);
+      transform: scale(1.02);
+    }
+  }
+  .Catalogue__card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.8rem;
+  }
+  .Catalogue__card__title {
+    position: relative;
+    z-index: 1;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: white;
+    text-shadow: $text-stroke;
   }
 }
 
