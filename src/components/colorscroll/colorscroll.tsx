@@ -1,12 +1,19 @@
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useContext } from 'react';
+import { useCards } from '../hooks/logdelete/useCards';
+import { Link } from 'react-router-dom';
 import blue from '../../assets/img/blue.jpeg';
 import black from '../../assets/img/black.jpeg';
 import green from '../../assets/img/green.jpeg';
 import red from '../../assets/img/red.jpeg';
 import white from '../../assets/img/white.jpeg';
+import { useNavigate } from 'react-router-dom';
+
 export const ColorScroll = () => {
+    const { GetByYearAndColor } = useCards();
     const colors = ['U', 'W', 'G', 'B', 'R'];
+    const navigate = useNavigate();
+
     const colorMap: any = {
         U: <img src={blue} alt="blue icon" className="ColorScroll__title" />,
         W: <img src={white} alt="white icon" className="ColorScroll__title" />,
@@ -14,14 +21,22 @@ export const ColorScroll = () => {
         B: <img src={black} alt="black icon" className="ColorScroll__title" />,
         R: <img src={red} alt="red color" className="ColorScroll__title" />,
     };
+
+    const GetByColorHandler = (year: number, color: string) => {
+        GetByYearAndColor(year, color).then(() => {
+            navigate('/catalogue');
+        });
+    };
+
     const { cards } = useContext(CardContext);
+    const year = cards[0].released_at.slice(0, 4);
     if (!cards) {
         return null;
     }
     const image = { card: cards[0].image_uris.art_crop, name: cards[0].name };
     return (
         <div className="ColorScroll__container">
-            {colors.map((color, index) => {
+            {colors.map((color) => {
                 const selectedCard = cards.find(
                     (card) =>
                         card.color_identity[0] === color &&
@@ -32,11 +47,15 @@ export const ColorScroll = () => {
                 }
                 return (
                     <>
-                        <img
-                            src={selectedCard.image_uris.art_crop}
-                            alt={image.name}
-                            className="ColorScroll__button"
-                        />
+                        <Link to="/catalogue">
+                            <img
+                                src={selectedCard.image_uris.art_crop}
+                                alt={image.name}
+                                className="ColorScroll__button"
+                                onClick={() => GetByColorHandler(+year, color)}
+                            />
+                        </Link>
+
                         {colorMap[color] || null}
                     </>
                 );

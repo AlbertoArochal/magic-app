@@ -9,7 +9,7 @@ describe('useCards', () => {
         const scryfall = jest.fn(() => Promise.resolve({ data: cardsmock }));
         const Testcomponent = () => {
             const hook = useCards();
-            return <button onClick={() => hook.GetCardsByYear(1993)} />;
+            return <button onClick={() => hook.GetFetchCardsByYear(1993)} />;
         };
 
         render(
@@ -37,5 +37,47 @@ describe('useCards', () => {
         const button = screen.getByRole('button');
         fireEvent.click(button);
         expect(setCollections).not.toBeCalled();
+    });
+    it('GetByYearAndColor will set new cards in context', () => {
+        global.fetch = jest.fn().mockImplementation(() => {
+            return Promise.resolve({
+                json: () => Promise.resolve(cardsmock),
+            });
+        });
+
+        const TestComponent = () => {
+            const hook = useCards();
+            return <button onClick={() => hook.GetByYearAndColor(1993, 'W')} />;
+        };
+
+        render(
+            <CardContext.Provider value={{ setCards: jest.fn() }}>
+                <TestComponent />
+            </CardContext.Provider>
+        );
+        const button = screen.getByRole('button');
+        fireEvent.click(button);
+        expect(global.fetch).toBeCalled();
+    });
+    it('GetFetchCardsByYear will set new cards in context', () => {
+        global.fetch = jest.fn().mockImplementation(() => {
+            return Promise.resolve({
+                json: () => Promise.resolve(cardsmock),
+            });
+        });
+
+        const TestComponent = () => {
+            const hook = useCards();
+            return <button onClick={() => hook.GetFetchCardsByYear(1993)} />;
+        };
+
+        render(
+            <CardContext.Provider value={{ setCards: jest.fn() }}>
+                <TestComponent />
+            </CardContext.Provider>
+        );
+        const button = screen.getByRole('button');
+        fireEvent.click(button);
+        expect(global.fetch).toBeCalled();
     });
 });

@@ -9,15 +9,13 @@ interface Props {
 
 export const YearCard = ({ year }: Props) => {
     const { collections } = useContext(CardContext);
-    const { GetCardsByYear } = useCards();
+    const { GetFetchCardsByYear } = useCards();
     const sets = collections;
     const navigate = useNavigate();
 
     const setCardsHandler = async (year: number, page = 1) => {
-        await GetCardsByYear(year, page);
-        setTimeout(() => {
-            navigate('/years');
-        }, 0);
+        await GetFetchCardsByYear(year, page);
+        navigate('/years');
     };
 
     return (
@@ -40,10 +38,10 @@ export const YearCard = ({ year }: Props) => {
                                     src={set.icon}
                                     alt={set.name}
                                     className="icon"
-                                    key={year.toString() + set.name + 'img'}
+                                    key={year.toString() + set.year + 'img'}
                                     loading="lazy"
                                 />
-                                <h4 key={year.toString() + set.name + 'h4'}>
+                                <h4 key={year.toString() + set.year + 'h4'}>
                                     {set.name}
                                 </h4>
                             </div>

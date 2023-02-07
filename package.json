@@ -26,6 +26,7 @@
     "react-test-renderer": "^18.2.0",
     "sass": "^1.57.1",
     "scryfall-client": "^0.23.0",
+    "swr": "^2.0.3",
     "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
   },
@@ -80,9 +81,7 @@
     "coveragePathIgnorePatterns": [
       "<rootDir>/src/reportWebVitals.ts",
       "<rootDir>/src/index.ts",
-      "<rootDir>/src/tools/*",
-      "<rootDir>/src/components/hooks/logdelete/*",
-      "<rootDir>/src/components/yearcards/*"
+      "<rootDir>/src/tools/*"
     ]
   },
   "devDependencies": {
