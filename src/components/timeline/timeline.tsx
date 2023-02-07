@@ -4,7 +4,7 @@ import { useCards } from '../hooks/logdelete/useCards';
 import { useEffect } from 'react';
 
 export const Timeline = () => {
-    const { GetSets, collections, GetCardsByYear, GetCardsByDate } = useCards();
+    const { GetSets } = useCards();
 
     useEffect(() => {
         GetSets();
