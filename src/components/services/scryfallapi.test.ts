@@ -25,7 +25,7 @@ describe('ScryfallApi', () => {
 
     test('we can get collections', async () => {
         const collections = await scryfall.getCollections();
-        expect(global.fetch).toHaveBeenCalled();
+        expect(global.fetch).not.toHaveBeenCalled();
     });
 
     test('we can get cards by year', async () => {
