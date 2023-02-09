@@ -4,8 +4,12 @@ import { ColorScroll } from '../colorscroll/colorscroll';
 import { TypeButtons } from '../typebuttons/typebuttons';
 import { FlavorText } from '../flavortext/flavortext';
 import { Footer } from '../footer/footer';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+
 export const YearsPage = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <>
             <Header />

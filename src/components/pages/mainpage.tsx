@@ -5,7 +5,6 @@ import Eye from '../../assets/img/eye.png';
 export const MainPage = () => {
     return (
         <>
-            <Header />
             <div className="Mainpage">
                 <div className="Intro__container">
                     <div className="Intro">
