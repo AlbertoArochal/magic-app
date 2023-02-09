@@ -2,6 +2,7 @@ import { CardContext } from '../../contexts/cards/cardcontext';
 import { useContext } from 'react';
 import { useCards } from '../hooks/logdelete/useCards';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export const TypeButtons = () => {
     const { GetByYearAndType } = useCards();
     const navigate = useNavigate();
@@ -45,13 +46,15 @@ export const TypeButtons = () => {
                         >
                             {type}
                         </h3>
-                        <img
-                            className="TypeButton"
-                            key={new Date().getTime().toString + type}
-                            src={selectedCard.image_uris.art_crop}
-                            alt={selectedCard.name}
-                            onClick={() => GetByTypeHandler(+year, type)}
-                        />
+                        <Link to="/catalogue">
+                            <img
+                                className="TypeButton"
+                                key={new Date().getTime().toString + type}
+                                src={selectedCard.image_uris.art_crop}
+                                alt={selectedCard.name}
+                                onClick={() => GetByTypeHandler(+year, type)}
+                            />
+                        </Link>
                     </div>
                 );
             })}

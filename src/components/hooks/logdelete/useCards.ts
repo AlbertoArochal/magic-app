@@ -1,4 +1,3 @@
-import scryfall from 'scryfall-client';
 import { CardType } from '../../../models/cardtype';
 import {
     CardContext,
@@ -6,7 +5,6 @@ import {
 } from '../../../contexts/cards/cardcontext';
 import { useContext } from 'react';
 import { ScryfallApi } from '../../services/scryfallapi';
-import { useMemo } from 'react';
 import { RawCardType } from '../../../models/rawType';
 
 export const useCards = () => {

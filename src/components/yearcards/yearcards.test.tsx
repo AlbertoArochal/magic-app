@@ -1,10 +1,10 @@
-import { YearCard } from './yearcards';
+import React from 'react';
 import { screen, render, fireEvent } from '@testing-library/react';
-import { BrowserRouter, useNavigate } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { CollectionType } from '../../contexts/cards/cardcontext';
 import { CollectionsMock } from '../../mocks/collectionsmock';
-import { useCards } from '../hooks/logdelete/useCards';
+import YearCard from './yearcards';
 
 describe('YearCard', () => {
     it('should render the yearcard', () => {
@@ -18,7 +18,6 @@ describe('YearCard', () => {
     });
     it('GetCardsByYear should be called', () => {
         const TestComponent = () => {
-            const { GetCardsByYear } = useCards();
             return (
                 <div>
                     <YearCard year="2011" />;

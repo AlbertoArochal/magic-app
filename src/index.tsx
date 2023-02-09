@@ -12,13 +12,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <CardProvider>
-            <UserProvider>
-                <BrowserRouter>
+        <BrowserRouter>
+            <CardProvider>
+                <UserProvider>
                     <MagicRouter />
-                </BrowserRouter>
-            </UserProvider>
-        </CardProvider>
+                </UserProvider>
+            </CardProvider>
+        </BrowserRouter>
     </React.StrictMode>
 );
 
