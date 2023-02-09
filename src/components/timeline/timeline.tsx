@@ -1,7 +1,8 @@
 import { Slide } from 'react-awesome-reveal';
-import { YearCard } from '../yearcards/yearcards';
 import { useCards } from '../hooks/logdelete/useCards';
 import { useEffect } from 'react';
+import { Suspense, lazy } from 'react';
+const YearCard = lazy(() => import('../yearcards/yearcards'));
 
 export const Timeline = () => {
     const { GetSets } = useCards();
@@ -38,7 +39,9 @@ export const Timeline = () => {
                                 className="timeline__img"
                                 key={year.toString() + 'Div'}
                             ></div>
-                            <YearCard year={year.toString()} />
+                            <Suspense>
+                                <YearCard year={year.toString()} />
+                            </Suspense>
                         </Slide>
                     ))}
                 </div>

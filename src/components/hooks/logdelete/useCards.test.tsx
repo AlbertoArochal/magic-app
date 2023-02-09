@@ -4,7 +4,7 @@ import { CardContext } from '../../../contexts/cards/cardcontext';
 import { cardsmock } from '../../../mocks/cardsmock';
 
 describe('useCards', () => {
-    it('setCards should be called', () => {
+    test('setCards should be called', () => {
         const setCards = jest.fn();
         const scryfall = jest.fn(() => Promise.resolve({ data: cardsmock }));
         const Testcomponent = () => {
@@ -21,7 +21,7 @@ describe('useCards', () => {
         fireEvent.click(button);
         expect(setCards).not.toBeCalled();
     });
-    it('setCollections should be called', () => {
+    test('setCollections should be called', () => {
         const setCollections = jest.fn();
         const scryfall = jest.fn(() => Promise.resolve({ data: cardsmock }));
         const Testcomponent = () => {

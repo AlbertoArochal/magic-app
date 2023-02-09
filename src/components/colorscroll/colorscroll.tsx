@@ -35,7 +35,16 @@ export const ColorScroll = () => {
     }
     const image = { card: cards[0].image_uris.art_crop, name: cards[0].name };
     return (
-        <div className="ColorScroll__container">
+        <div
+            className="ColorScroll__container"
+            key={
+                new Date().getTime().toString +
+                'Div' +
+                'ColorScroll' +
+                'Div' +
+                new Date().getTime().toString
+            }
+        >
             {colors.map((color) => {
                 const selectedCard = cards.find(
                     (card) =>
@@ -47,12 +56,28 @@ export const ColorScroll = () => {
                 }
                 return (
                     <>
-                        <Link to="/catalogue">
+                        <Link
+                            to="/catalogue"
+                            key={
+                                new Date().getTime().toString +
+                                'link' +
+                                color +
+                                'link' +
+                                new Date().getTime().toString
+                            }
+                        >
                             <img
                                 src={selectedCard.image_uris.art_crop}
                                 alt={image.name}
                                 className="ColorScroll__button"
                                 onClick={() => GetByColorHandler(+year, color)}
+                                key={
+                                    new Date().getTime().toString +
+                                    'img' +
+                                    color +
+                                    'img' +
+                                    new Date().getTime().toString
+                                }
                             />
                         </Link>
 

@@ -406,6 +406,8 @@ h6 {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
   z-index: 1;
+  background-color: #fef9ed;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem #bdf3c6;
 }
 .Header * {
   display: inline-block;

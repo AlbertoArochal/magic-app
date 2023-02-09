@@ -439,6 +439,9 @@ h6 {
   font-family: $font-Space;
   font-weight: 700;
   z-index: 1;
+  background-color: #fef9ed;
+  box-shadow: $strong-shadow-green;
+
   * {
     display: inline-block;
     text-decoration: none;

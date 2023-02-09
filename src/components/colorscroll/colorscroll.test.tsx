@@ -32,7 +32,6 @@ describe('ColorScroll', () => {
             </BrowserRouter>
         );
 
-        const GetByYearAndColor = jest.fn();
         const buttons = screen.getAllByRole('img');
         const blueIcon = screen.getByAltText('Carrier Pigeons');
         expect(blueIcon).toBeInTheDocument();
