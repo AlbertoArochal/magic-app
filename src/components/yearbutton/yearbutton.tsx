@@ -1,6 +1,5 @@
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useContext } from 'react';
-import { CardType } from '../../models/cardtype';
 import { Link } from 'react-router-dom';
 
 export const YearButton = () => {

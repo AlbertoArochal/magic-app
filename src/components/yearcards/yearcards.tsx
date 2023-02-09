@@ -1,5 +1,5 @@
 import Necropotence from '../../assets/img/necropotence.jpeg';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useCards } from '../hooks/logdelete/useCards';
 import { useNavigate } from 'react-router-dom';

@@ -30,9 +30,7 @@ export const ColorScroll = () => {
 
     const { cards } = useContext(CardContext);
     const year = cards[0].released_at.slice(0, 4);
-    if (!cards) {
-        return null;
-    }
+
     const image = { card: cards[0].image_uris.art_crop, name: cards[0].name };
     return (
         <div
