@@ -1,7 +1,6 @@
 import logo from '../../assets/img/logo.png';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { signInWithGoogle } from '../services/signwithgoogle';
-import { useContext } from 'react';
 import { userContext } from '../../contexts/user/usercontext';
 import { getAuth } from 'firebase/auth';
 import { ProfilePic } from '../profilepic/profilepic';

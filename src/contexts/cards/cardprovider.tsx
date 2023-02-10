@@ -4,9 +4,8 @@ import {
 } from '../../components/reducers/carsreducer/cardsreducer';
 import { useReducer } from 'react';
 import { CardType } from '../../models/cardtype';
-import { initialCards } from './cardcontext';
+import { initialCards, CardContext } from './cardcontext';
 
-import { CardContext } from './cardcontext';
 export const CardProvider = ({ children }: any) => {
     const [collections, collectionsDispatch] = useReducer(CollectionsReducer, {
         collections: [],

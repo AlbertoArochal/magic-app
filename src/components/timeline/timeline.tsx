@@ -1,7 +1,6 @@
 import { Slide } from 'react-awesome-reveal';
 import { useCards } from '../hooks/logdelete/useCards';
-import { useEffect } from 'react';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 const YearCard = lazy(() => import('../yearcards/yearcards'));
 
 export const Timeline = () => {

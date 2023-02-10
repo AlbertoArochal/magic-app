@@ -1,4 +1,3 @@
-import { Header } from '../header/header';
 import fivecolors from '../../assets/img/fivecolors.png';
 import { Timeline } from '../timeline/timeline';
 import Eye from '../../assets/img/eye.png';

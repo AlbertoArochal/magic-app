@@ -609,11 +609,160 @@ h6 {
   margin: 0 0.5rem;
 }
 
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Modal .Modal__container {
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  top: 0%;
+}
+
+.Modal__button__container {
+  justify-content: flex-end;
+  display: flex;
+  width: 100%;
+  height: 1rem;
+  align-items: baseline;
+}
+.Modal__button__container .Modal__button {
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 90rem;
+  background-color: #faca52;
+  border: 1px solid #333;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.Modal__button__container .Modal__button:hover {
+  filter: brightness(1.2);
+  transform: scale(1.02);
+}
+
+.Modal__background {
+  background-color: rgba(2, 0, 0, 0.462745098);
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.card__detail__content {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: 50%;
+}
+
+.card__detail__container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  z-index: 1000;
+}
+.card__detail__container .card__detail__text__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #c5cae9;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  padding: 1rem;
+}
+.card__detail__container .card__detail__text__container .card__detail__text {
+  width: 100%;
+  height: 100%;
+  max-height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 1rem 0;
+}
+.card__detail__container .card__detail__text__container .card__detail__text .card__detail__title {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 1rem 0;
+}
+.card__detail__container .card__detail__text__container .card__detail__text .card__detail__description {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+.card__detail__container .card__detail__img__container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.card__detail__container .card__detail__img__container .card__detail__img {
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  display: inline-block;
+  margin-left: 2rem;
+  margin-right: -2rem;
+}
+.card__detail__container .Card__addcard__button {
+  padding: 0.5rem 1.5rem;
+  height: 3rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1.3rem;
+  border-radius: 90rem;
+  background-color: #faca52;
+  border: 1px solid #333;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.card__detail__container .Card__addcard__button:hover {
+  filter: brightness(1.2);
+  transform: scale(1.02);
+}
+.card__detail__container .Addbutton__container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
 .Catalogue__container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  background-color: tomato;
+  border: 4px solid black;
+  border-radius: 2rem;
+  background-color: #a993fe;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
@@ -627,7 +776,6 @@ h6 {
   display: inline-block;
   margin: 1rem;
   border-radius: 0.8rem;
-  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
@@ -640,6 +788,7 @@ h6 {
   height: 100%;
   object-fit: cover;
   border-radius: 0.8rem;
+  outline: 3px solid black;
 }
 .Catalogue__container .Catalogue__card__title {
   position: relative;
