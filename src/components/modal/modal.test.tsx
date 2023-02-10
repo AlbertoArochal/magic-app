@@ -1,7 +1,6 @@
 import React from 'react';
-import { Modal } from './Modal';
+import { Modal } from './modal';
 import { screen, render, fireEvent } from '@testing-library/react';
-import { FetchCardDetail } from '../fetchcarddetail/fetchcarddetail';
 import { cardsmock } from '../../mocks/cardsmock';
 
 describe('Modal component', () => {
