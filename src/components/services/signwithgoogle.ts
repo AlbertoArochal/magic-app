@@ -1,6 +1,5 @@
-import { auth, Firedb } from '../firebase/firebase';
+import { auth, Firedb, provider } from '../firebase/firebase';
 import { signInWithPopup } from 'firebase/auth';
-import { provider } from '../firebase/firebase';
 import { set, ref } from 'firebase/database';
 
 export const signInWithGoogle = async () => {

@@ -56,4 +56,15 @@ export class ScryfallApi {
         }
         return cardList;
     }
+    async getCardsByName(name: string): Promise<RawCardType[]> {
+        let cardList: RawCardType[] = [];
+        const response = await fetch(
+            'https://api.scryfall.com/cards/search?q=name%3D' + name
+        );
+        if (response.ok) {
+            const cards = await response.json();
+            cardList = cards.data;
+        }
+        return cardList;
+    }
 }
