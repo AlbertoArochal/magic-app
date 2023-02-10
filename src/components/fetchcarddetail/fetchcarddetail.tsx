@@ -1,12 +1,18 @@
 import { CardType } from '../../models/cardtype';
 import { useContext } from 'react';
 import { userContext } from '../../contexts/user/usercontext';
+import { addCard } from '../services/addcard';
+
 export const FetchCardDetail = ({
     setShowModal,
 }: {
     setShowModal: (value: boolean) => void;
 }) => {
     const { user } = useContext(userContext);
+    const handleAddCard = async (uid: string, card: CardType) => {
+        await addCard(uid, card);
+    };
+
     const card = JSON.parse(localStorage.getItem('card') || '{}') as CardType;
     return (
         <div className="card__detail__container">
@@ -44,7 +50,10 @@ export const FetchCardDetail = ({
                     </p>
                     {user ? (
                         <div className="Addbutton__container">
-                            <button className="Card__addcard__button">
+                            <button
+                                className="Card__addcard__button"
+                                onClick={() => handleAddCard(user.uid, card)}
+                            >
                                 Add to Deck 💖
                             </button>
                         </div>
