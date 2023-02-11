@@ -1,4 +1,4 @@
-import Necropotence from '../../assets/img/necropotence.jpeg';
+import Necropotence from '../../assets/img/necropotence.webp';
 import { useContext } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useCards } from '../hooks/logdelete/useCards';

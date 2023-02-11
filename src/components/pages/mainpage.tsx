@@ -1,6 +1,6 @@
 import fivecolors from '../../assets/img/fivecolors.png';
 import { Timeline } from '../timeline/timeline';
-import Eye from '../../assets/img/eye.png';
+import Eye from '../../assets/img/eye.webp';
 import { useEffect } from 'react';
 import { signInWithGoogle } from '../services/signwithgoogle';
 import { useContext } from 'react';
@@ -37,6 +37,7 @@ export const MainPage = () => {
                                 src={Eye}
                                 alt="Eye of wisdom card img"
                                 className="right__img"
+                                loading="lazy"
                             />
 
                             <button
