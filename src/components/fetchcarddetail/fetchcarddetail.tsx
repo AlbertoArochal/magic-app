@@ -2,6 +2,7 @@ import { CardType } from '../../models/cardtype';
 import { useContext } from 'react';
 import { userContext } from '../../contexts/user/usercontext';
 import { addCard } from '../services/addcard';
+import { useMediaQuery } from 'react-responsive';
 
 export const FetchCardDetail = ({
     setShowModal,
@@ -12,18 +13,28 @@ export const FetchCardDetail = ({
     const handleAddCard = async (uid: string, card: CardType) => {
         await addCard(uid, card);
     };
+    const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+    const isDesktop = useMediaQuery({ query: '(min-width: 1001px)' });
 
     const card = JSON.parse(localStorage.getItem('card') || '{}') as CardType;
     return (
         <div className="card__detail__container">
             <div className="card__detail__content">
                 <div className="card__detail__img__container">
-                    <img
-                        src={card.image_uris.large}
-                        alt={card.name}
-                        loading="lazy"
-                        className="card__detail__img"
-                    />
+                    {isDesktop && (
+                        <img
+                            src={card.image_uris.large}
+                            alt={card.name}
+                            className="card__detail__img"
+                        />
+                    )}
+                    {isMobile && (
+                        <img
+                            src={card.image_uris.art_crop}
+                            alt={card.name}
+                            className="card__detail__img"
+                        />
+                    )}
                 </div>
                 <div className="card__detail__text__container">
                     <div className="Modal__button__container">

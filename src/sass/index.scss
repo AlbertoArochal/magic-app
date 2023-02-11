@@ -721,7 +721,6 @@ h6 {
     right: 0;
     width: 2rem;
     height: 2rem;
-    border-radius: 90rem;
     background-color: #faca52;
     border: 1px solid #333;
     box-shadow: $strong-shadow;
@@ -817,7 +816,6 @@ h6 {
       Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
       sans-serif;
     font-size: 1.3rem;
-    border-radius: 90rem;
     background-color: #faca52;
     border: 1px solid #333;
     box-shadow: $strong-shadow;
@@ -826,6 +824,10 @@ h6 {
     &:hover {
       filter: brightness(1.2);
       transform: scale(1.02);
+    }
+    &:active {
+      filter: brightness(0.8);
+      transform: scale(0.98);
     }
   }
   .Addbutton__container {
@@ -1125,6 +1127,11 @@ h6 {
   .card__detail__container {
     margin-top: 3rem;
     width: 90%;
+
+    .card__detail__title {
+      margin: 0;
+      font-size: 1.6rem;
+    }
   }
 
   .card__detail__container .card__detail__text__container {
@@ -1145,20 +1152,26 @@ h6 {
     width: fit-content;
   }
 
+  .Addbutton__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
   .card__detail__container .Card__addcard__button {
     margin: 0;
     position: relative;
     top: -1rem;
-    right: 4.5rem;
   }
 
   .card__detail__container .card__detail__img__container .card__detail__img {
     margin: 0;
-    width: 50%;
+    width: 70%;
     margin-bottom: -1rem;
-  }
-  .card__detail__img {
     z-index: 1000;
+    outline: 2px solid black;
   }
   .Modal__button__container .Modal__button {
     margin: 0;
