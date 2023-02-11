@@ -1,6 +1,5 @@
 import logo from '../../assets/img/logo.png';
 import { useEffect, useState, useContext } from 'react';
-import { signInWithGoogle } from '../services/signwithgoogle';
 import { userContext } from '../../contexts/user/usercontext';
 import { getAuth } from 'firebase/auth';
 import { ProfilePic } from '../profilepic/profilepic';
@@ -59,24 +58,16 @@ export const Header = () => {
                     className="Burger__menu Burger__menu-open"
                 >
                     <nav>
-                        <a className="home" href="/">
-                            Home
-                        </a>
-                        <a className="year" href="/">
-                            Year
-                        </a>
+                        <Link to="/">
+                            <p className="home">Home</p>
+                        </Link>
+                        <YearLink />
                         <a className="secret" href="/">
                             Secret Lair
                         </a>
                     </nav>
                     <button className="Header__button decks">My Decks</button>
-                    <button
-                        onClick={signInWithGoogle}
-                        className="Header__button profile"
-                        {...{ 'data-testid': 'profile-button' }}
-                    >
-                        PROFILE
-                    </button>
+                    <ProfileButton />
                 </div>
             )}
         </div>

@@ -33,7 +33,7 @@ export const MainPage = () => {
                         </div>
                     </div>
                 </div>
-                <Timeline />
+                <Timeline year={1993} />
             </div>
         </>
     );

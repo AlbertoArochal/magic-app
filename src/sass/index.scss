@@ -887,6 +887,7 @@ h6 {
 @media only screen and (max-width: 1000px) {
   .Header {
     z-index: 500;
+    height: 9vh;
     .Header__links {
       display: none;
     }
@@ -912,7 +913,7 @@ h6 {
 
     .Burger__menu {
       display: block;
-      background-color: #d9d9d9;
+      background-color: black;
       box-shadow: $strong-shadow;
       height: 98vh;
       width: 90vw;
@@ -920,17 +921,20 @@ h6 {
       right: 0;
       border: 1px solid black;
       * {
+        color: white;
         display: block;
         margin: 1rem 0;
         text-align: center;
         font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: 300;
       }
       a {
         border: #000 solid 1px;
         width: 90%;
         margin: 2rem auto;
         box-shadow: $strong-shadow;
-        color: #000;
+        color: white;
         text-shadow: none;
       }
       button {
@@ -939,26 +943,25 @@ h6 {
         margin: 2rem auto;
         box-shadow: $strong-shadow;
       }
-      .home {
-        background-color: #fda3ff;
-      }
-      .secret {
-        background-color: #f98484;
-      }
-      .year {
-        background-color: #fffa83;
-      }
     }
     .fa-bars {
-      color: #000;
+      color: black;
       cursor: pointer;
       position: relative;
     }
     .fa-times {
-      color: #000;
+      color: white;
       cursor: pointer;
       position: relative;
     }
+  }
+
+  .Header img {
+    margin: 1rem;
+    width: 2rem;
+  }
+  .Header .decks {
+    background-color: black;
   }
 
   .Footer {
@@ -1064,11 +1067,11 @@ h6 {
     align-items: center;
     flex-wrap: nowrap;
     display: block;
-    margin-top: 14rem;
+    margin-top: 17rem;
 
     .ColorScroll__button {
       width: 90%;
-      margin: 0 0 0 1rem;
+      margin: 0.5rem 0 0 1rem;
       display: inline-block;
     }
     .ColorScroll__title {
@@ -1080,7 +1083,7 @@ h6 {
   }
 
   .TypeButtons {
-    margin: 87rem auto;
+    margin: 90rem auto;
     max-width: 100%;
     border-top: 4px tomato dashed;
     .Typebutton__text {
@@ -1109,7 +1112,7 @@ h6 {
     }
   }
   .Catalogue__container {
-    width: 90%;
+    width: 99%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1138,5 +1141,36 @@ h6 {
   }
   .card__detail__img {
     z-index: 1000;
+  }
+  .Profile .Profile__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+
+    .Profile__card {
+      width: 90%;
+    }
+    .Profile__userdata {
+      width: 90%;
+      margin: 0 auto;
+    }
+    .Profile__headline {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+  .Profile .Profile__container button {
+    font-size: 1rem;
+    background-color: #bdf3c6;
+    color: black;
+    width: 40%;
+    border-radius: 0%;
+    box-shadow: $strong-shadow-orange;
+  }
+  .Profile {
+    top: 10rem;
   }
 }

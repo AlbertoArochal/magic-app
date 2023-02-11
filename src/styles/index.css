@@ -834,6 +834,7 @@ h6 {
 @media only screen and (max-width: 1000px) {
   .Header {
     z-index: 500;
+    height: 9vh;
   }
   .Header .Header__links {
     display: none;
@@ -857,7 +858,7 @@ h6 {
   }
   .Header .Burger__menu {
     display: block;
-    background-color: #d9d9d9;
+    background-color: black;
     box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
     height: 98vh;
     width: 90vw;
@@ -866,17 +867,20 @@ h6 {
     border: 1px solid black;
   }
   .Header .Burger__menu * {
+    color: white;
     display: block;
     margin: 1rem 0;
     text-align: center;
     font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 300;
   }
   .Header .Burger__menu a {
     border: #000 solid 1px;
     width: 90%;
     margin: 2rem auto;
     box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
-    color: #000;
+    color: white;
     text-shadow: none;
   }
   .Header .Burger__menu button {
@@ -885,24 +889,22 @@ h6 {
     margin: 2rem auto;
     box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
   }
-  .Header .Burger__menu .home {
-    background-color: #fda3ff;
-  }
-  .Header .Burger__menu .secret {
-    background-color: #f98484;
-  }
-  .Header .Burger__menu .year {
-    background-color: #fffa83;
-  }
   .Header .fa-bars {
-    color: #000;
+    color: black;
     cursor: pointer;
     position: relative;
   }
   .Header .fa-times {
-    color: #000;
+    color: white;
     cursor: pointer;
     position: relative;
+  }
+  .Header img {
+    margin: 1rem;
+    width: 2rem;
+  }
+  .Header .decks {
+    background-color: black;
   }
   .Footer {
     display: none;
@@ -1004,11 +1006,11 @@ h6 {
     align-items: center;
     flex-wrap: nowrap;
     display: block;
-    margin-top: 14rem;
+    margin-top: 17rem;
   }
   .ColorScroll__container .ColorScroll__button {
     width: 90%;
-    margin: 0 0 0 1rem;
+    margin: 0.5rem 0 0 1rem;
     display: inline-block;
   }
   .ColorScroll__container .ColorScroll__title {
@@ -1018,7 +1020,7 @@ h6 {
     left: 18.5rem;
   }
   .TypeButtons {
-    margin: 87rem auto;
+    margin: 90rem auto;
     max-width: 100%;
     border-top: 4px tomato dashed;
   }
@@ -1045,7 +1047,7 @@ h6 {
     margin: 1rem auto;
   }
   .Catalogue__container {
-    width: 90%;
+    width: 99%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1073,6 +1075,36 @@ h6 {
   }
   .card__detail__img {
     z-index: 1000;
+  }
+  .Profile .Profile__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+  }
+  .Profile .Profile__container .Profile__card {
+    width: 90%;
+  }
+  .Profile .Profile__container .Profile__userdata {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .Profile .Profile__container .Profile__headline {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .Profile .Profile__container button {
+    font-size: 1rem;
+    background-color: #bdf3c6;
+    color: black;
+    width: 40%;
+    border-radius: 0%;
+    box-shadow: 0.2rem 0.2rem 0rem 0rem tomato;
+  }
+  .Profile {
+    top: 10rem;
   }
 }
 
