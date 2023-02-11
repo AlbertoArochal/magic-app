@@ -26,6 +26,13 @@ describe('useCards', () => {
         },
     };
 
+    const responseMock2 = {
+        ok: true,
+        async json() {
+            return { data: rawsetsmock };
+        },
+    };
+
     beforeEach(() => {
         jest.spyOn(global, 'fetch').mockImplementation(() =>
             Promise.resolve(responseMock as unknown as Response)
@@ -50,6 +57,10 @@ describe('useCards', () => {
         expect(setCards).not.toBeCalled();
     });
     test('setCollections should be called', () => {
+        jest.spyOn(global, 'fetch').mockImplementation(() =>
+            Promise.resolve(responseMock2 as unknown as Response)
+        );
+
         const setCollections = jest.fn();
         const scryfall = jest.fn(() => Promise.resolve({ data: cardsmock }));
         const Testcomponent = () => {

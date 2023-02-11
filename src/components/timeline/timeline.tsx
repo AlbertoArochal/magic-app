@@ -3,15 +3,20 @@ import { useCards } from '../hooks/logdelete/useCards';
 import { Suspense, lazy, useEffect } from 'react';
 const YearCard = lazy(() => import('../yearcards/yearcards'));
 
-export const Timeline = () => {
+interface Props {
+    year: number;
+}
+
+export const Timeline: React.FC<Props> = ({ year = 1993 }) => {
     const { GetSets } = useCards();
+    const currentYear = new Date().getFullYear();
 
     useEffect(() => {
         GetSets();
     }, []);
 
     const years = [];
-    for (let i = 1993; i <= 2023; i++) {
+    for (let i = year; i <= currentYear; i++) {
         years.push(i);
     }
     let toggle = 'right';
