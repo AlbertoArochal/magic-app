@@ -1,7 +1,12 @@
 import fivecolors from '../../assets/img/fivecolors.png';
 import { Timeline } from '../timeline/timeline';
 import Eye from '../../assets/img/eye.png';
+import { useEffect } from 'react';
 export const MainPage = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <div className="Mainpage">
