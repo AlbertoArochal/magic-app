@@ -2,6 +2,7 @@ import Necropotence from '../../assets/img/necropotence.jpeg';
 import { useContext } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useCards } from '../hooks/logdelete/useCards';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 interface Props {
     year: string;
@@ -12,9 +13,12 @@ const YearCard = ({ year }: Props) => {
     const { GetFetchCardsByYear } = useCards();
     const sets = collections;
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const setCardsHandler = async (year: number, page = 1) => {
+        setLoading(true);
         await GetFetchCardsByYear(year, page);
+        setLoading(false);
         navigate('/years');
     };
 
@@ -52,9 +56,9 @@ const YearCard = ({ year }: Props) => {
             <div className="button__container">
                 <button
                     onClick={() => setCardsHandler(+year)}
-                    className="bnt-more"
+                    className={`bnt-more ${loading ? 'btn__loading' : ''}`}
                 >
-                    Back to {year} →
+                    <span>Back to {year} →</span>
                 </button>
             </div>
         </div>

@@ -12,7 +12,7 @@ export const useCards = () => {
 
     const GetSets = async () => {
         const Scryfall = new ScryfallApi();
-        const collections = await Scryfall.getCollections();
+        const collections = await Scryfall.getSets();
         const collection: CollectionType[] = [];
         collections.forEach((set) => {
             if (set.set_type === 'core' || set.set_type === 'expansion')
