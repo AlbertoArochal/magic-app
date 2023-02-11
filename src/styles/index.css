@@ -990,6 +990,7 @@ h6 {
     justify-content: center;
     align-items: center;
     left: 0;
+    top: 10rem;
   }
   .Year__container .YearButton {
     width: 100%;
