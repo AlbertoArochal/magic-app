@@ -174,6 +174,7 @@ h6 {
   box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
   cursor: pointer;
   font-weight: 500;
+  position: relative;
 }
 .bnt-more:hover, .bnt-more:active, .bnt-more:focus {
   background: #32408f;
@@ -397,6 +398,35 @@ h6 {
   border: 1px solid #333;
 }
 
+.btn__loading span {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.btn__loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 5px solid transparent;
+  border-top-color: white;
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  animation: button-loading-spinner 1.5s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .Header {
   width: 100%;
   position: fixed;
@@ -802,6 +832,9 @@ h6 {
 }
 
 @media only screen and (max-width: 1000px) {
+  .Header {
+    z-index: 500;
+  }
   .Header .Header__links {
     display: none;
   }
@@ -879,6 +912,167 @@ h6 {
   }
   .Intro__subtitle {
     display: none;
+  }
+  .Intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #faca52;
+    padding: 0;
+  }
+  .Intro .Intro__text {
+    display: none;
+  }
+  .Intro .Intro__text {
+    display: none;
+  }
+  .Intro .Intro__p {
+    display: none;
+  }
+  .Intro .Intro__title {
+    display: none;
+  }
+  .Intro .Intro__subtitle {
+    display: none;
+  }
+  .Intro__right {
+    width: 100%;
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .Intro__right img {
+    height: 70%;
+    object-fit: cover;
+  }
+  .Intro__right button {
+    width: 15rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-left: -1.6rem;
+  }
+  .Intro__left {
+    padding: 1rem 0;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+  .timeline {
+    padding: 100px 0;
+    position: relative;
+  }
+  .timeline::before {
+    display: none;
+  }
+  .timeline::after {
+    display: none;
+  }
+  .timeline .timeline__img {
+    display: none;
+  }
+  .timeline .timeline__card {
+    width: 90%;
+    left: 0;
+    margin: 1rem auto;
+  }
+  .FlavorText__container {
+    display: none;
+  }
+  .Year__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+  }
+  .Year__container .YearButton {
+    width: 100%;
+    margin: 1rem auto;
+  }
+  .Year__container .YearButton__title {
+    position: absolute;
+    left: 15rem;
+    top: -1rem;
+  }
+  .ColorScroll__container {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    display: block;
+    margin-top: 14rem;
+  }
+  .ColorScroll__container .ColorScroll__button {
+    width: 90%;
+    margin: 0 0 0 1rem;
+    display: inline-block;
+  }
+  .ColorScroll__container .ColorScroll__title {
+    top: -5rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    left: 18.5rem;
+  }
+  .TypeButtons {
+    margin: 87rem auto;
+    max-width: 100%;
+    border-top: 4px tomato dashed;
+  }
+  .TypeButtons .Typebutton__text {
+    left: 3rem;
+  }
+  .Typebutton__container {
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .Typebutton__container .TypeButton {
+    max-width: 24rem;
+    margin: 1rem auto;
+  }
+  .catalogue__content {
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+  }
+  .catalogue__content .Catalogue__card {
+    width: 90%;
+    margin: 1rem auto;
+  }
+  .Catalogue__container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .Catalogue__container .Catalogue__card {
+    width: 40%;
+    margin: 1rem 1rem;
+  }
+  .card__detail__container {
+    margin-top: 3rem;
+  }
+  .card__detail__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    width: fit-content;
+  }
+  .card__detail__container .card__detail__img__container .card__detail__img {
+    margin: 0;
+    width: 50%;
+    margin-bottom: -1rem;
+  }
+  .card__detail__img {
+    z-index: 1000;
   }
 }
 

@@ -1,9 +1,15 @@
 import scryfall from 'scryfall-client';
 import { RawCardType } from '../../models/rawType';
+import { RawSetType } from '../../models/rawsettype';
 export class ScryfallApi {
-    async getCollections(): Promise<any[]> {
-        const collections = await scryfall.getSets();
-        return collections;
+    async getSets(): Promise<RawSetType[]> {
+        let setlist = [];
+        const response = await fetch('https://api.scryfall.com/sets');
+        if (response.ok) {
+            const sets = await response.json();
+            setlist = sets.data;
+        }
+        return setlist;
     }
 
     async getCardsByYear(year: number, page = 1): Promise<RawCardType[]> {

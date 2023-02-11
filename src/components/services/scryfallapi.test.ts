@@ -24,8 +24,8 @@ describe('ScryfallApi', () => {
     });
 
     test('we can get collections', async () => {
-        const collections = await scryfall.getCollections();
-        expect(global.fetch).not.toHaveBeenCalled();
+        const collections = await scryfall.getSets();
+        expect(global.fetch).toHaveBeenCalled();
         expect(collections.length).toBeGreaterThan(1);
     });
 
