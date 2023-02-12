@@ -14,7 +14,7 @@ export class UserFirebaseRepo {
             email,
             profilePic,
             displayName: name,
-            decks: [{ deck1: ['necropotency'] }],
+            decks: { deck1: ['necropotency'] },
         };
         set(ref(Firedb, 'users/' + user.uid), user);
         return user;
