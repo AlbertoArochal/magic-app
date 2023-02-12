@@ -13,6 +13,7 @@ export class ScryfallApi {
                         year: set.released_at,
                         name: set.name,
                         icon: set.icon_svg_uri,
+                        set_type: set.set_type,
                     });
             });
         }
