@@ -9,6 +9,7 @@ export type CollectionType = {
     year: string;
     name: string;
     icon: string;
+    set_type: string;
 };
 
 export const initialCollections = {

@@ -1,6 +1,6 @@
 import { auth, Firedb, provider } from '../firebase/firebase';
 import { signInWithPopup } from 'firebase/auth';
-import { set, ref, remove, update, get, onValue } from 'firebase/database';
+import { set, ref, remove, update, onValue } from 'firebase/database';
 import { CardType } from '../../models/cardtype';
 export class UserFirebaseRepo {
     async signInWithGoogle() {
@@ -30,24 +30,31 @@ export class UserFirebaseRepo {
         const cardObject = { [card.name]: card };
         await update(ref(Firedb, 'users/' + uid + '/decks/deck1/'), cardObject);
     }
+
+    /* Funcion pendiente de implementar
     async removeCard(uid: string, card: string) {
         await remove(ref(Firedb, 'users/' + uid + '/decks/deck1/' + card));
-    }
+    } */
     async getDeck(uid: string) {
-        const dbRef = ref(Firedb, 'users/' + uid + '/decks/deck1');
-        const deck: CardType[] = [];
+        const dbRef = ref(Firedb, 'users/' + uid + '/decks/deck1/');
+        const deck: any = [];
         onValue(dbRef, (snapshot) => {
             const data = snapshot.val();
-            console.log(data);
-            deck.push(data);
+            Object.entries(data).forEach(([key, value]) => {
+                const obj = Object.assign({ name: key }, value);
+                deck.push(obj);
+            });
         });
+
         return deck;
     }
+
+    /* Funciones pendiente de implementar
     async addDeck(uid: string, deck: string) {
         const deckObject = { [deck]: deck };
         await update(ref(Firedb, 'users/' + uid + '/decks/'), deckObject);
     }
     async removeDeck(uid: string, deck: string) {
         await remove(ref(Firedb, 'users/' + uid + '/decks/' + deck));
-    }
+    } */
 }
