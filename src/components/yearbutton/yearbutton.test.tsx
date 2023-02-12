@@ -23,6 +23,8 @@ describe('YearButton', () => {
                         setCards: () => jest.fn(),
                         collections: [],
                         setCollections: () => jest.fn(),
+                        filteredCards: [],
+                        setFilteredCards: () => jest.fn(),
                     }}
                 >
                     <TestComponent />

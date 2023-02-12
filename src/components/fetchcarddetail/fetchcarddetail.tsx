@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { userContext } from '../../contexts/user/usercontext';
 import { addCard } from '../services/addcard';
 import { useMediaQuery } from 'react-responsive';
+import { useGetDelAddDeck } from '../hooks/getDelAddDeck';
 
 export const FetchCardDetail = ({
     setShowModal,
@@ -10,6 +11,8 @@ export const FetchCardDetail = ({
     setShowModal: (value: boolean) => void;
 }) => {
     const { user } = useContext(userContext);
+    const { addCard } = useGetDelAddDeck();
+
     const handleAddCard = async (uid: string, card: CardType) => {
         await addCard(uid, card);
     };

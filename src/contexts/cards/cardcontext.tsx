@@ -19,11 +19,17 @@ export const initialCards = {
     cards: [],
 };
 
+export const initialFilteredCards = {
+    filteredCards: [],
+};
+
 export type CardContextType = {
     collections: CollectionType[];
     setCollections: (collections: CollectionType[]) => void;
     cards: CardType[];
     setCards: (cards: CardType[]) => void;
+    filteredCards: CardType[];
+    setFilteredCards: (cards: CardType[]) => void;
 };
 
 export const CardContext = createContext<CardContextType>({
@@ -34,4 +40,8 @@ export const CardContext = createContext<CardContextType>({
     cards: [] as CardType[],
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     setCards: (cards: CardType[]) => {},
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    filteredCards: [] as CardType[],
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setFilteredCards: (cards: CardType[]) => {},
 });

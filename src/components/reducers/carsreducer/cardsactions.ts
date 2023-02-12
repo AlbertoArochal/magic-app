@@ -11,3 +11,10 @@ export const addCards = (cards: any) => {
         payload: cards,
     };
 };
+
+export const addFilteredCards = (cards: any) => {
+    return {
+        type: 'SET_FILTERED_CARDS',
+        payload: cards,
+    };
+};
