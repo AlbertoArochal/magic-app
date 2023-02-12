@@ -1,9 +1,16 @@
-import { CollectionsReducer, CardsReducer } from './cardsreducer';
+import {
+    CollectionsReducer,
+    CardsReducer,
+    FilteredCardsReducer,
+} from './cardsreducer';
 import { initialCollections } from '../../../contexts/cards/cardcontext';
-import { initialCards } from '../../../contexts/cards/cardcontext';
+import {
+    initialCards,
+    initialFilteredCards,
+} from '../../../contexts/cards/cardcontext';
 
 describe('CollectionsReducer', () => {
-    it('debe establecer la colección correcta', () => {
+    it('should return right collection', () => {
         const collections = [{ name: 'Colección 1' }, { name: 'Colección 2' }];
 
         const action = {
@@ -16,7 +23,7 @@ describe('CollectionsReducer', () => {
         expect(newState).toEqual({ collections });
     });
 
-    it('debe devolver el estado inicial si no se reconoce la acción', () => {
+    it('should return initial state', () => {
         const action = {
             type: 'UNKNOWN',
             payload: [],
@@ -26,10 +33,32 @@ describe('CollectionsReducer', () => {
 
         expect(newState).toEqual(initialCollections);
     });
+
+    it('should set the filtered cards', () => {
+        const filteredCards = [{ name: 'Carta 1' }, { name: 'Carta 2' }];
+
+        const action = {
+            type: 'SET_FILTERED_CARDS',
+            payload: filteredCards,
+        };
+
+        const newState = FilteredCardsReducer(initialFilteredCards, action);
+        expect(newState).toEqual({ filteredCards });
+    });
+    it('should return initial filtered cards', () => {
+        const action = {
+            type: 'UNKNOWN',
+            payload: [],
+        };
+
+        const newState = FilteredCardsReducer(initialFilteredCards, action);
+
+        expect(newState).toEqual(initialFilteredCards);
+    });
 });
 
 describe('CardsReducer', () => {
-    it('debe establecer las cartas correctas', () => {
+    it('should set the right cards', () => {
         const cards = [{ name: 'Carta 1' }, { name: 'Carta 2' }];
 
         const action = {
@@ -42,7 +71,7 @@ describe('CardsReducer', () => {
         expect(newState).toEqual({ cards });
     });
 
-    it('debe devolver el estado inicial si no se reconoce la acción', () => {
+    it('should return initial state', () => {
         const action = {
             type: 'UNKNOWN',
             payload: [],

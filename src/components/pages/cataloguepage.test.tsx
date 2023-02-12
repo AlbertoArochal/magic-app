@@ -14,6 +14,8 @@ describe('shoud render header and cardfetcher', () => {
                     setCards: () => jest.fn(),
                     collections: [],
                     setCollections: () => jest.fn(),
+                    setFilteredCards: () => jest.fn(),
+                    filteredCards: [],
                 }}
             >
                 <BrowserRouter>

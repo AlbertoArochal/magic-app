@@ -5,6 +5,6 @@ describe('MagicRouter', () => {
         expect(MagicRouter).toBeDefined();
     });
     it('should return paths', () => {
-        expect(MagicRouter().props.children).toHaveLength(5);
+        expect(MagicRouter().props.children).toHaveLength(6);
     });
 });

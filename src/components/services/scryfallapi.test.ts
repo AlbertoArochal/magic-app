@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ScryfallApi } from './scryfallapi';
+import { CollectionsMock } from '../../mocks/collectionsmock';
 
 import { cardsmock } from '../../mocks/cardsmock';
 
@@ -9,6 +10,13 @@ describe('ScryfallApi', () => {
         ok: true,
         async json() {
             return { data: cardsmock };
+        },
+    };
+
+    const responseMock2 = {
+        ok: true,
+        async json() {
+            return { data: CollectionsMock };
         },
     };
 
@@ -24,6 +32,9 @@ describe('ScryfallApi', () => {
     });
 
     test('we can get collections', async () => {
+        jest.spyOn(global, 'fetch').mockImplementation(() =>
+            Promise.resolve(responseMock2 as unknown as Response)
+        );
         const collections = await scryfall.getSets();
         expect(global.fetch).toHaveBeenCalled();
         expect(collections.length).toBeGreaterThan(1);
