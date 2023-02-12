@@ -13,8 +13,10 @@ export const DeckPage = () => {
 
     useEffect(() => {
         getDeck(user.uid).then((deck) => {
-            setDecks(deck);
-            setLoading(false);
+            setTimeout(() => {
+                setDecks(deck);
+                setLoading(false);
+            }, 300);
         });
     }, []);
 
