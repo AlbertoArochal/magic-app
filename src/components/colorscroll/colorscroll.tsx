@@ -1,5 +1,5 @@
 import { CardContext } from '../../contexts/cards/cardcontext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useCards } from '../hooks/logdelete/useCards';
 import blue from '../../assets/img/blue.jpeg';
 import black from '../../assets/img/black.jpeg';
@@ -20,14 +20,13 @@ export const ColorScroll = () => {
         B: <img src={black} alt="black icon" className="ColorScroll__title" />,
         R: <img src={red} alt="red color" className="ColorScroll__title" />,
     };
-
+    const { cards } = useContext(CardContext);
     const GetByColorHandler = (year: number, color: string) => {
         GetByYearAndColor(year, color).then(() => {
             navigate('/catalogue');
         });
     };
 
-    const { cards } = useContext(CardContext);
     const year = cards[0].released_at.slice(0, 4);
 
     const image = { card: cards[0].image_uris.art_crop, name: cards[0].name };

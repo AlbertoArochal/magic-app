@@ -3,6 +3,7 @@ import { ProfilePage } from '../components/pages/profilepage';
 import { App } from '../App';
 import { YearsPage } from '../components/pages/yearspage';
 import { CataloguePage } from '../components/pages/cataloguepage';
+import { DeckPage } from '../components/pages/deckpage';
 
 export const MagicRouter = () => {
     return (
@@ -12,6 +13,7 @@ export const MagicRouter = () => {
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/years" element={<YearsPage />} />
             <Route path="/catalogue" element={<CataloguePage />} />
+            <Route path="/deck" element={<DeckPage />} />
         </Routes>
     );
 };

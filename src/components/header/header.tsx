@@ -33,8 +33,9 @@ export const Header = () => {
                     <YearLink />
                     <p className="secret">Secret Lair</p>
                 </nav>
-
-                <button className="Header__button decks">My Decks</button>
+                <Link to="/deck">
+                    <button className="Header__button decks">My Decks</button>
+                </Link>
                 <div className="header__pwp">
                     <ProfileButton />
 
@@ -66,7 +67,11 @@ export const Header = () => {
                             Secret Lair
                         </a>
                     </nav>
-                    <button className="Header__button decks">My Decks</button>
+                    <Link to="/deck">
+                        <button className="Header__button decks">
+                            My Decks
+                        </button>
+                    </Link>
                     <ProfileButton />
                 </div>
             )}

@@ -1,6 +1,7 @@
 import {
     initialCollections,
     initialCards,
+    initialFilteredCards,
 } from '../../../contexts/cards/cardcontext';
 
 export const CollectionsReducer = (state = initialCollections, action: any) => {
@@ -16,6 +17,18 @@ export const CardsReducer = (state = initialCards, action: any) => {
     switch (action.type) {
         case 'SET_CARDS':
             return { ...state, cards: action.payload };
+        default:
+            return state;
+    }
+};
+
+export const FilteredCardsReducer = (
+    state = initialFilteredCards,
+    action: any
+) => {
+    switch (action.type) {
+        case 'SET_FILTERED_CARDS':
+            return { ...state, filteredCards: action.payload };
         default:
             return state;
     }

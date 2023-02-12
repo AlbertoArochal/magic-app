@@ -5,8 +5,9 @@ import { Modal } from '../modal/modal';
 import { useState } from 'react';
 
 export const CardFetcher = () => {
-    const { cards } = useContext(CardContext);
+    const { cards, filteredCards } = useContext(CardContext);
     const [showModal, setShowModal] = useState(false);
+    const data = filteredCards.length > 0 ? filteredCards : cards;
 
     const CardClickedHandler = (card: CardType) => {
         localStorage.setItem('card', JSON.stringify(card));
@@ -16,7 +17,7 @@ export const CardFetcher = () => {
     return (
         <>
             <div className="catalogue__content">
-                {cards.map((card: CardType) => (
+                {data.map((card: CardType) => (
                     <div
                         key={card.name + 'key'}
                         className="Catalogue__card"
