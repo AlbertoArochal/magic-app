@@ -11,14 +11,14 @@ export const DeckPage = () => {
     const [decks, setDecks] = useState<CardType[]>([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
+    /*useEffect(() => {
         getDeck(user.uid).then((deck) => {
             setTimeout(() => {
                 setDecks(deck);
                 setLoading(false);
             }, 0);
         });
-    }, []);
+    }, []); */
 
     return (
         <>
@@ -27,21 +27,6 @@ export const DeckPage = () => {
                 <div className="deck__content">
                     <h1 className="deck__title">Deck</h1>
                     <div className="deck__card__container"></div>
-                    {!loading &&
-                        decks.map((card) => {
-                            return (
-                                <div className="deck__card__container">
-                                    <img
-                                        src={card.image_uris.small}
-                                        alt={card.name}
-                                        className="deck__card__img"
-                                    />
-                                    <p className="deck__card__name">
-                                        {card.name}
-                                    </p>
-                                </div>
-                            );
-                        })}
                 </div>
             </div>
         </>

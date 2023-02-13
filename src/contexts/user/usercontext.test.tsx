@@ -1,29 +1,57 @@
-import {
-    PlanesWalkerReducer,
-    initialState,
-} from '../../components/reducers/planeswalkerreducer';
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { userContext } from './usercontext';
-import { useContext } from 'react';
-import { UserProvider } from './provider';
+import React, { useContext } from 'react';
+import { render, cleanup, screen } from '@testing-library/react';
+import { userContext } from './userContext';
 
-describe('PlanesWalkerReducer', () => {
-    it('should return the initial state', () => {
-        expect(PlanesWalkerReducer(undefined, {})).toEqual(initialState);
-    });
-    it('should handle LOGIN', () => {
-        const action = {
-            type: 'LOGIN',
-            payload: {
-                id: 1,
-                name: 'test',
-                email: 'arochaldev@gmail.com',
-            },
+afterEach(cleanup);
+
+describe('userContext', () => {
+    it('provides the user and logout function', () => {
+        const TestComponent = () => {
+            const { user, logout } = useContext(userContext);
+
+            return (
+                <>
+                    <div data-testid="user">{JSON.stringify(user)}</div>
+                    <button data-testid="logout-button" onClick={logout}>
+                        Logout
+                    </button>
+                </>
+            );
         };
-        expect(PlanesWalkerReducer(initialState, action)).toEqual({
-            ...initialState,
-            user: action.payload,
-        });
+
+        render(<TestComponent />);
+
+        expect(screen.getByTestId('user').textContent).toBe('null');
+
+        const logoutButton = screen.getByTestId('logout-button');
+        logoutButton.click();
+
+        expect(screen.getByTestId('user').textContent).toBe('null');
+    });
+    it('provides the user and setUser function', () => {
+        const TestComponent = () => {
+            const { user, setUser } = useContext(userContext);
+
+            return (
+                <>
+                    <div data-testid="user">{JSON.stringify(user)}</div>
+                    <button
+                        data-testid="set-user-button"
+                        onClick={() => setUser({ name: 'John Doe' })}
+                    >
+                        Set User
+                    </button>
+                </>
+            );
+        };
+
+        render(<TestComponent />);
+
+        expect(screen.getByTestId('user').textContent).toBe('null');
+
+        const setUserButton = screen.getByTestId('set-user-button');
+        setUserButton.click();
+
+        expect(screen.getByTestId('user').textContent).toBe('null');
     });
 });

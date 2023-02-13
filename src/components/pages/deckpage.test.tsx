@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { DeckPage } from './deckPage';
+import { DeckPage } from './deckpage';
 import { userContext } from '../../contexts/user/usercontext';
 import { BrowserRouter } from 'react-router-dom';
 

@@ -7,6 +7,7 @@ import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
 import { UserProvider } from './provider';
 import { userContext } from './usercontext';
+import { useContext } from 'react';
 
 describe('pwReducer', () => {
     it('should return the initial state', () => {
@@ -37,5 +38,69 @@ describe('UserProvider', () => {
         expect(screen.getByTestId('user-provider').textContent).toBe(
             'User is null'
         );
+    });
+});
+
+afterEach(cleanup);
+
+describe('UserProvider', () => {
+    it('provides the user context', () => {
+        const TestComponent = () => {
+            const { user, setUser } = useContext(userContext);
+
+            return (
+                <>
+                    <div data-testid="user">{JSON.stringify(user)}</div>
+                    <button
+                        data-testid="set-user-button"
+                        onClick={() => setUser({ name: 'Test User' })}
+                    >
+                        Set User
+                    </button>
+                </>
+            );
+        };
+
+        render(
+            <UserProvider>
+                <TestComponent />
+            </UserProvider>
+        );
+
+        expect(screen.getByTestId('user').textContent).toBe('null');
+
+        const setUserButton = screen.getByTestId('set-user-button');
+        setUserButton.click();
+
+        expect(screen.getByTestId('user').textContent).not.toBe(
+            JSON.stringify({ name: 'Test User' })
+        );
+    });
+    it('provides the logout function', () => {
+        const TestComponent = () => {
+            const { user, logout } = useContext(userContext);
+
+            return (
+                <>
+                    <div data-testid="user">{JSON.stringify(user)}</div>
+                    <button data-testid="logout-button" onClick={logout}>
+                        Logout
+                    </button>
+                </>
+            );
+        };
+
+        render(
+            <UserProvider>
+                <TestComponent />
+            </UserProvider>
+        );
+
+        expect(screen.getByTestId('user').textContent).toBe('null');
+
+        const logoutButton = screen.getByTestId('logout-button');
+        logoutButton.click();
+
+        expect(screen.getByTestId('user').textContent).toBe('null');
     });
 });
