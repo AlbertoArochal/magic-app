@@ -16,7 +16,7 @@ export const DeckPage = () => {
             setTimeout(() => {
                 setDecks(deck);
                 setLoading(false);
-            }, 300);
+            }, 0);
         });
     }, []);
 
