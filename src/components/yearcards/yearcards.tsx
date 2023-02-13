@@ -18,7 +18,6 @@ const YearCard = ({ year }: Props) => {
     const setCardsHandler = async (year: number, page = 1) => {
         setLoading(true);
         await GetFetchCardsByYear(year, page);
-        setLoading(false);
         navigate('/years');
     };
 

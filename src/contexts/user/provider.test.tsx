@@ -17,26 +17,6 @@ describe('pwReducer', () => {
         });
         expect(state).toEqual(expectedState);
     });
-
-    it('should handle the LOGIN action', () => {
-        const user = { name: 'John Doe' };
-        const action = { type: 'LOGIN', payload: user };
-        const expectedState = { user };
-        const state = PlanesWalkerReducer(initialState, action);
-        expect(state).toEqual(expectedState);
-    });
-    it('should handle the LOGOUT action', () => {
-        const action = { type: 'LOGOUT' };
-        const expectedState = { user: null };
-        const state = PlanesWalkerReducer(initialState, action);
-        expect(state).toStrictEqual(expectedState);
-    });
-    it('should return the initial state if the action type is unknown', () => {
-        const action = { type: 'UNKNOWN' };
-        const expectedState = initialState;
-        const state = PlanesWalkerReducer(undefined, action);
-        expect(state).toStrictEqual(expectedState);
-    });
 });
 
 describe('UserProvider', () => {

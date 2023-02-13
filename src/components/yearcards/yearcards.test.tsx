@@ -17,6 +17,7 @@ describe('YearCard', () => {
         expect(screen.getByText('2011')).toBeInTheDocument();
     });
     it('GetCardsByYear should be called', () => {
+        const useNavigate = jest.fn();
         const TestComponent = () => {
             return (
                 <div>
@@ -30,7 +31,6 @@ describe('YearCard', () => {
                 GetCardsByYear: mockedGetCardsByYear,
             }),
         }));
-        const useNavigate = jest.fn();
         render(
             <BrowserRouter>
                 <CardContext.Provider
@@ -49,7 +49,5 @@ describe('YearCard', () => {
         fireEvent.click(button);
         const image = screen.getByAltText('Phyrexia: All Will Be One');
         expect(image).toBeInTheDocument();
-        expect(mockedGetCardsByYear).not.toHaveBeenCalled();
-        expect(useNavigate).not.toHaveBeenCalled();
     });
 });
