@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ScryfallApi } from './scryfallapi';
+import { ScryfallApi, errorCard } from './scryfallapi';
 import { CollectionsMock } from '../../mocks/collectionsmock';
 
 import { cardsmock } from '../../mocks/cardsmock';
@@ -18,6 +18,20 @@ describe('ScryfallApi', () => {
         async json() {
             return { data: CollectionsMock };
         },
+    };
+
+    const responseMockError = {
+        ok: false,
+        async json() {
+            return { error: 'error' };
+        },
+    };
+
+    const errorObject = {
+        year: 'Error',
+        name: 'Error',
+        icon: 'Error',
+        set_type: 'Error',
     };
 
     beforeEach(() => {
@@ -61,5 +75,37 @@ describe('ScryfallApi', () => {
         const cards = await scryfall.getCardsByName('Carrier Pigeons');
         expect(global.fetch).toHaveBeenCalled();
         expect(cards).toEqual(cardsmock);
+    });
+    test('it should return an error object if the collections fetch fails', async () => {
+        jest.spyOn(global, 'fetch').mockImplementation(() =>
+            Promise.resolve(responseMockError as unknown as Response)
+        );
+        const collections = await scryfall.getSets();
+        expect(global.fetch).toHaveBeenCalled();
+        expect(collections).toEqual([errorObject]);
+    });
+    test('it should return an error object if the card fetch fails', async () => {
+        jest.spyOn(global, 'fetch').mockImplementation(() =>
+            Promise.resolve(responseMockError as unknown as Response)
+        );
+        const cards = await scryfall.getCardsByYearAndColor(1996, 'red');
+        expect(global.fetch).toHaveBeenCalled();
+        expect(cards).toEqual([errorCard]);
+    });
+    test('it should return an error object if the card by Year and Type fetch fails', async () => {
+        jest.spyOn(global, 'fetch').mockImplementation(() =>
+            Promise.resolve(responseMockError as unknown as Response)
+        );
+        const cards = await scryfall.getCardsByYearAndType(1996, 'red');
+        expect(global.fetch).toHaveBeenCalled();
+        expect(cards).toEqual([errorCard]);
+    });
+    test('it should return an error object if the card by name fetch fails', async () => {
+        jest.spyOn(global, 'fetch').mockImplementation(() =>
+            Promise.resolve(responseMockError as unknown as Response)
+        );
+        const cards = await scryfall.getCardsByName('Carrier Pigeons');
+        expect(global.fetch).toHaveBeenCalled();
+        expect(cards).toEqual([errorCard]);
     });
 });

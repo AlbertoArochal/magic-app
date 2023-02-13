@@ -1,6 +1,26 @@
 import { RawCardType } from '../../models/rawType';
 import { CardType } from '../../models/cardtype';
 import { CollectionType } from '../../contexts/cards/cardcontext';
+
+export const errorCard = {
+    name: 'Error',
+    released_at: 'Error',
+    image_uris: {
+        small: 'Error',
+        large: 'Error',
+        art_crop: 'Error',
+    },
+    mana_cost: 'Error',
+    oracle_text: 'Error',
+    type_line: 'Error',
+    color_identity: ['Error'],
+    artist: 'Error',
+    set_name: 'Error',
+    power: 'Error',
+    toughness: 'Error',
+    flavor_text: 'Error',
+};
+
 export class ScryfallApi {
     async getSets(): Promise<any[]> {
         const setlist: CollectionType[] = [];
@@ -15,6 +35,13 @@ export class ScryfallApi {
                         icon: set.icon_svg_uri,
                         set_type: set.set_type,
                     });
+            });
+        } else {
+            setlist.push({
+                year: 'Error',
+                name: 'Error',
+                icon: 'Error',
+                set_type: 'Error',
             });
         }
         return setlist;
@@ -95,6 +122,8 @@ export class ScryfallApi {
                 });
             });
             finalCardList = finalcards;
+        } else {
+            finalCardList.push(errorCard);
         }
         return finalCardList;
     }
@@ -136,6 +165,8 @@ export class ScryfallApi {
                 });
             });
             finalCardList = finalcards;
+        } else {
+            finalCardList.push(errorCard);
         }
         return finalCardList;
     }
@@ -147,6 +178,8 @@ export class ScryfallApi {
         if (response.ok) {
             const cards = await response.json();
             cardList = cards.data;
+        } else {
+            cardList.push(errorCard as RawCardType);
         }
         return cardList;
     }
