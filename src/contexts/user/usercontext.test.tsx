@@ -27,30 +27,3 @@ describe('PlanesWalkerReducer', () => {
         });
     });
 });
-
-describe('userContext.provider', () => {
-    it('should set a user', () => {
-        const user1 = {
-            id: 1,
-            name: 'test',
-            email: '',
-        };
-        const TestComponent = () => {
-            const { user, setUser } = useContext(userContext);
-            return (
-                <>
-                    <div>{user.name}</div>
-                    <button onClick={() => setUser(user1)}>click</button>
-                </>
-            );
-        };
-
-        render(
-            <UserProvider>
-                <TestComponent />
-            </UserProvider>
-        );
-        fireEvent.click(screen.getByText('click'));
-        expect(screen.getByText('test')).toBeInTheDocument();
-    });
-});

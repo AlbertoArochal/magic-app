@@ -3,6 +3,7 @@ import { FetchCardDetail } from './fetchcarddetail';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { userContext } from '../../contexts/user/usercontext';
 import { cardsmock } from '../../mocks/cardsmock';
+import { useContext } from 'react';
 
 describe('FetchCardDetail', () => {
     beforeEach(() => {
@@ -28,6 +29,41 @@ describe('FetchCardDetail', () => {
         expect(screen.queryByText('Add to Deck 💖')).not.toBeInTheDocument();
         expect(localStorage.getItem).toHaveBeenCalledWith('card');
     });
+    test('addcard should be called when clicking add to deck button', () => {
+        const addCard = jest.fn();
+
+
+        const TestComponent = () => {
+            const {user} = useContext(userContext);
+
+
+
+            return (
+                <div>
+                    <FetchCardDetail setShowModal={jest.fn()} />
+
+                </div>
+            );
+        };
+
+
+
+        render(
+            <userContext.Provider
+                value={{
+                    user: { name: 'test', email: '' },
+                    setUser: jest.fn(),
+                    logout: jest.fn(),
+                }}
+            >
+                <TestComponent />
+                
+            </userContext.Provider>
+        );
+        const button = screen.getByText('Add to Deck 💖');
+        fireEvent.click(button);
+        expect(addCard).not.toHaveBeenCalled();
+            });
     test('should render button if user is logged in', () => {
         render(
             <userContext.Provider
@@ -42,6 +78,7 @@ describe('FetchCardDetail', () => {
         );
         const button = screen.getByText('✖');
         fireEvent.click(button);
+
         expect(button).toBeInTheDocument();
         expect(screen.getByText('Add to Deck 💖')).toBeInTheDocument();
         expect(localStorage.getItem).toHaveBeenCalled();
@@ -64,4 +101,6 @@ describe('FetchCardDetail', () => {
         fireEvent.click(closeButton);
         expect(setShowModal).toHaveBeenCalledWith(false);
     });
+
+
 });

@@ -3,14 +3,13 @@ import {
     CardsReducer,
     FilteredCardsReducer,
 } from './cardsreducer';
-import { initialCollections } from '../../../contexts/cards/cardcontext';
 import {
     initialCards,
-    initialFilteredCards,
+    initialFilteredCards,initialCollections
 } from '../../../contexts/cards/cardcontext';
 
 describe('CollectionsReducer', () => {
-    it('should return right collection', () => {
+    test('should return right collection', () => {
         const collections = [{ name: 'Colección 1' }, { name: 'Colección 2' }];
 
         const action = {
@@ -22,19 +21,11 @@ describe('CollectionsReducer', () => {
 
         expect(newState).toEqual({ collections });
     });
-
-    it('should return initial state', () => {
-        const action = {
-            type: 'UNKNOWN',
-            payload: [],
-        };
-
-        const newState = CollectionsReducer(initialCollections, action);
-
-        expect(newState).toEqual(initialCollections);
+    test('should return the initial state', () => {
+        expect(CollectionsReducer(undefined, {})).toEqual(initialCollections);
     });
 
-    it('should set the filtered cards', () => {
+    test('should set the filtered cards', () => {
         const filteredCards = [{ name: 'Carta 1' }, { name: 'Carta 2' }];
 
         const action = {
@@ -45,20 +36,13 @@ describe('CollectionsReducer', () => {
         const newState = FilteredCardsReducer(initialFilteredCards, action);
         expect(newState).toEqual({ filteredCards });
     });
-    it('should return initial filtered cards', () => {
-        const action = {
-            type: 'UNKNOWN',
-            payload: [],
-        };
-
-        const newState = FilteredCardsReducer(initialFilteredCards, action);
-
-        expect(newState).toEqual(initialFilteredCards);
+    test('should return the initial state', () => {
+        expect(FilteredCardsReducer(undefined, {})).toEqual(initialFilteredCards);
     });
 });
 
 describe('CardsReducer', () => {
-    it('should set the right cards', () => {
+    test('should set the right cards', () => {
         const cards = [{ name: 'Carta 1' }, { name: 'Carta 2' }];
 
         const action = {
@@ -70,25 +54,14 @@ describe('CardsReducer', () => {
 
         expect(newState).toEqual({ cards });
     });
-
-    it('should return initial state', () => {
-        const action = {
-            type: 'UNKNOWN',
-            payload: [],
-        };
-
-        const newState = CardsReducer(initialCards, action);
-
-        expect(newState).toEqual(initialCards);
-    });
 });
 
 describe('CardsReducer 2', () => {
-    it('should return the initial state', () => {
+    test('should return the initial state', () => {
         expect(CardsReducer(undefined, {})).toEqual(initialCards);
     });
 
-    it('should handle SET_CARDS', () => {
+    test('should handle SET_CARDS', () => {
         const newCards = [
             {
                 name: 'Card 1',

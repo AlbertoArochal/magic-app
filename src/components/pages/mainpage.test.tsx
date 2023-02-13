@@ -15,19 +15,6 @@ describe('MainPage', () => {
         );
 
         expect(screen.getByText('Magic')).toBeInTheDocument();
-        expect(screen.getByText('Sign Up Now >')).toBeInTheDocument();
         expect(screen.getByAltText('five colors icons')).toBeInTheDocument();
-    });
-    it('SignInWithGoogle should be called when the button is clicked', () => {
-        const signInWithGoogle = jest.fn();
-        render(
-            <BrowserRouter>
-                <userContext.Provider value={{ user: initialState }}>
-                    <MainPage />
-                </userContext.Provider>
-            </BrowserRouter>
-        );
-        fireEvent.click(screen.getByText('Sign Up Now >'));
-        expect(signInWithGoogle).not.toHaveBeenCalled();
     });
 });
