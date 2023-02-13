@@ -1,9 +1,10 @@
 import React from 'react';
-import { render, act, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { CardProvider } from './cardprovider';
 import { CardContext } from './cardcontext';
 import { cardsmock } from '../../mocks/cardsmock';
 import { useEffect } from 'react';
+import {CollectionsMock} from '../../mocks/collectionsmock';
 
 describe('CardProvider', () => {
     it('should provide the right context', () => {
@@ -38,5 +39,39 @@ describe('CardProvider', () => {
         const div = screen.getByText('7');
         expect(div).toBeInTheDocument();
         expect(div.textContent).toBe('7');
+    });
+    test('should set collections', () => {
+        const TestComponent = () => {
+            const { collections, setCollections } = React.useContext(CardContext);
+            useEffect(() => {
+                setCollections(CollectionsMock);
+            }, []);
+            return <div>{collections.length}</div>;
+        };
+
+        render(
+            <CardProvider>
+                <TestComponent />
+            </CardProvider>
+        );
+        const div = screen.getByText('3');
+        expect(div).toBeInTheDocument();
+    });
+    test('shouls set filteredcards' , () => {
+        const TestComponent = () => {
+            const { filteredCards, setFilteredCards } = React.useContext(CardContext);
+            useEffect(() => {
+                setFilteredCards(cardsmock);
+            }, []);
+            return <div>{filteredCards.length}</div>;
+        };
+
+        render(
+            <CardProvider>
+                <TestComponent />
+            </CardProvider>
+        );
+        const div = screen.getByText('7');
+        expect(div).toBeInTheDocument();
     });
 });

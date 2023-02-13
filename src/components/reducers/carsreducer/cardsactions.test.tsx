@@ -1,4 +1,4 @@
-import { addCollection, addCards } from './cardsactions';
+import { addCollection, addCards, addFilteredCards } from './cardsactions';
 
 describe('addCollection action', () => {
     it('should return the correct type and payload', () => {
@@ -24,5 +24,19 @@ describe('addCards action', () => {
         };
 
         expect(addCards(cards)).toEqual(expectedAction);
+    });
+});
+describe('addFilteredCards action', () => {
+    it('should return the correct type and payload', () => {
+        const cards = [
+            { id: 1, front: 'Card 1 front', back: 'Card 1 back' },
+            { id: 2, front: 'Card 2 front', back: 'Card 2 back' },
+        ];
+        const expectedAction = {
+            type: 'SET_FILTERED_CARDS',
+            payload: cards,
+        };
+
+        expect(addFilteredCards(cards)).toEqual(expectedAction);
     });
 });
