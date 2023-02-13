@@ -1,7 +1,6 @@
 import { CardType } from '../../models/cardtype';
 import { useContext } from 'react';
 import { userContext } from '../../contexts/user/usercontext';
-import { addCard } from '../services/addcard';
 import { useMediaQuery } from 'react-responsive';
 import { useGetDelAddDeck } from '../hooks/getDelAddDeck';
 

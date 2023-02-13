@@ -36,6 +36,8 @@ describe('FetchCardDetail', () => {
         const TestComponent = () => {
             const {user} = useContext(userContext);
 
+
+
             return (
                 <div>
                     <FetchCardDetail setShowModal={jest.fn()} />
@@ -76,6 +78,7 @@ describe('FetchCardDetail', () => {
         );
         const button = screen.getByText('✖');
         fireEvent.click(button);
+
         expect(button).toBeInTheDocument();
         expect(screen.getByText('Add to Deck 💖')).toBeInTheDocument();
         expect(localStorage.getItem).toHaveBeenCalled();
