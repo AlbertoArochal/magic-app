@@ -17,8 +17,6 @@ export const FetchCardDetail = ({
     const handleAddCard = async (uid: string, card: CardType) => {
         await addCard(uid, card);
     };
-    const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
-    const isDesktop = useMediaQuery({ query: '(min-width: 1001px)' });
 
     const card = JSON.parse(localStorage.getItem('card') || '{}') as CardType;
     return (

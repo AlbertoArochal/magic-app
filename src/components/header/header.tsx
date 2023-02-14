@@ -23,7 +23,7 @@ export const Header = () => {
         auth.onAuthStateChanged((user: any) => {
             if (user) {
                 setUser(user);
-            }
+            } else return 
         });
     }, []);
 
