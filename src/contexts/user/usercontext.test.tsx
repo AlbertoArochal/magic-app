@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
-import { userContext } from './userContext';
+import { userContext } from './usercontext';
 
 afterEach(cleanup);
 
