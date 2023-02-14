@@ -752,7 +752,7 @@ h6 {
   align-items: center;
   display: flex;
 }
-.card__detail__container .card__detail__img__container .card__detail__img {
+.card__detail__container .card__detail__img__container .uris__large {
   width: 80%;
   height: 80%;
   object-fit: cover;
@@ -786,6 +786,10 @@ h6 {
   align-items: center;
   width: 100%;
   margin-top: 2rem;
+}
+
+.uris__art__crop {
+  display: none;
 }
 
 .Catalogue__container {
@@ -1094,17 +1098,21 @@ h6 {
     position: relative;
     top: -1rem;
   }
-  .card__detail__container .card__detail__img__container .card__detail__img {
+  .card__detail__container .card__detail__img__container .uris__art__crop {
     margin: 0;
     width: 70%;
     margin-bottom: -1rem;
     z-index: 1000;
     outline: 2px solid black;
+    display: block;
   }
   .Modal__button__container .Modal__button {
     margin: 0;
     top: 0.8rem;
     right: 0.8rem;
+  }
+  .card__detail__container .card__detail__img__container .uris__large {
+    display: none;
   }
   .Profile .Profile__container {
     display: flex;

@@ -25,20 +25,20 @@ export const FetchCardDetail = ({
         <div className="card__detail__container">
             <div className="card__detail__content">
                 <div className="card__detail__img__container">
-                    {isDesktop && (
+
                         <img
                             src={card.image_uris.large}
                             alt={card.name}
-                            className="card__detail__img"
+                            className="uris__large"
                         />
-                    )}
-                    {isMobile && (
+
+
                         <img
                             src={card.image_uris.art_crop}
                             alt={card.name}
-                            className="card__detail__img"
+                            className="uris__art__crop"
                         />
-                    )}
+
                 </div>
                 <div className="card__detail__text__container">
                     <div className="Modal__button__container">

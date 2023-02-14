@@ -6,6 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useContext } from 'react';
 import { cardsmock } from '../../mocks/cardsmock';
+import { userContext } from '../../contexts/user/usercontext';
 
 const intersectionObserverMock = () => ({
     observe: () => null,
@@ -89,5 +90,27 @@ describe('Header', () => {
             expect(auth.onAuthStateChanged).toHaveBeenCalled();
             expect(auth.onAuthStateChanged).toHaveBeenCalledWith(user);
         });
+    });
+    it('setdeckshandler should be called but not set any card when no user is passed through context', () => {
+        const setDecksHandler = jest.fn();
+        render(
+            <userContext.Provider value={{ user, setUser: jest.fn() }}>
+            <CardContext.Provider
+                value={{
+                    cards: cardsmock,
+                    collections: [],
+                    setCards: jest.fn(),
+                    setCollections: jest.fn(),
+                    setFilteredCards: jest.fn(),
+                }}
+            >
+                <MemoryRouter>
+                    <Header />
+                </MemoryRouter>
+            </CardContext.Provider>
+            </userContext.Provider>
+        );
+        fireEvent.click(screen.getByText('My Decks'));
+        expect(setDecksHandler).not.toHaveBeenCalled();
     });
 });
