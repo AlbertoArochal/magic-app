@@ -13,7 +13,7 @@ export const signInWithGoogle = async () => {
         email,
         profilePic,
         displayName: name,
-        decks: { deck1: ['necropotency'] },
+        decks: { deck1: [] },
     };
     set(ref(Firedb, 'users/' + user.uid), user);
     return user;
