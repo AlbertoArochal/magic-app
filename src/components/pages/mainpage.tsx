@@ -1,14 +1,9 @@
 import fivecolors from '../../assets/img/fivecolors.png';
 import { Timeline } from '../timeline/timeline';
 import Eye from '../../assets/img/eye.webp';
-import {useNavigate} from 'react-router-dom';
 import { useEffect } from 'react';
-import { signInWithGoogle } from '../services/signwithgoogle';
-import { useContext } from 'react';
-import { userContext } from '../../contexts/user/usercontext';
+
 export const MainPage = () => {
-    const navigate = useNavigate();
-    const { user } = useContext(userContext);
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

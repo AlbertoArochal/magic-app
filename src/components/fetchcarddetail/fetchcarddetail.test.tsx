@@ -4,6 +4,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { userContext } from '../../contexts/user/usercontext';
 import { cardsmock } from '../../mocks/cardsmock';
 import { useContext } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('FetchCardDetail', () => {
     beforeEach(() => {
@@ -17,11 +18,17 @@ describe('FetchCardDetail', () => {
 
     test('should render card detail', () => {
         render(
-            <userContext.Provider
-                value={{ user: null, setUser: jest.fn(), logout: jest.fn() }}
-            >
-                <FetchCardDetail setShowModal={jest.fn()} />
-            </userContext.Provider>
+            <BrowserRouter>
+                <userContext.Provider
+                    value={{
+                        user: null,
+                        setUser: jest.fn(),
+                        logout: jest.fn(),
+                    }}
+                >
+                    <FetchCardDetail setShowModal={jest.fn()} />
+                </userContext.Provider>
+            </BrowserRouter>
         );
         expect(
             screen.getByText('Illustrated by Pat Morrissey')
@@ -32,21 +39,17 @@ describe('FetchCardDetail', () => {
     test('addcard should be called when clicking add to deck button', () => {
         const addCard = jest.fn();
 
-
         const TestComponent = () => {
-            const {user} = useContext(userContext);
-
-
+            const { user } = useContext(userContext);
 
             return (
-                <div>
-                    <FetchCardDetail setShowModal={jest.fn()} />
-
-                </div>
+                <BrowserRouter>
+                    <div>
+                        <FetchCardDetail setShowModal={jest.fn()} />
+                    </div>
+                </BrowserRouter>
             );
         };
-
-
 
         render(
             <userContext.Provider
@@ -57,24 +60,25 @@ describe('FetchCardDetail', () => {
                 }}
             >
                 <TestComponent />
-                
             </userContext.Provider>
         );
         const button = screen.getByText('Add to Deck 💖');
         fireEvent.click(button);
         expect(addCard).not.toHaveBeenCalled();
-            });
+    });
     test('should render button if user is logged in', () => {
         render(
-            <userContext.Provider
-                value={{
-                    user: { name: 'test', email: 'arochal@gmail.com' },
-                    setUser: jest.fn(),
-                    logout: jest.fn(),
-                }}
-            >
-                <FetchCardDetail setShowModal={jest.fn()} />
-            </userContext.Provider>
+            <BrowserRouter>
+                <userContext.Provider
+                    value={{
+                        user: { name: 'test', email: 'arochal@gmail.com' },
+                        setUser: jest.fn(),
+                        logout: jest.fn(),
+                    }}
+                >
+                    <FetchCardDetail setShowModal={jest.fn()} />
+                </userContext.Provider>
+            </BrowserRouter>
         );
         const button = screen.getByText('✖');
         fireEvent.click(button);
@@ -86,21 +90,21 @@ describe('FetchCardDetail', () => {
     test('should close modal when clicking close button', () => {
         const setShowModal = jest.fn();
         render(
-            <userContext.Provider
-                value={{
-                    user: null,
-                    setUser: jest.fn(),
-                    logout: jest.fn(),
-                }}
-            >
-                <FetchCardDetail setShowModal={setShowModal} />
-            </userContext.Provider>
+            <BrowserRouter>
+                <userContext.Provider
+                    value={{
+                        user: null,
+                        setUser: jest.fn(),
+                        logout: jest.fn(),
+                    }}
+                >
+                    <FetchCardDetail setShowModal={setShowModal} />
+                </userContext.Provider>
+            </BrowserRouter>
         );
 
         const closeButton = screen.getByText('✖');
         fireEvent.click(closeButton);
         expect(setShowModal).toHaveBeenCalledWith(false);
     });
-
-
 });

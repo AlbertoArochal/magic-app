@@ -4,29 +4,40 @@ import { useGetDelAddDeck } from '../hooks/getDelAddDeck';
 import { useEffect, useState } from 'react';
 import { CardType } from '../../models/cardtype';
 import { Header } from '../header/header';
+import { CardFetcher } from '../cardfetcher/cardfetcher';
 
 export const DeckPage = () => {
     const { user } = useContext(userContext);
     const { getDeck } = useGetDelAddDeck();
-    const [decks, setDecks] = useState<CardType[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [filteredCards, setFilteredCards] = useState<CardType[]>([]);
 
-    /*useEffect(() => {
-        getDeck(user.uid).then((deck) => {
-            setTimeout(() => {
-                setDecks(deck);
-                setLoading(false);
-            }, 0);
-        });
-    }, []); */
+    useEffect(() => {
+        if (user) {
+            getDeck(user.uid).then((deck) => {
+                setFilteredCards(deck);
+            });
+        }
+    }, [user]);
 
     return (
         <>
             <Header />
-            <div className="deck__container">
-                <div className="deck__content">
-                    <h1 className="deck__title">Deck</h1>
-                    <div className="deck__card__container"></div>
+            <div
+                className="Catalogue__container"
+                key={new Date().getTime().toString + 'container'}
+            >
+                {' '}
+                <CardFetcher />
+                <div
+                    className="catalogue__header"
+                    key={new Date().getTime().toString + 'header'}
+                >
+                    <h1
+                        className="catalogue__title"
+                        key={new Date().getTime().toString + 'title'}
+                    >
+                        Your Deck
+                    </h1>
                 </div>
             </div>
         </>

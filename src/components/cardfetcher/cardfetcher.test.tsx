@@ -1,22 +1,20 @@
 import React from 'react';
-import { useContext } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
-import { CardType } from '../../models/cardtype';
-import { Modal } from '../modal/modal';
-import { useState } from 'react';
 import { cardsmock } from '../../mocks/cardsmock';
 import { render, screen, fireEvent } from '@testing-library/react';
-
+import { BrowserRouter } from 'react-router-dom';
 import { CardFetcher } from './cardfetcher';
 
 describe('CardFetcher', () => {
     it('should render successfully the cards in cardsmock', () => {
         render(
-            <CardContext.Provider
-                value={{ cards: cardsmock, filteredCards: [] }}
-            >
-                <CardFetcher />
-            </CardContext.Provider>
+            <BrowserRouter>
+                <CardContext.Provider
+                    value={{ cards: cardsmock, filteredCards: [] }}
+                >
+                    <CardFetcher />
+                </CardContext.Provider>
+            </BrowserRouter>
         );
         const pigeon = screen.getAllByAltText('Carrier Pigeons')[0];
         expect(pigeon).toBeInTheDocument();
@@ -31,11 +29,13 @@ describe('CardFetcher', () => {
             writable: true,
         });
         render(
-            <CardContext.Provider
-                value={{ cards: cardsmock, filteredCards: [] }}
-            >
-                <CardFetcher />
-            </CardContext.Provider>
+            <BrowserRouter>
+                <CardContext.Provider
+                    value={{ cards: cardsmock, filteredCards: [] }}
+                >
+                    <CardFetcher />
+                </CardContext.Provider>
+            </BrowserRouter>
         );
         const pigeon = screen.getAllByAltText('Carrier Pigeons')[0];
         fireEvent.click(pigeon);
@@ -43,16 +43,18 @@ describe('CardFetcher', () => {
     });
     it('should render the cards in filteredCards if filteredCards is not empty', () => {
         render(
-            <CardContext.Provider
-                value={{
-                    cards: cardsmock,
-                    filteredCards: cardsmock.filter(
-                        (card) => card.name === 'Carrier Pigeons'
-                    ),
-                }}
-            >
-                <CardFetcher />
-            </CardContext.Provider>
+            <BrowserRouter>
+                <CardContext.Provider
+                    value={{
+                        cards: cardsmock,
+                        filteredCards: cardsmock.filter(
+                            (card) => card.name === 'Carrier Pigeons'
+                        ),
+                    }}
+                >
+                    <CardFetcher />
+                </CardContext.Provider>
+            </BrowserRouter>
         );
         const pigeon = screen.getAllByAltText('Carrier Pigeons')[0];
         expect(pigeon).toBeInTheDocument();

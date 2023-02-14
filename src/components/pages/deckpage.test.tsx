@@ -14,7 +14,7 @@ describe('DeckPage component', () => {
             </BrowserRouter>
         );
 
-        const cardImage = screen.getByText('Deck');
+        const cardImage = screen.getByText('Your Deck');
         const cardName = screen.getByText('PROFILE');
 
         expect(cardImage).toBeInTheDocument();

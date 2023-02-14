@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { userContext } from '../../contexts/user/usercontext';
 import { useMediaQuery } from 'react-responsive';
 import { useGetDelAddDeck } from '../hooks/getDelAddDeck';
+import { useLocation } from 'react-router-dom';
 
 export const FetchCardDetail = ({
     setShowModal,
@@ -11,6 +12,7 @@ export const FetchCardDetail = ({
 }) => {
     const { user } = useContext(userContext);
     const { addCard } = useGetDelAddDeck();
+    const location = useLocation();
 
     const handleAddCard = async (uid: string, card: CardType) => {
         await addCard(uid, card);
@@ -61,7 +63,7 @@ export const FetchCardDetail = ({
                     <p className="card__detail__artist">
                         Illustrated by {card.artist}
                     </p>
-                    {user ? (
+                    {user && location.pathname !== '/deck' ? (
                         <div className="Addbutton__container">
                             <button
                                 className="Card__addcard__button"
