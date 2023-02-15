@@ -3,11 +3,13 @@ import {
     CardsReducer,
     FilteredCardsReducer,
 } from '../../components/reducers/carsreducer/cardsreducer';
+import { ReactNode } from 'react';
 import { useReducer } from 'react';
 import { CardType } from '../../models/cardtype';
 import { initialCards, CardContext, initialFilteredCards } from './cardcontext';
+import { CollectionType } from './cardcontext';
 
-export const CardProvider = ({ children }: any) => {
+export const CardProvider = ({ children }: { children: ReactNode }) => {
     const [collections, collectionsDispatch] = useReducer(CollectionsReducer, {
         collections: [],
     });
@@ -26,7 +28,7 @@ export const CardProvider = ({ children }: any) => {
         <CardContext.Provider
             value={{
                 collections: collections.collections,
-                setCollections: (collections: any[]) =>
+                setCollections: (collections: CollectionType[]) =>
                     collectionsDispatch({
                         type: 'SET_COLLECTIONS',
                         payload: collections,

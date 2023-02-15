@@ -13,7 +13,7 @@ export const ColorScroll = () => {
     const colors = ['U', 'W', 'G', 'B', 'R'];
     const navigate = useNavigate();
 
-    const colorMap: any = {
+    const colorMap: Record<string, JSX.Element> = {
         U: <img src={blue} alt="blue icon" className="ColorScroll__title" />,
         W: <img src={white} alt="white icon" className="ColorScroll__title" />,
         G: <img src={green} alt="green icon" className="ColorScroll__title" />,

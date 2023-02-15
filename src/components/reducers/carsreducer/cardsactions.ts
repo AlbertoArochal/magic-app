@@ -1,18 +1,21 @@
-export const addCollection = (collection: any) => {
+import { CollectionType } from '../../../contexts/cards/cardcontext';
+import { CardType } from '../../../models/cardtype';
+
+export const addCollection = (collection: CollectionType) => {
     return {
         type: 'SET_COLLECTIONS',
         payload: collection,
     };
 };
 
-export const addCards = (cards: any) => {
+export const addCards = (cards: CardType[]) => {
     return {
         type: 'SET_CARDS',
         payload: cards,
     };
 };
 
-export const addFilteredCards = (cards: any) => {
+export const addFilteredCards = (cards: CardType[]) => {
     return {
         type: 'SET_FILTERED_CARDS',
         payload: cards,

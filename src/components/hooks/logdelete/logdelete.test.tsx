@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { screen, render, act } from '@testing-library/react';
 import { userContext } from '../../../contexts/user/usercontext';
 import { useLogDelete } from './uselogdelete';
@@ -56,7 +56,7 @@ describe('useLogDelete hook', () => {
             const hook = useLogDelete();
             return <button onClick={hook.logOutHandler} />;
         };
-        const Wrapper = ({ children }: any) => (
+        const Wrapper = ({ children }: { children: ReactNode }) => (
             <userContext.Provider
                 value={{
                     user: null,

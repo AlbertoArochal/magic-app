@@ -93,3 +93,9 @@ export type RawCardType = {
         cardhoarder: string;
     };
 };
+export interface SetApiResponse {
+    name: string;
+    set_type: string;
+    released_at: string;
+    icon_svg_uri: string;
+}

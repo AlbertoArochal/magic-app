@@ -1,6 +1,8 @@
 import { FetchCardDetail } from '../fetchcarddetail/fetchcarddetail';
-import { createPortal } from 'react-dom';
-export const Modal = ({ closeModal }: any) => {
+type ModalProps = {
+    closeModal: (value: boolean) => void;
+};
+export const Modal = ({ closeModal }: ModalProps) => {
     const handleSetShowModal = (value: boolean) => {
         closeModal(value);
     };

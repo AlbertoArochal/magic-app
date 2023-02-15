@@ -1,6 +1,8 @@
+import React, { ReactNode } from 'react';
 import { ProfilePic } from './profilepic';
-import { render, screen, cleanup, fireEvent } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import { userContext } from '../../contexts/user/usercontext';
+
 describe('ProfilePic', () => {
     it('should render successfully', () => {
         const { baseElement } = render(<ProfilePic />);
@@ -48,7 +50,7 @@ describe('ProfilePic', () => {
             const TestComponent = () => {
                 return <ProfilePic />;
             };
-            const Wrapper = ({ children }: any) => (
+            const Wrapper = ({ children }: { children: ReactNode }) => (
                 <userContext.Provider
                     value={{
                         user: {
