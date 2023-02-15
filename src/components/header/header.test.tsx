@@ -7,6 +7,10 @@ import { CardContext } from '../../contexts/cards/cardcontext';
 import { useContext } from 'react';
 import { cardsmock } from '../../mocks/cardsmock';
 import { userContext } from '../../contexts/user/usercontext';
+import { BrowserRouter } from 'react-router-dom';
+import { CardProvider } from '../../contexts/cards/cardprovider';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const intersectionObserverMock = () => ({
     observe: () => null,
@@ -95,22 +99,53 @@ describe('Header', () => {
         const setDecksHandler = jest.fn();
         render(
             <userContext.Provider value={{ user, setUser: jest.fn() }}>
-            <CardContext.Provider
-                value={{
-                    cards: cardsmock,
-                    collections: [],
-                    setCards: jest.fn(),
-                    setCollections: jest.fn(),
-                    setFilteredCards: jest.fn(),
-                }}
-            >
-                <MemoryRouter>
-                    <Header />
-                </MemoryRouter>
-            </CardContext.Provider>
+                <CardContext.Provider
+                    value={{
+                        cards: cardsmock,
+                        collections: [],
+                        setCards: jest.fn(),
+                        setCollections: jest.fn(),
+                        setFilteredCards: jest.fn(),
+                    }}
+                >
+                    <MemoryRouter>
+                        <Header />
+                    </MemoryRouter>
+                </CardContext.Provider>
             </userContext.Provider>
         );
         fireEvent.click(screen.getByText('My Decks'));
         expect(setDecksHandler).not.toHaveBeenCalled();
     });
+});
+test('when setDecksHandler is called setFilteredCards should set mockcards', () => {
+    const useNavigate = jest.fn();
+    const TestComponent = () => {
+        const { filteredCards, setFilteredCards } = useContext(CardContext);
+        const setDecksHandler = () => {
+            setFilteredCards(cardsmock);
+        };
+        const [loading, setLoading] = useState(true);
+
+        useEffect(() => {
+            setDecksHandler();
+        }, []);
+        return (
+            <div>
+                {filteredCards.map((card, index) => (
+                    <div key={card.name + index}>{card.name}</div>
+                ))}
+                {loading && <div>Loading...</div>}
+            </div>
+        );
+    };
+    render(
+        <CardProvider>
+            <TestComponent />
+        </CardProvider>
+    );
+    const cards = screen.getAllByText('Carrier Pigeons');
+
+    expect(cards[0]).toBeInTheDocument();
+    expect(screen.getByText('Loading...')).toBeInTheDocument();
 });
