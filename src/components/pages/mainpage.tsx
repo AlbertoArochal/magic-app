@@ -7,6 +7,9 @@ export const MainPage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    useEffect(() => {
+        localStorage.setItem('page', '1');
+    }, []);
 
     return (
         <>

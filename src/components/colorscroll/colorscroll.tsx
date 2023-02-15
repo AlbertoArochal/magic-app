@@ -1,5 +1,5 @@
 import { CardContext } from '../../contexts/cards/cardcontext';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useCards } from '../hooks/logdelete/useCards';
 import blue from '../../assets/img/blue.jpeg';
 import black from '../../assets/img/black.jpeg';

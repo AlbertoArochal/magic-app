@@ -7,7 +7,7 @@ interface Props {
     year: number;
 }
 
-export const Timeline: React.FC<Props> = ({ year = 1993 }) => {
+export const Timeline: React.FC<Props> = ({ year }) => {
     const { GetSets } = useCards();
     const currentYear = new Date().getFullYear();
 

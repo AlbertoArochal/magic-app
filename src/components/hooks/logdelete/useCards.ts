@@ -18,13 +18,13 @@ export const useCards = () => {
         setCards(cardList);
     };
 
-    const GetByYearAndColor = async (year: number, color: string) => {
+    const GetByYearAndColor = async (year: number, color: string, page = 1) => {
         const Scryfall = new ScryfallApi();
         const cardList = await Scryfall.getCardsByYearAndColor(year, color);
         setFilteredCards(cardList);
     };
 
-    const GetByYearAndType = async (year: number, type: string) => {
+    const GetByYearAndType = async (year: number, type: string, page = 1) => {
         const Scryfall = new ScryfallApi();
         const cardList = await Scryfall.getCardsByYearAndType(year, type);
 
