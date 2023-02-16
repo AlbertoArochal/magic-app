@@ -2,7 +2,7 @@ import { UserFirebaseRepo } from './userfirebaserepo';
 import { auth } from '../firebase/firebase';
 import { signInWithPopup } from 'firebase/auth';
 import { provider } from '../firebase/firebase';
-import { set, ref, update, onValue } from 'firebase/database';
+import { ref, update, onValue } from 'firebase/database';
 import { Firedb } from '../firebase/firebase';
 import { CardType } from '../../models/cardtype';
 import { cardsmock } from '../../mocks/cardsmock';
@@ -32,7 +32,7 @@ describe('UserFirebaseRepo', () => {
         (ref as jest.Mock).mockReturnValue(mockUserRef);
         await userRepo.signInWithGoogle();
         expect(signInWithPopup).toHaveBeenCalledWith(auth, provider);
-        expect(set).toHaveBeenCalledTimes(1);
+        expect(update).toHaveBeenCalledTimes(1);
     });
     it('should return true after removing the user', async () => {
         const uid = '123';
@@ -69,5 +69,4 @@ describe('UserFirebaseRepo', () => {
             expect.any(Function)
         );
     });
-    
 });

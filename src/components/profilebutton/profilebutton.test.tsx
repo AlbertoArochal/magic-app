@@ -1,10 +1,7 @@
-import React from 'react';
-
 import { ProfileButton } from './profilebutton';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { userContext } from '../../contexts/user/usercontext';
 import { signInWithPopup } from 'firebase/auth';
-import { ReactNode } from 'react';
 
 jest.mock('firebase/auth');
 jest.mock('firebase/database');
@@ -28,7 +25,7 @@ describe('ProfileButton', () => {
         (signInWithPopup as jest.Mock).mockResolvedValue({
             user: mockUser,
         });
-        const Wrapper = ({ children }: { children: ReactNode }) => (
+        const Wrapper = ({ children }: any) => (
             <userContext.Provider
                 value={{
                     user: null,
@@ -70,7 +67,7 @@ describe('ProfileButton', () => {
         (signInWithPopup as jest.Mock).mockResolvedValue({
             user: mockUser,
         });
-        const Wrapper = ({ children }: { children: ReactNode }) => (
+        const Wrapper = ({ children }: any) => (
             <userContext.Provider
                 value={{
                     user: mockUser,

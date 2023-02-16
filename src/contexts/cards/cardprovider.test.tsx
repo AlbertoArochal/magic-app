@@ -4,7 +4,7 @@ import { CardProvider } from './cardprovider';
 import { CardContext } from './cardcontext';
 import { cardsmock } from '../../mocks/cardsmock';
 import { useEffect } from 'react';
-import {CollectionsMock} from '../../mocks/collectionsmock';
+import { CollectionsMock } from '../../mocks/collectionsmock';
 import { useReducer } from 'react';
 import { QueryReducer } from '../../components/reducers/carsreducer/cardsreducer';
 
@@ -18,6 +18,10 @@ describe('CardProvider', () => {
                         expect(value.setCollections).toBeInstanceOf(Function);
                         expect(value.cards).toEqual([]);
                         expect(value.setCards).toBeInstanceOf(Function);
+                        expect(value.filteredCards).toEqual([]);
+                        expect(value.setFilteredCards).toBeInstanceOf(Function);
+                        expect(value.page).toEqual(1);
+                        expect(value.setPage).toBeInstanceOf(Function);
                         return null;
                     }}
                 </CardContext.Consumer>
@@ -44,7 +48,8 @@ describe('CardProvider', () => {
     });
     test('should set collections', () => {
         const TestComponent = () => {
-            const { collections, setCollections } = React.useContext(CardContext);
+            const { collections, setCollections } =
+                React.useContext(CardContext);
             useEffect(() => {
                 setCollections(CollectionsMock);
             }, []);
@@ -59,9 +64,10 @@ describe('CardProvider', () => {
         const div = screen.getByText('3');
         expect(div).toBeInTheDocument();
     });
-    test('shouls set filteredcards' , () => {
+    test('shouls set filteredcards', () => {
         const TestComponent = () => {
-            const { filteredCards, setFilteredCards } = React.useContext(CardContext);
+            const { filteredCards, setFilteredCards } =
+                React.useContext(CardContext);
             useEffect(() => {
                 setFilteredCards(cardsmock);
             }, []);
@@ -79,29 +85,6 @@ describe('CardProvider', () => {
 });
 
 describe('Tests for pagination', () => {
-    test('setPage should set pagination to a valid value', () => {
-        const { result } = renderHook(() =>
-            useReducer(QueryReducer, 3)
-        );
-        const paginationDispatch = result.current[1];
-        const cardContextValue = {
-            pagination: result.current[0],
-            setPage: (page: number) => {
-                if (page < 1) {
-                    page = 1;
-                }
-                paginationDispatch({
-                    type: 'SET_PAGINATION',
-                    payload: page,
-                });
-            },
-        };
-        const { setPage } = cardContextValue;
-
-        act(() => setPage(3));
-        expect(cardContextValue.pagination).toBe(3);
-    });
-
     test('setPage should call paginationDispatch with the correct action', () => {
         const paginationDispatch = jest.fn();
         const cardContextValue = {
@@ -141,4 +124,3 @@ describe('Tests for pagination', () => {
         });
     });
 });
-

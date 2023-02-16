@@ -14,11 +14,11 @@ const YearCard = ({ year }: Props) => {
     const sets = collections;
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const { page } = useContext(CardContext);
 
     const setCardsHandler = async (year: number) => {
         setLoading(true);
-        await GetFetchCardsByYear(year, page);
+        await GetFetchCardsByYear(year, 1);
+        localStorage.setItem('year', year.toString());
         navigate('/years');
     };
 

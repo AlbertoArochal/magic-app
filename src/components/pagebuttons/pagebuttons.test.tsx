@@ -18,6 +18,13 @@ describe('PageButtons', () => {
     };
 
     test('should decrease page when left button is clicked', () => {
+        const mockedGetCardsByYear = jest.fn();
+        jest.mock('../hooks/logdelete/useCards', () => ({
+            useCards: () => ({
+                GetCardsByYear: mockedGetCardsByYear,
+            }),
+        }));
+
         render(
             <CardContext.Provider value={cardContext}>
                 <PageButtons />
@@ -31,9 +38,15 @@ describe('PageButtons', () => {
     });
 
     test('should increase page when right button is clicked', () => {
+        const mockedGetCardsByYear = jest.fn();
+        jest.mock('../hooks/logdelete/useCards', () => ({
+            useCards: () => ({
+                GetFetchCardsByYear: mockedGetCardsByYear,
+            }),
+        }));
         render(
             <CardContext.Provider value={cardContext}>
-                <PageButtons />
+                <PageButtons period={2011} />
             </CardContext.Provider>
         );
 
@@ -43,4 +56,3 @@ describe('PageButtons', () => {
         expect(cardContext.setPage).toHaveBeenCalledWith(3);
     });
 });
-
