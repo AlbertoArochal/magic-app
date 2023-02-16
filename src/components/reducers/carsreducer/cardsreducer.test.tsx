@@ -5,7 +5,8 @@ import {
 } from './cardsreducer';
 import {
     initialCards,
-    initialFilteredCards,initialCollections
+    initialFilteredCards,
+    initialCollections,
 } from '../../../contexts/cards/cardcontext';
 
 describe('CollectionsReducer', () => {
@@ -36,8 +37,10 @@ describe('CollectionsReducer', () => {
         const newState = FilteredCardsReducer(initialFilteredCards, action);
         expect(newState).toEqual({ filteredCards });
     });
-    test('should return the initial state', () => {
-        expect(FilteredCardsReducer(undefined, {})).toEqual(initialFilteredCards);
+    test('should return initial state', () => {
+        expect(FilteredCardsReducer(undefined, {})).toEqual(
+            initialFilteredCards
+        );
     });
 });
 

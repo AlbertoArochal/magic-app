@@ -21,3 +21,16 @@ export const addFilteredCards = (cards: CardType[]) => {
         payload: cards,
     };
 };
+
+export const setPage = (page: number) => {
+    return {
+        type: 'SET_PAGINATION',
+        payload: page,
+    };
+};
+
+export const resetPage = () => {
+    return {
+        type: 'RESET_PAGINATION',
+    };
+};

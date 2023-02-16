@@ -3,6 +3,7 @@ import { CardFetcher } from '../cardfetcher/cardfetcher';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
+import { PageButtons } from '../pagebuttons/pagebuttons';
 
 export const CataloguePage = () => {
     const { setFilteredCards } = useContext(CardContext);

@@ -33,3 +33,14 @@ export const FilteredCardsReducer = (
             return state;
     }
 };
+
+export const QueryReducer = (state = 0, action: any) => {
+    switch (action.type) {
+        case 'SET_PAGINATION':
+            return { Page: action.payload };
+        case 'RESET_PAGINATION':
+            return 1;
+        default:
+            return state;
+    }
+};

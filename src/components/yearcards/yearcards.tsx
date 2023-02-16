@@ -1,5 +1,5 @@
 import Necropotence from '../../assets/img/necropotence.webp';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useCards } from '../hooks/logdelete/useCards';
 import { useState } from 'react';
@@ -14,8 +14,9 @@ const YearCard = ({ year }: Props) => {
     const sets = collections;
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    const { page } = useContext(CardContext);
 
-    const setCardsHandler = async (year: number, page: number) => {
+    const setCardsHandler = async (year: number) => {
         setLoading(true);
         await GetFetchCardsByYear(year, page);
         navigate('/years');

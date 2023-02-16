@@ -4,7 +4,8 @@ import { ColorScroll } from '../colorscroll/colorscroll';
 import { TypeButtons } from '../typebuttons/typebuttons';
 import { FlavorText } from '../flavortext/flavortext';
 import { Footer } from '../footer/footer';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { PageButtons } from '../pagebuttons/pagebuttons';
 
 export const YearsPage = () => {
     useEffect(() => {

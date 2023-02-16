@@ -2,6 +2,7 @@ import {
     CollectionsReducer,
     CardsReducer,
     FilteredCardsReducer,
+    QueryReducer,
 } from '../../components/reducers/carsreducer/cardsreducer';
 import { ReactNode } from 'react';
 import { useReducer } from 'react';
@@ -17,12 +18,15 @@ export const CardProvider = ({ children }: { children: ReactNode }) => {
     const [cards, cardsDispatch] = useReducer(CardsReducer, {
         ...initialCards,
     });
+
     const [filteredCards, filteredCardsDispatch] = useReducer(
         FilteredCardsReducer,
         {
             ...initialFilteredCards,
         }
     );
+
+    const [pagination, paginationDispatch] = useReducer(QueryReducer, 1);
 
     return (
         <CardContext.Provider
@@ -45,6 +49,19 @@ export const CardProvider = ({ children }: { children: ReactNode }) => {
                         type: 'SET_FILTERED_CARDS',
                         payload: filteredCards,
                     }),
+                pagination: pagination,
+                setPage: (page: number) => {
+                    if (page < 1) {
+                        page = 1;
+                    }
+                    paginationDispatch({
+                        type: 'SET_PAGINATION',
+                        payload: page,
+                    });
+                },
+                resetPage: () => {
+                    paginationDispatch({ type: 'RESET_PAGINATION' });
+                },
             }}
         >
             {children}

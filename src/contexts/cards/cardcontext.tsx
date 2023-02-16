@@ -31,6 +31,11 @@ export type CardContextType = {
     setCards: (cards: CardType[]) => void;
     filteredCards: CardType[];
     setFilteredCards: (cards: CardType[]) => void;
+    page: number;
+    setPage: (page: number) => void;
+    resetPage: () => void;
+    year: number;
+    setYear: (year: number) => void;
 };
 
 export const CardContext = createContext<CardContextType>({
@@ -45,4 +50,12 @@ export const CardContext = createContext<CardContextType>({
     filteredCards: [] as CardType[],
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     setFilteredCards: (cards: CardType[]) => {},
+    page: 1,
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setPage: (newPage: number) => {},
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    resetPage: () => {},
+    year: 1993,
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setYear: (year: number) => {},
 });
