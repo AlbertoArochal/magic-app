@@ -2,11 +2,13 @@ import {
     CollectionsReducer,
     CardsReducer,
     FilteredCardsReducer,
+    QueryReducer,
 } from './cardsreducer';
 import {
     initialCards,
     initialFilteredCards,
     initialCollections,
+
 } from '../../../contexts/cards/cardcontext';
 
 describe('CollectionsReducer', () => {
@@ -116,5 +118,31 @@ describe('CardsReducer 2', () => {
             cards: newCards,
         };
         expect(CardsReducer(initialCards, action)).toEqual(expectedState);
+    });
+});
+
+
+describe('QueryReducer', () => {
+    test('should return the initial state', () => {
+        const state = QueryReducer(undefined, {});
+        expect(state).toBe(1);
+    });
+
+    test('should handle SET_PAGINATION action', () => {
+        const state = QueryReducer(1, {
+            type: 'SET_PAGINATION',
+            payload: 2,
+        });
+        expect(state).toBe(2);
+    });
+
+    test('should handle RESET_PAGINATION action', () => {
+        const state = QueryReducer(5, { type: 'RESET_PAGINATION' });
+        expect(state).toBe(1);
+    });
+
+    test('should ignore unknown actions', () => {
+        const state = QueryReducer(2, { type: 'UNKNOWN_ACTION' });
+        expect(state).toBe(2);
     });
 });

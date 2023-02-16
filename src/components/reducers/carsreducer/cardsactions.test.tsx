@@ -1,4 +1,4 @@
-import { addCollection, addCards, addFilteredCards } from './cardsactions';
+import { addCollection, addCards, addFilteredCards, setPage, resetPage } from './cardsactions';
 
 describe('addCollection action', () => {
     it('should return the correct type and payload', () => {
@@ -39,4 +39,29 @@ describe('addFilteredCards action', () => {
 
         expect(addFilteredCards(cards)).toEqual(expectedAction);
     });
+
+    
+
 });
+
+describe('setPage action', () => {
+        it('should return the correct type and payload', () => {
+            const page = 2;
+            const expectedAction = {
+                type: 'SET_PAGINATION',
+                payload: page,
+            };
+
+            expect(setPage(page)).toEqual(expectedAction);
+        });
+    });
+
+    describe('resetPage action', () => {
+        it('should return the correct type and payload', () => {
+            const expectedAction = {
+                type: 'RESET_PAGINATION',
+            };
+
+            expect(resetPage()).toEqual(expectedAction);
+        });
+    });
