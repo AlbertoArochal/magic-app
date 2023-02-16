@@ -1,6 +1,6 @@
 import { auth, Firedb, provider } from '../firebase/firebase';
 import { signInWithPopup } from 'firebase/auth';
-import { set, ref } from 'firebase/database';
+import { set, ref,get} from 'firebase/database';
 
 export const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, provider);
@@ -13,8 +13,13 @@ export const signInWithGoogle = async () => {
         email,
         profilePic,
         displayName: name,
-        decks: { deck1: [] },
     };
-    set(ref(Firedb, 'users/' + user.uid), user);
+    const userRef = ref(Firedb, `users/${result.user.uid}`);
+    console.log(userRef)
+    const userSnapshot = await get(userRef);
+    console.log(userSnapshot)
+    if (!userSnapshot.exists()) {
+        await set(ref(Firedb, 'users/' + user.uid), user);
+    }
     return user;
 };
