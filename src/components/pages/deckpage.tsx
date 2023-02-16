@@ -1,10 +1,12 @@
 import { Header } from '../header/header';
 import { CardFetcher } from '../cardfetcher/cardfetcher';
+import { PageButtons } from '../pagebuttons/pagebuttons';
 
 export const DeckPage = () => {
     return (
         <>
             <Header />
+            <PageButtons />
             <div
                 className="Catalogue__container"
                 key={new Date().getTime().toString + 'container'}

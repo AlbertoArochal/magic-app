@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useContext } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { CardContext, initialCollections, initialCards } from './cardcontext';
+import { CardContext, initialCollections, initialCards, initialFilteredCards } from './cardcontext';
 import { CardType } from '../../models/cardtype';
 import { CollectionsMock } from '../../mocks/collectionsmock';
 import { cardsmock } from '../../mocks/cardsmock';

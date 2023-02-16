@@ -34,9 +34,9 @@ export type CardContextType = {
     page: number;
     setPage: (page: number) => void;
     resetPage: () => void;
-    year: number;
-    setYear: (year: number) => void;
+    pagination: number; 
 };
+
 
 export const CardContext = createContext<CardContextType>({
     collections: [] as CollectionType[],
@@ -55,7 +55,6 @@ export const CardContext = createContext<CardContextType>({
     setPage: (newPage: number) => {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     resetPage: () => {},
-    year: 1993,
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    setYear: (year: number) => {},
+    pagination: 1,
 });
