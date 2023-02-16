@@ -1,24 +1,33 @@
 import { auth, Firedb, provider } from '../firebase/firebase';
 import { signInWithPopup } from 'firebase/auth';
-import { set, ref, remove, update, onValue } from 'firebase/database';
+import { set, ref, remove, update, onValue, child, getDatabase, get } from 'firebase/database';
 import { CardType } from '../../models/cardtype';
 export class UserFirebaseRepo {
-    async signInWithGoogle() {
+     signInWithGoogle = async () => {
         const result = await signInWithPopup(auth, provider);
-        const name = result.user.displayName;
-        const email = result.user.email;
-        const profilePic = result.user.photoURL;
-        const user = {
-            uid: result.user.uid,
-            username: name,
-            email,
-            profilePic,
-            displayName: name,
-            decks: { deck1: [] },
-        };
-        set(ref(Firedb, 'users/' + user.uid), user);
+        const userId = result.user.uid;
+    
+        const dbRef = ref(getDatabase());
+        const userSnapshot = await get(child(dbRef, `users/${userId}`));
+        
+        let user;
+        if (userSnapshot.exists()) {
+            user = userSnapshot.val();
+        } else {
+            const name = result.user.displayName;
+            const email = result.user.email;
+            const profilePic = result.user.photoURL;
+            user = {
+                uid: userId,
+                username: name,
+                email,
+                profilePic,
+                displayName: name,
+            };
+            set(ref(Firedb, `users/${userId}`), user);
+        }
         return user;
-    }
+    };
     async signOut() {
         await auth.signOut();
     }
