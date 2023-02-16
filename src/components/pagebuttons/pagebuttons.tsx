@@ -17,9 +17,21 @@ export const PageButtons = ({ period = 2011 }: { period?: number }) => {
     };
 
     return (
-        <div>
-            {page > 1 && <button onClick={handlePreviousPage}>⇦</button>}
-            <button onClick={handleNextPage}>⇨</button>
+        <div className="Pagebuttons__container">
+            {page > 1 && (
+                <button
+                    onClick={handlePreviousPage}
+                    className="Pagebutton Pagebutton__plus"
+                >
+                    ⇦
+                </button>
+            )}
+            <button
+                onClick={handleNextPage}
+                className="Pagebutton Pagebutton__minus"
+            >
+                ⇨
+            </button>
         </div>
     );
 };

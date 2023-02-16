@@ -15,6 +15,12 @@ describe('YearsPage', () => {
                         setCards: () => jest.fn(),
                         collections: [],
                         setCollections: () => jest.fn(),
+                        filteredCards: [],
+                        setFilteredCards: () => jest.fn(),
+                        page: 1,
+                        setPage: () => jest.fn(),
+                        resetPage: () => jest.fn(),
+                        pagination: 1,
                     }}
                 >
                     <YearsPage />

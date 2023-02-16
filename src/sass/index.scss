@@ -864,6 +864,31 @@ h6 {
   }
 }
 
+.Pagebuttons__container {
+  margin-top: -2rem;
+  .Pagebutton {
+    padding: 0.5rem 1.5rem;
+    height: 3rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+      sans-serif;
+    font-size: 1.3rem;
+    background-color: #faca52;
+    border: 1px solid #333;
+    box-shadow: $strong-shadow;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      filter: brightness(1.2);
+      transform: scale(1.02);
+    }
+    &:active {
+      filter: brightness(0.8);
+      transform: scale(0.98);
+    }
+  }
+}
+
 .uris__art__crop {
   display: none;
 }
@@ -1247,5 +1272,12 @@ h6 {
   .card__detail__flavor {
     line-height: 1.3;
     padding: 0 1rem;
+  }
+  .FlavorText__container {
+    display: none;
+
+    .FlavorText__title {
+      display: none;
+    }
   }
 }

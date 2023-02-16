@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
-import { screen, render, act } from '@testing-library/react';
+import { screen, render, act, fireEvent } from '@testing-library/react';
 import { userContext } from '../../../contexts/user/usercontext';
 import { useLogDelete } from './uselogdelete';
+import { UserFirebaseRepo } from '../../services/userfirebaserepo';
 
 describe('useLogDelete hook', () => {
     it('should sign out the user and delete it from the database', async () => {
