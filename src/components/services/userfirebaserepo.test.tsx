@@ -2,7 +2,7 @@ import { UserFirebaseRepo } from './userfirebaserepo';
 import { auth } from '../firebase/firebase';
 import { signInWithPopup } from 'firebase/auth';
 import { provider } from '../firebase/firebase';
-import { set, ref, update, onValue } from 'firebase/database';
+import { set, ref, update, onValue, get } from 'firebase/database';
 import { Firedb } from '../firebase/firebase';
 import { CardType } from '../../models/cardtype';
 import { cardsmock } from '../../mocks/cardsmock';
@@ -26,8 +26,16 @@ describe('UserFirebaseRepo', () => {
         const mockUserRef = {
             set: jest.fn(),
         };
+        const mockSnapshot = {
+            exists: jest.fn(() => false),
+            val: jest.fn(),
+        };
+
         (signInWithPopup as jest.Mock).mockResolvedValue({
             user: mockUser,
+        });
+        (get as jest.Mock).mockResolvedValue({
+            snapshot: mockSnapshot,
         });
         (ref as jest.Mock).mockReturnValue(mockUserRef);
         await userRepo.signInWithGoogle();
@@ -69,5 +77,4 @@ describe('UserFirebaseRepo', () => {
             expect.any(Function)
         );
     });
-    
 });

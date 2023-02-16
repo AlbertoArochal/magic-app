@@ -15,6 +15,7 @@ export const YearsPage = () => {
         <>
             <Header />
             <YearButton />
+
             <FlavorText />
             <ColorScroll />
             <TypeButtons />

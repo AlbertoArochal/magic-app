@@ -547,6 +547,30 @@ h6 {
   text-decoration: none;
 }
 
+.FlavorText__container {
+  position: relative;
+  display: flex;
+  width: 40%;
+  height: 30vh;
+  justify-content: start;
+  align-items: center;
+  left: 40rem;
+  margin-top: -10rem;
+}
+.FlavorText__container .FlavorText__title {
+  position: relative;
+  z-index: 1;
+  top: 6.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-decoration: none;
+  background-color: #bdf3c6;
+  border-radius: 0.8rem;
+  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  border: black solid 2px;
+  padding: 1rem;
+}
+
 .ColorScroll__container {
   width: 100%;
   height: 17vh;

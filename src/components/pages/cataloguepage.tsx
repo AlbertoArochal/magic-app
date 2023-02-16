@@ -6,19 +6,24 @@ import { CardContext } from '../../contexts/cards/cardcontext';
 import { PageButtons } from '../pagebuttons/pagebuttons';
 
 export const CataloguePage = () => {
+    const { setPage } = useContext(CardContext);
     const { setFilteredCards } = useContext(CardContext);
+    const period = localStorage.getItem('year') ?? '2011';
     useEffect(() => {
         setFilteredCards([]);
+
         window.scrollTo(0, 0);
     }, []);
     return (
         <>
             <Header />
+
             <div
                 className="Catalogue__container"
                 key={new Date().getTime().toString + 'container'}
             >
                 {' '}
+                <PageButtons period={+period} />
                 <CardFetcher />
                 <div
                     className="catalogue__header"
