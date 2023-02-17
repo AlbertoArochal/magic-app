@@ -23,9 +23,8 @@ export const Header = () => {
         const deck = await getDeck(user.uid);
         setFilteredCards(deck);
         setLoading(false);
-        setTimeout(() => {
-            navigate('/deck');
-        }, 500);
+
+        navigate('/deck');
     };
 
     useEffect(() => {
@@ -51,7 +50,7 @@ export const Header = () => {
                 </nav>
                 {user ? (
                     <button
-                        className={`bnt-more ${loading ? 'btn__loading' : ''}`}
+                        className="Header__button profile"
                         onClick={setDecksHandler}
                     >
                         My Decks

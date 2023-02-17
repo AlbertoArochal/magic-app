@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { ProfilePage } from '../components/pages/profilepage';
-import { App } from '../App';
+import { App } from '../components/app/App';
 import { YearsPage } from '../components/pages/yearspage';
 import { CataloguePage } from '../components/pages/cataloguepage';
 import { DeckPage } from '../components/pages/deckpage';

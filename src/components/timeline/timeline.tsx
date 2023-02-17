@@ -19,7 +19,7 @@ export const Timeline: React.FC<Props> = ({ year }) => {
     for (let i = year; i <= currentYear; i++) {
         years.push(i);
     }
-    let toggle = 'right';
+    const toggle = 'right';
 
     return (
         <section className="timeline">
