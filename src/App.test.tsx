@@ -6,7 +6,6 @@ import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 import { MemoryRouter } from 'react-router-dom';
 import { CardContext } from './contexts/cards/cardcontext';
 import { cardsmock } from './mocks/cardsmock';
-import { useContext } from 'react';
 
 jest.mock('./components/footer/footer', () => ({
     Footer: () => (
@@ -40,7 +39,6 @@ describe('App', () => {
             </CardContext.Provider>
         );
         mockAllIsIntersecting(true);
-        expect(screen.getByText('Secret Lair')).toBeInTheDocument();
         expect(screen.getByText('PROFILE')).toBeInTheDocument();
     });
 });

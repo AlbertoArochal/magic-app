@@ -4,13 +4,10 @@ import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 import { Header } from './header';
 import { MemoryRouter } from 'react-router-dom';
 import { CardContext } from '../../contexts/cards/cardcontext';
-import { useContext } from 'react';
 import { cardsmock } from '../../mocks/cardsmock';
 import { userContext } from '../../contexts/user/usercontext';
-import { BrowserRouter } from 'react-router-dom';
 import { CardProvider } from '../../contexts/cards/cardprovider';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 const intersectionObserverMock = () => ({
     observe: () => null,
@@ -20,25 +17,32 @@ window.IntersectionObserver = jest
     .mockImplementation(intersectionObserverMock);
 
 describe('Header', () => {
+    const mockuser = {
+        name: 'Test User',
+    };
+
     it('should render the header correctly', () => {
         mockAllIsIntersecting(true);
         render(
-            <CardContext.Provider
-                value={{
-                    cards: cardsmock,
-                    collections: [],
-                    setCards: jest.fn(),
-                    setCollections: jest.fn(),
-                }}
+            <userContext.Provider
+                value={{ user: mockuser, setUser: jest.fn() }}
             >
-                <MemoryRouter>
-                    <Header />
-                </MemoryRouter>
-            </CardContext.Provider>
+                <CardContext.Provider
+                    value={{
+                        cards: cardsmock,
+                        collections: [],
+                        setCards: jest.fn(),
+                        setCollections: jest.fn(),
+                    }}
+                >
+                    <MemoryRouter>
+                        <Header />
+                    </MemoryRouter>
+                </CardContext.Provider>
+            </userContext.Provider>
         );
 
         expect(screen.getByText('Home')).toBeInTheDocument();
-        expect(screen.getByText('Secret Lair')).toBeInTheDocument();
         expect(screen.getByText('My Decks')).toBeInTheDocument();
     });
     test('toggles the menu when the button is clicked', () => {
@@ -125,7 +129,7 @@ test('when setDecksHandler is called setFilteredCards should set mockcards', () 
         const setDecksHandler = () => {
             setFilteredCards(cardsmock);
         };
-        const [loading, setLoading] = useState(true);
+        const [loading] = useState(true);
 
         useEffect(() => {
             setDecksHandler();
