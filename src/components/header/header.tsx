@@ -20,6 +20,7 @@ export const Header = () => {
 
     const setDecksHandler = async () => {
         setLoading(true);
+        setFilteredCards([]);
         const deck = await getDeck(user.uid);
         setFilteredCards(deck);
         setLoading(false);
