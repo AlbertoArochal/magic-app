@@ -1,7 +1,7 @@
 import { CardType } from '../../models/cardtype';
 import { useContext } from 'react';
 import { userContext } from '../../contexts/user/usercontext';
-import { useGetDelAddDeck } from '../hooks/getDelAddDeck';
+import { useGetDelAddDeck } from '../../hooks/getDelAddDeck';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 

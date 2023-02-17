@@ -1,6 +1,5 @@
-import { auth } from '../firebase/firebase';
+import { auth, provider } from '../components/firebase/firebase';
 import { signInWithPopup } from 'firebase/auth';
-import { provider } from '../firebase/firebase';
 import { set, ref } from 'firebase/database';
 
 import { signInWithGoogle } from './signwithgoogle';

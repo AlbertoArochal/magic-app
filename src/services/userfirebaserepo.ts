@@ -1,7 +1,7 @@
-import { auth, Firedb, provider } from '../firebase/firebase';
+import { auth, Firedb, provider } from '../components/firebase/firebase';
 import { signInWithPopup } from 'firebase/auth';
 import { ref, remove, update, onValue } from 'firebase/database';
-import { CardType } from '../../models/cardtype';
+import { CardType } from '../models/cardtype';
 export class UserFirebaseRepo {
     async signInWithGoogle() {
         const result = await signInWithPopup(auth, provider);

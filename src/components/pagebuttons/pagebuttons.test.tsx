@@ -19,7 +19,7 @@ describe('PageButtons', () => {
 
     test('should decrease page when left button is clicked', () => {
         const mockedGetCardsByYear = jest.fn();
-        jest.mock('../hooks/logdelete/useCards', () => ({
+        jest.mock('../../hooks/logdelete/useCards', () => ({
             useCards: () => ({
                 GetCardsByYear: mockedGetCardsByYear,
             }),
@@ -39,7 +39,7 @@ describe('PageButtons', () => {
 
     test('should increase page when right button is clicked', () => {
         const mockedGetCardsByYear = jest.fn();
-        jest.mock('../hooks/logdelete/useCards', () => ({
+        jest.mock('../../hooks/logdelete/useCards', () => ({
             useCards: () => ({
                 GetFetchCardsByYear: mockedGetCardsByYear,
             }),

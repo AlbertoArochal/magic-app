@@ -1,7 +1,7 @@
 import { ProfilePic } from '../profilepic/profilepic';
 import { userContext } from '../../contexts/user/usercontext';
 import { useContext } from 'react';
-import { useLogDelete } from '../hooks/logdelete/uselogdelete';
+import { useLogDelete } from '../../hooks/logdelete/uselogdelete';
 
 export const Profile = () => {
     const { user } = useContext(userContext);
