@@ -1,4 +1,6 @@
-#ISDI Coders Final Project
+ISDI Coders Final Project
+
+
 ##Project Summary
 This project is a web application that presents a timeline where users can browse the Magic The Gathering card catalog, filtered not only by year but also by the cards that were legal to play in the "Standard" format each year. The application will consume data from the free, well-documented https://api.scryfall.com API, with a daily limit of 5000 requests or 10 requests per second. The API will be queried by filters for year range, set, card type, and colors.
 
