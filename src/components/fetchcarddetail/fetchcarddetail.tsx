@@ -25,7 +25,7 @@ export const FetchCardDetail = ({
             <div className="card__detail__content">
                 <div className="card__detail__img__container">
                     <img
-                        src={card.image_uris.large}
+                        src={card.image_uris.normal}
                         alt={card.name}
                         className="uris__large"
                     />
