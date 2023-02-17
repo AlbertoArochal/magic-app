@@ -8,6 +8,7 @@ export const errorCard = {
     image_uris: {
         small: 'Error',
         large: 'Error',
+        normal: 'Error',
         art_crop: 'Error',
     },
     mana_cost: 'Error',
@@ -67,6 +68,7 @@ export class ScryfallApi {
                     image_uris: {
                         small: card.image_uris.small,
                         large: card.image_uris.large,
+                        normal: card.image_uris.normal,
                         art_crop: card.image_uris.art_crop,
                     },
                     mana_cost: card.mana_cost,
@@ -108,6 +110,7 @@ export class ScryfallApi {
                     image_uris: {
                         small: card.image_uris.small,
                         large: card.image_uris.large,
+                        normal: card.image_uris.normal,
                         art_crop: card.image_uris.art_crop,
                     },
                     mana_cost: card.mana_cost,
@@ -151,6 +154,7 @@ export class ScryfallApi {
                     image_uris: {
                         small: card.image_uris.small,
                         large: card.image_uris.large,
+                        normal: card.image_uris.png,
                         art_crop: card.image_uris.art_crop,
                     },
                     mana_cost: card.mana_cost,

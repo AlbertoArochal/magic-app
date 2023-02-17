@@ -4,6 +4,7 @@ export type CardType = {
     image_uris: {
         small: string;
         large: string;
+        normal: string;
         art_crop: string;
     };
     mana_cost: string;
@@ -23,6 +24,7 @@ export type CreatureType = {
     image_uris: {
         small: string;
         large: string;
+        nornmal: string;
         art_crop: string;
     };
     mana_cost: string;
