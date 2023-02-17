@@ -1,5 +1,5 @@
 import { UserFirebaseRepo } from '../services/userfirebaserepo';
-import { CardType } from '../../models/cardtype';
+import { CardType } from '../models/cardtype';
 
 export const useGetDelAddDeck = () => {
     const userFirebaseRepo = new UserFirebaseRepo();

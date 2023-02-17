@@ -9,7 +9,7 @@ jest.mock('firebase/database');
 describe('ProfileButton', () => {
     it('should not call signInWithGoogle', () => {
         const mockSignInWithGoogle = jest.fn();
-        jest.mock('../services/signwithgoogle', () => ({
+        jest.mock('../../services/signwithgoogle', () => ({
             signInWithGoogle: mockSignInWithGoogle,
         }));
         const TestComponent = () => {
@@ -51,7 +51,7 @@ describe('ProfileButton', () => {
     });
     it('should not call sigInWithGoogle', () => {
         const mockSignInWithGoogle = jest.fn();
-        jest.mock('../services/signwithgoogle', () => ({
+        jest.mock('../../services/signwithgoogle', () => ({
             signInWithGoogle: mockSignInWithGoogle,
         }));
         const TestComponent = () => {

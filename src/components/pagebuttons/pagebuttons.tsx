@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
-import { useCards } from '../hooks/logdelete/useCards';
+import { useCards } from '../../hooks/logdelete/useCards';
 
 export const PageButtons = ({ period = 2011 }: { period?: number }) => {
     const { page, setPage } = useContext(CardContext);

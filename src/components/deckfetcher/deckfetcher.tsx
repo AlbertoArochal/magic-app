@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ref, remove } from 'firebase/database';
 import { userContext } from '../../contexts/user/usercontext';
-import { useGetDelAddDeck } from '../hooks/getDelAddDeck';
+import { useGetDelAddDeck } from '../../hooks/getDelAddDeck';
 import { Modal } from '../modal/modal';
 import { useState } from 'react';
 import { Firedb } from '../firebase/firebase';
@@ -56,7 +56,7 @@ export const DeckFetcher = () => {
                                 removeButtonHandler(card.name);
                             }}
                         >
-                            X
+                            ❌
                         </button>
                     </div>
                 ))}

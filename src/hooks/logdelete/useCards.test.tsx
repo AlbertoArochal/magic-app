@@ -1,10 +1,11 @@
 import React from 'react';
 import { screen, render, fireEvent } from '@testing-library/react';
 import { useCards } from './useCards';
-import { CardContext } from '../../../contexts/cards/cardcontext';
-import { cardsmock } from '../../../mocks/cardsmock';
+import { CardContext } from '../../contexts/cards/cardcontext';
+import { cardsmock } from '../../mocks/cardsmock';
 import { ScryfallApi } from '../../services/scryfallapi';
-import { rawsetsmock } from '../../../mocks/rawsetsmock';
+import { rawsetsmock } from '../../mocks/rawsetsmock';
+
 describe('useCards', () => {
     jest.mock('../../services/scryfallapi', () => {
         return {

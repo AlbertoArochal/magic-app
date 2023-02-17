@@ -1,6 +1,6 @@
-import { RawCardType } from '../../models/rawType';
-import { CardType } from '../../models/cardtype';
-import { CollectionType } from '../../contexts/cards/cardcontext';
+import { RawCardType } from '../models/rawType';
+import { CardType } from '../models/cardtype';
+import { CollectionType } from '../contexts/cards/cardcontext';
 
 export const errorCard = {
     name: 'Error',

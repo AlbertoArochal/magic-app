@@ -1,4 +1,4 @@
-import { CardContext } from '../../../contexts/cards/cardcontext';
+import { CardContext } from '../../contexts/cards/cardcontext';
 import { useContext } from 'react';
 import { ScryfallApi } from '../../services/scryfallapi';
 

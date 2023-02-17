@@ -6,7 +6,7 @@ import { ProfilePic } from '../profilepic/profilepic';
 import { ProfileButton } from '../profilebutton/profilebutton';
 import { YearLink } from '../yearlink/yearlink';
 import { Link } from 'react-router-dom';
-import { useGetDelAddDeck } from '../hooks/getDelAddDeck';
+import { useGetDelAddDeck } from '../../hooks/getDelAddDeck';
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useNavigate } from 'react-router-dom';
 

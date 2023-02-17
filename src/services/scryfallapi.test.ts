@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { ScryfallApi, errorCard } from './scryfallapi';
-import { CollectionsMock } from '../../mocks/collectionsmock';
+import { CollectionsMock } from '../mocks/collectionsmock';
 
-import { cardsmock } from '../../mocks/cardsmock';
+import { cardsmock } from '../mocks/cardsmock';
 
 describe('ScryfallApi', () => {
     const responseMock = {

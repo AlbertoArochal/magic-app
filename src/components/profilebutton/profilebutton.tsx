@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { userContext } from '../../contexts/user/usercontext';
-import { useLogDelete } from '../hooks/logdelete/uselogdelete';
+import { useLogDelete } from '../../hooks/logdelete/uselogdelete';
 
 export const ProfileButton = () => {
     const { login } = useLogDelete();

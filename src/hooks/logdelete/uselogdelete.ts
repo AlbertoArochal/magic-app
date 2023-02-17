@@ -1,4 +1,4 @@
-import { userContext } from '../../../contexts/user/usercontext';
+import { userContext } from '../../contexts/user/usercontext';
 import { useContext } from 'react';
 import { UserFirebaseRepo } from '../../services/userfirebaserepo';
 export const useLogDelete = () => {

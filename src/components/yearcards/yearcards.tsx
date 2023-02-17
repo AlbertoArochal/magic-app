@@ -1,7 +1,7 @@
 import Necropotence from '../../assets/img/necropotence.webp';
 import { useContext } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
-import { useCards } from '../hooks/logdelete/useCards';
+import { useCards } from '../../hooks/logdelete/useCards';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 interface Props {

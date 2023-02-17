@@ -1,11 +1,11 @@
 import { UserFirebaseRepo } from './userfirebaserepo';
-import { auth } from '../firebase/firebase';
+import { auth, provider, Firedb } from '../components/firebase/firebase';
 import { signInWithPopup } from 'firebase/auth';
-import { provider } from '../firebase/firebase';
+
 import { ref, update, onValue } from 'firebase/database';
-import { Firedb } from '../firebase/firebase';
-import { CardType } from '../../models/cardtype';
-import { cardsmock } from '../../mocks/cardsmock';
+
+import { CardType } from '../models/cardtype';
+import { cardsmock } from '../mocks/cardsmock';
 
 jest.mock('firebase/auth');
 jest.mock('firebase/database');

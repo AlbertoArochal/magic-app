@@ -26,7 +26,7 @@ describe('YearCard', () => {
             );
         };
         const mockedGetCardsByYear = jest.fn();
-        jest.mock('../hooks/logdelete/useCards', () => ({
+        jest.mock('../../hooks/logdelete/useCards', () => ({
             useCards: () => ({
                 GetFetchCardsByYear: mockedGetCardsByYear,
             }),
