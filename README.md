@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+#ISDI Coders Final Project
+##Project Summary
+This project is a web application that presents a timeline where users can browse the Magic The Gathering card catalog, filtered not only by year but also by the cards that were legal to play in the "Standard" format each year. The application will consume data from the free, well-documented https://api.scryfall.com API, with a daily limit of 5000 requests or 10 requests per second. The API will be queried by filters for year range, set, card type, and colors.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The application will also use a private API to store registered users and the decks they build by selecting cards from the catalog as favorites.
 
-## Available Scripts
+##Components
+Timeline
+A timeline that displays a small card with a button for each year. When a user clicks on a year, the corresponding action will be added to the context to update the query and fetch data for that year.
 
-In the project directory, you can run:
+##Cardsfetcher
+Takes the state returned by QueryReducer from the context, makes a GET request to the public API, and returns JSX.
 
-### `npm start`
+##QueryReducer
+Receives the initial state (query without arguments) from the context and returns new state by adding the payload of the Action, which will be arguments to complete the query.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##PlayerReducer
+Manages the state related to user login and logout. Receives state changes from the Profile and Logout buttons.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+##LogoutBtn
+Sends a state change to the context when the user logs out.
 
-### `npm test`
+##CardDetailsFetcher
+Takes the state returned by QueryReducer from the context, makes a GET request to the public API, and returns JSX.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##DeckFetcher
+Returns a list of decks stored by a user from the response to a request to the database.
 
-### `npm run build`
+##PlayerDataFetcher
+Renders the data for the logged-in user from the database.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##AddButton
+Adds the card on which it is rendered to a user's deck.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##DeleteButton
+Allows a user to delete a card from one of their decks.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##DeckForm
+A small form that allows users to create a deck when they try to add a card. Requests the deck name and generates an ID. Contains a button to delete a deck.
 
-### `npm run eject`
+Header
+Renders various buttons conditionally depending on whether a user is logged in or not. Contains links to several routes.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##Footer
+Contains text and contact links.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##Pages
+Mainpage
+Secret Lair (similar to the Mainpage but with cards only from the Secret Lair set)
+User Profile (to log out)
+Year page (provides access to the catalog for that entire year or by card type-color)
+Catalog page (renders the cards resulting from a query)
+User decks page
+Card details page
+Optional Features (if time allows)
+DeckDownloader
+Allows users to download one of their decks in CSV format.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+###PricingFetcher
+Allows users to estimate the price of the cards in their decks. The information is provided by the API.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Views by Card Type and Color
+Router
+Context
