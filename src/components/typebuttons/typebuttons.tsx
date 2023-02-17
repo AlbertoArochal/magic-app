@@ -1,8 +1,7 @@
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useContext } from 'react';
 import { useCards } from '../../hooks/logdelete/useCards';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export const TypeButtons = () => {
     const { GetByYearAndType } = useCards();

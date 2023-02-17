@@ -34,9 +34,7 @@ export const Timeline: React.FC<Props> = ({ year }) => {
                     {years.map((year) => (
                         <Slide
                             duration={1000}
-                            direction={
-                                (toggle = toggle === 'right' ? 'left' : 'right')
-                            }
+                            direction={toggle === 'right' ? 'left' : 'right'}
                             key={year.toString() + 'Slide'}
                         >
                             <div
