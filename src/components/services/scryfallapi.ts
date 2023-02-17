@@ -154,7 +154,7 @@ export class ScryfallApi {
                     image_uris: {
                         small: card.image_uris.small,
                         large: card.image_uris.large,
-                        normal: card.image_uris.png,
+                        normal: card.image_uris.normal,
                         art_crop: card.image_uris.art_crop,
                     },
                     mana_cost: card.mana_cost,
