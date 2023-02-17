@@ -1,7 +1,6 @@
 import { Header } from '../header/header';
 import { CardFetcher } from '../cardfetcher/cardfetcher';
-import { useEffect } from 'react';
-import { useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { PageButtons } from '../pagebuttons/pagebuttons';
 

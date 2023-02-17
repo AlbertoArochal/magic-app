@@ -1,8 +1,7 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { CardType } from '../../models/cardtype';
 import { Modal } from '../modal/modal';
-import { useState } from 'react';
 
 export const CardFetcher = () => {
     const { cards, filteredCards } = useContext(CardContext);

@@ -4,11 +4,14 @@ import {
     FilteredCardsReducer,
     QueryReducer,
 } from '../../components/reducers/carsreducer/cardsreducer';
-import { ReactNode } from 'react';
-import { useReducer } from 'react';
+import { ReactNode, useReducer } from 'react';
 import { CardType } from '../../models/cardtype';
-import { initialCards, CardContext, initialFilteredCards } from './cardcontext';
-import { CollectionType } from './cardcontext';
+import {
+    initialCards,
+    CardContext,
+    initialFilteredCards,
+    CollectionType,
+} from './cardcontext';
 
 export const CardProvider = ({ children }: { children: ReactNode }) => {
     const [collections, collectionsDispatch] = useReducer(CollectionsReducer, {

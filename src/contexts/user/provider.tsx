@@ -3,9 +3,7 @@ import {
     PlanesWalkerReducer,
     initialState,
 } from '../../components/reducers/planeswalkerreducer';
-import { ReactNode } from 'react';
-
-import { useReducer } from 'react';
+import { ReactNode, useReducer } from 'react';
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [loginUser, loginDispatch] = useReducer(PlanesWalkerReducer, {
