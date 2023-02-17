@@ -104,7 +104,7 @@ describe('CardFetcher', () => {
                 </userContext.Provider>
             </BrowserRouter>
         );
-        const deleteButton = screen.getAllByText('X')[0];
+        const deleteButton = screen.getAllByText('❌')[0];
         fireEvent.click(deleteButton);
 
         expect(ref).toHaveBeenCalled();

@@ -38,10 +38,11 @@ export const ColorScroll = () => {
                 'Div' +
                 'ColorScroll' +
                 'Div' +
+                'ColorScroll' +
                 new Date().getTime().toString
             }
         >
-            {colors.map((color) => {
+            {colors.map((color, index) => {
                 const selectedCard = cards.find(
                     (card) =>
                         card.color_identity[0] === color &&
@@ -59,6 +60,7 @@ export const ColorScroll = () => {
                                 'link' +
                                 color +
                                 'link' +
+                                index +
                                 new Date().getTime().toString
                             }
                         >
@@ -72,6 +74,7 @@ export const ColorScroll = () => {
                                     'img' +
                                     color +
                                     'img' +
+                                    index +
                                     new Date().getTime().toString
                                 }
                             />

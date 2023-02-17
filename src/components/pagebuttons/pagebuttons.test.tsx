@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { CardContext, CardContextType } from '../../contexts/cards/cardcontext';
-import { PageButtons } from './PageButtons';
+import { PageButtons } from './pagebuttons';
 
 describe('PageButtons', () => {
     const cardContext: CardContextType = {
