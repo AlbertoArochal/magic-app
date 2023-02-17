@@ -1,5 +1,5 @@
 import { Header } from '../header/header';
-import { CardFetcher } from '../cardfetcher/cardfetcher';
+import { DeckFetcher } from '../deckfetcher/deckfetcher';
 import { PageButtons } from '../pagebuttons/pagebuttons';
 
 export const DeckPage = () => {
@@ -12,7 +12,7 @@ export const DeckPage = () => {
                 key={new Date().getTime().toString + 'container'}
             >
                 {' '}
-                <CardFetcher />
+                <DeckFetcher />
                 <div
                     className="catalogue__header"
                     key={new Date().getTime().toString + 'header'}

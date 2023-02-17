@@ -36,10 +36,6 @@ export class UserFirebaseRepo {
         await update(ref(Firedb, 'users/' + uid + '/decks/deck1/'), cardObject);
     }
 
-    /* Funcion pendiente de implementar
-    async removeCard(uid: string, card: string) {
-        await remove(ref(Firedb, 'users/' + uid + '/decks/deck1/' + card));
-    } */
     async getDeck(uid: string) {
         const dbRef = ref(Firedb, 'users/' + uid + '/decks/deck1/');
         const deck: any = [];

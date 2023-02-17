@@ -18,24 +18,23 @@ export const Header = () => {
     const { setFilteredCards } = useContext(CardContext);
     const navigate = useNavigate();
 
+    const setDecksHandler = async () => {
+        setLoading(true);
+        setFilteredCards([]);
+        const deck = await getDeck(user.uid);
+        setFilteredCards(deck);
+        setLoading(false);
+        navigate('/deck');
+    };
+
     useEffect(() => {
         const auth = getAuth();
         auth.onAuthStateChanged((user: any) => {
             if (user) {
                 setUser(user);
-            } else return 
+            } else return;
         });
     }, []);
-
-    const setDecksHandler = async () => {
-        setLoading(true);
-        const deck = await getDeck(user.uid);
-        setFilteredCards(deck);
-        setLoading(false);
-        setTimeout(() => {
-            navigate('/deck');
-        }, 1300);
-    };
 
     return (
         <div className="Header">
@@ -48,14 +47,15 @@ export const Header = () => {
                         <p className="home">Home</p>
                     </Link>
                     <YearLink />
-                    <p className="secret">Secret Lair</p>
                 </nav>
-                <button
-                    className={`bnt-more ${loading ? 'btn__loading' : ''}`}
-                    onClick={setDecksHandler}
-                >
-                    My Decks
-                </button>
+                {user ? (
+                    <button
+                        className={`bnt-more ${loading ? 'btn__loading' : ''}`}
+                        onClick={setDecksHandler}
+                    >
+                        My Decks
+                    </button>
+                ) : null}
                 <div className="header__pwp">
                     <ProfileButton />
 
@@ -83,16 +83,17 @@ export const Header = () => {
                             <p className="home">Home</p>
                         </Link>
                         <YearLink />
-                        <a className="secret" href="/">
-                            Secret Lair
-                        </a>
                     </nav>
-                    <button
-                        className={`bnt-more ${loading ? 'btn__loading' : ''}`}
-                        onClick={setDecksHandler}
-                    >
-                        My Decks
-                    </button>
+                    {user ? (
+                        <button
+                            className={`bnt-more ${
+                                loading ? 'btn__loading' : ''
+                            }`}
+                            onClick={setDecksHandler}
+                        >
+                            My Decks
+                        </button>
+                    ) : null}
                     <ProfileButton />
                 </div>
             )}

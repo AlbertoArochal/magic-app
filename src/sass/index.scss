@@ -864,6 +864,20 @@ h6 {
   }
 }
 
+.Catalogue__carddelete {
+  width: 2rem;
+  height: 2rem;
+  background-color: #faca52;
+  border: 1px solid #333;
+  box-shadow: $strong-shadow;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    filter: brightness(1.2);
+    transform: scale(1.02);
+  }
+}
+
 .Pagebuttons__container {
   margin-top: -2rem;
   .Pagebutton {

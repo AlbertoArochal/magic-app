@@ -7,6 +7,7 @@ import { useState } from 'react';
 export const CardFetcher = () => {
     const { cards, filteredCards } = useContext(CardContext);
     const [showModal, setShowModal] = useState(false);
+
     const data = filteredCards.length > 0 ? filteredCards : cards;
 
     const CardClickedHandler = (card: CardType) => {
