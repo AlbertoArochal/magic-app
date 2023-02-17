@@ -24,7 +24,7 @@ export const CardFetcher = () => {
         setShowModal(true);
     };
 
-    const location = useLocation();
+    const shouldRenderDeleteButton = filteredCards.length <= 50;
 
     const deleteButtonHandler = async (card: string) => {
         await remove(ref(Firedb, 'users/' + user.uid + '/decks/deck1/' + card));
@@ -49,7 +49,7 @@ export const CardFetcher = () => {
                             alt={card.name}
                             className="Catalogue__card__img"
                         />
-                        {location.pathname === '/deck' && (
+                        {shouldRenderDeleteButton && (
                             <button
                                 className="Catalogue__carddelete"
                                 onClick={(event) => {
