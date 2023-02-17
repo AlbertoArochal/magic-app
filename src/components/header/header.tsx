@@ -24,7 +24,9 @@ export const Header = () => {
         const deck = await getDeck(user.uid);
         setFilteredCards(deck);
         setLoading(false);
-        navigate('/deck');
+        setTimeout(() => {
+            navigate('/deck');
+        }, 500);
     };
 
     useEffect(() => {
