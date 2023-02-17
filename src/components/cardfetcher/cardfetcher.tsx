@@ -30,6 +30,7 @@ export const CardFetcher = () => {
                             src={card.image_uris.small}
                             alt={card.name}
                             className="Catalogue__card__img"
+                            loading="lazy"
                         />
                     </div>
                 ))}
