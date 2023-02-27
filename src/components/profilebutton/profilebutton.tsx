@@ -6,7 +6,7 @@ export const ProfileButton = () => {
     const { login } = useLogDelete();
     const { user } = useContext(userContext);
     return (
-        <button
+        <p
             onClick={() => {
                 if (!user) {
                     login();
@@ -16,7 +16,7 @@ export const ProfileButton = () => {
             }}
             className="Header__button profile"
         >
-            PROFILE
-        </button>
+            Profile
+        </p>
     );
 };

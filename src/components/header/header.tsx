@@ -49,12 +49,12 @@ export const Header = () => {
                     <YearLink />
                 </nav>
                 {user ? (
-                    <button
+                    <p
                         className="Header__button profile"
                         onClick={setDecksHandler}
                     >
                         My Decks
-                    </button>
+                    </p>
                 ) : null}
                 <div className="header__pwp">
                     <ProfileButton />

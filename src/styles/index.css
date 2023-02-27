@@ -366,19 +366,18 @@ h6 {
   font-size: 1.2rem;
 }
 .Profile .Profile__container button {
-  background-color: #795bf0;
-  color: #fff;
+  color: black;
   font-weight: 400;
   height: 63px;
   width: 40%;
   max-width: 360px;
-  border-radius: 90px;
   font-size: 1.5rem;
   cursor: pointer;
-  box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+  box-shadow: 0.2rem 0.2rem 0rem 0rem tomato;
+  transition: all 0.2s ease-in-out;
 }
 .Profile .Profile__container button:hover {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
 }
 .Profile .Profile__container .ProfilePic {
   width: 13rem;
@@ -472,16 +471,15 @@ h6 {
   background-color: #fef9ed;
 }
 .Header button:hover {
-  background-color: #fcc7c7;
   color: #000;
-  box-shadow: 0.2rem 0.2rem 0rem 0rem tomato;
+  cursor: pointer;
 }
 .Header .decks {
   background-color: #bdf3c6;
   color: #000;
 }
 .Header p {
-  margin: auto 0.8rem;
+  margin: auto 2rem;
   color: #000;
   padding: 0 1rem;
   font-size: 1.6rem;
@@ -489,8 +487,8 @@ h6 {
 }
 .Header p:hover {
   background-color: #bdf3c6;
-  border: #000 1px solid;
   box-shadow: 0.2rem 0.2rem 0rem 0rem tomato;
+  cursor: pointer;
 }
 
 .header__pwp {
@@ -511,6 +509,7 @@ h6 {
   border: 2px solid black;
   margin: 0;
   max-width: 4rem;
+  max-height: 4rem;
 }
 
 .Year__container {
@@ -915,7 +914,6 @@ h6 {
     box-shadow: none;
     display: block;
     position: absolute;
-    width: fit-content;
     height: fit-content;
     right: 0.5rem;
     margin: 1rem 0;
@@ -925,6 +923,7 @@ h6 {
   }
   .Header .Burger__button i.is-open {
     transform: rotate(45deg);
+    color: #000;
   }
   .Header .Burger__menu {
     display: block;
@@ -957,6 +956,12 @@ h6 {
     width: 90%;
     margin: 2rem auto;
     box-shadow: 0.2rem 0.2rem 0rem 0rem rgb(0, 0, 0);
+    background-color: black;
+    color: white;
+  }
+  .Header .Burger__menu button:hover {
+    background-color: #faca52;
+    color: black;
   }
   .Header .fa-bars {
     color: black;
