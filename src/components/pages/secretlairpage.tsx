@@ -1,5 +1,5 @@
 import { Header } from '../header/header';
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { CollectionType } from '../../contexts/cards/cardcontext';
 import { ScryfallApi } from '../../services/scryfallapi';
 import { CardType } from '../../models/cardtype';
@@ -23,20 +23,6 @@ export const SecretLairPage = () => {
     const [loadingMore, setLoadingMore] = useState(false);
     
     const showcaseRef = useRef<HTMLElement>(null);
-
-    const groupedShowcase = useMemo(() => {
-        const grouped = new Map<string, CardType>();
-        selectedSetCards.forEach(card => {
-            const artistName = card.artist?.trim() || 'Unknown Artist';
-            if (!grouped.has(artistName)) {
-                grouped.set(artistName, card);
-            }
-        });
-        return Array.from(grouped.entries()).map(([artist, card]) => ({
-            artist,
-            card,
-        }));
-    }, [selectedSetCards]);
 
     // Load initial data
     useEffect(() => {
@@ -222,12 +208,20 @@ export const SecretLairPage = () => {
 
                 {/* Cards Showcase - shows selected set or featured */}
                 <section className="SecretLair__showcase" ref={showcaseRef}>
-                    <h2 className="SecretLair__section-title">
-                        {selectedSet 
-                            ? selectedSet.replace('Secret Lair ', '').replace('Drop Series: ', '')
-                            : 'Featured Drops'
-                        }
-                    </h2>
+                    <div className="SecretLair__showcase-header">
+                        <h2 className="SecretLair__section-title">
+                            {selectedSet 
+                                ? selectedSet.replace('Secret Lair ', '').replace('Drop Series: ', '')
+                                : 'Featured Drops'
+                            }
+                        </h2>
+                        {selectedSet && selectedSetCards.length > 0 && (
+                            <div className="SecretLair__card-count">
+                                <span className="SecretLair__card-count-number">{selectedSetCards.length}</span>
+                                <span className="SecretLair__card-count-label">cards</span>
+                            </div>
+                        )}
+                    </div>
                     
                     {loadingSetCards ? (
                         <div className="SecretLair__showcase-loading">
@@ -235,26 +229,18 @@ export const SecretLairPage = () => {
                             <p>Loading collection...</p>
                         </div>
                     ) : selectedSet ? (
-                        <div className="SecretLair__folder-grid">
-                            {groupedShowcase.map(({ artist, card }, index) => (
+                        <div className="SecretLair__grid">
+                            {selectedSetCards.map((card, index) => (
                                 <div 
-                                    key={`showcase-${index}`}
-                                    className="SecretLair__folder-card"
+                                    key={`showcase-${card.name}-${index}`}
+                                    className="SecretLair__card"
                                     onClick={() => handleCardClick(card)}
                                 >
-                                    <div className="SecretLair__folder">
-                                        <div className="SecretLair__folder-tab" />
-                                        <div className="SecretLair__folder-body" />
-                                    </div>
                                     <img 
-                                        className="SecretLair__folder-card-image"
                                         src={card.image_uris.normal || card.image_uris.large} 
                                         alt={card.name}
                                         loading="lazy"
                                     />
-                                    <div className="SecretLair__folder-hover">
-                                        <p>{artist}</p>
-                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -276,7 +262,7 @@ export const SecretLairPage = () => {
                         </div>
                     )}
                     
-                    {selectedSet && groupedShowcase.length === 0 && !loadingSetCards && (
+                    {selectedSet && selectedSetCards.length === 0 && !loadingSetCards && (
                         <p className="SecretLair__showcase-empty">No cards found for this collection.</p>
                     )}
                     

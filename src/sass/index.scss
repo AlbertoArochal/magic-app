@@ -678,10 +678,42 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   transition: background-color 0.3s ease, border-color 0.3s ease;
   
+  // Dark mode enhancements (default)
+  background: linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1e1e1e 100%);
+  border-top: 3px solid var(--primary);
+  border-bottom: 3px solid var(--primary);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+    0 4px 20px rgba(242, 123, 13, 0.15);
+  
+  // Subtle animated glow effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(242, 123, 13, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
   // Light mode specific
   [data-theme="light"] & {
-    background: linear-gradient(180deg, #c5bdb0 0%, #bbb3a5 100%);
-    box-shadow: inset 0 2px 20px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(135deg, #d8d2c8 0%, #c9c2b8 50%, #cfc9bf 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+      0 4px 20px rgba(242, 123, 13, 0.1),
+      0 2px 8px rgba(0, 0, 0, 0.08);
+    border-top: 3px solid var(--primary);
+    border-bottom: 3px solid var(--primary);
+    
+    &::before {
+      background: radial-gradient(ellipse at center, rgba(242, 123, 13, 0.06) 0%, transparent 70%);
+    }
   }
   
   img {
@@ -697,6 +729,26 @@ h1, h2, h3, h4, h5, h6 {
     align-self: center;
     position: relative;
     gap: 1rem;
+    z-index: 1;
+    
+    // Decorative border
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      right: -1rem;
+      bottom: -1rem;
+      border: 1px solid rgba(242, 123, 13, 0.2);
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: -1;
+      
+      [data-theme="light"] & {
+        border-color: rgba(242, 123, 13, 0.15);
+        background: radial-gradient(ellipse at center, rgba(242, 123, 13, 0.03) 0%, transparent 70%);
+      }
+    }
   }
 
   .Intro__right {
@@ -798,6 +850,26 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   font-family: $font-display;
   font-weight: 600;
+  position: relative;
+  z-index: 1;
+  
+  // Enhanced for dark mode
+  background: linear-gradient(135deg, #f27b0d 0%, #e06500 100%);
+  box-shadow: 
+    0 0 20px rgba(242, 123, 13, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  
+  [data-theme="light"] & {
+    background: linear-gradient(135deg, #f27b0d 0%, #ff8d1f 100%);
+    box-shadow: 
+      0 2px 8px rgba(242, 123, 13, 0.3),
+      0 1px 0 rgba(255, 255, 255, 0.4) inset,
+      0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .Intro__title {
@@ -816,12 +888,40 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: $text-primary;
   letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+  
+  // Enhanced for dark mode
+  text-shadow: 
+    0 0 20px rgba(242, 123, 13, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(242, 123, 13, 0.1);
+  
+  [data-theme="light"] & {
+    color: #1a1612;
+    text-shadow: 
+      0 1px 0 rgba(255, 255, 255, 0.8),
+      0 2px 8px rgba(242, 123, 13, 0.2),
+      0 3px 6px rgba(0, 0, 0, 0.15);
+  }
 }
 
 .Intro__text {
   color: $text-secondary;
   font-family: $font-body;
   font-size: 1rem;
+  position: relative;
+  z-index: 1;
+  
+  // Enhanced contrast for dark mode
+  color: #e0e0e0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  
+  [data-theme="light"] & {
+    color: #2d2620;
+    font-weight: 500;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
   
   &::after {
     content: ' 90s!';
@@ -829,6 +929,17 @@ h1, h2, h3, h4, h5, h6 {
     color: $accent;
     font-family: $font-display;
     font-weight: 700;
+    text-shadow: 
+      0 0 15px rgba(82, 183, 136, 0.5),
+      0 2px 4px rgba(0, 0, 0, 0.8);
+    
+    [data-theme="light"] & {
+      color: #2d7d5a;
+      font-weight: 700;
+      text-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(45, 125, 90, 0.3);
+    }
   }
 }
 
@@ -837,6 +948,20 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.85rem;
   color: $text-secondary;
   letter-spacing: 0.1em;
+  position: relative;
+  z-index: 1;
+  
+  // Enhanced for dark mode
+  color: #d0d0d0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  
+  [data-theme="light"] & {
+    color: #3d3630;
+    font-weight: 600;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+  }
 }
 
 .Intro__article {
@@ -848,6 +973,19 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   line-height: 1.6;
   color: $text-muted;
+  position: relative;
+  z-index: 1;
+  
+  // Enhanced for dark mode
+  color: #c0c0c0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  
+  [data-theme="light"] & {
+    color: #4a4238;
+    font-weight: 450;
+    line-height: 1.7;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
 }
 
 .Profile {
@@ -3110,16 +3248,41 @@ h1, h2, h3, h4, h5, h6 {
 // Section Title
 .SecretLair__section-title {
   font-family: $font-display;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 700;
   color: #d4af37;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  padding: 0.75rem 1.5rem;
-  background: rgba(212, 175, 55, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  letter-spacing: 0.15em;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, rgba(26, 10, 46, 0.9) 0%, rgba(45, 27, 78, 0.9) 100%);
+  border: 2px solid #d4af37;
   display: inline-block;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  text-align: center;
+  box-shadow: 
+    0 0 30px rgba(212, 175, 55, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  // Retro glow effect
+  text-shadow: 
+    0 0 10px rgba(212, 175, 55, 0.5),
+    0 0 20px rgba(212, 175, 55, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+  
+  // Animated underline
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #00ff88 50%, transparent 100%);
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
+  }
 }
 
 // Gallery Section
@@ -3133,32 +3296,101 @@ h1, h2, h3, h4, h5, h6 {
 
 .SecretLair__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+  
+  // Retro grid pattern overlay
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1rem;
+    background-image: 
+      linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: -1;
+  }
   
   @media (min-width: $breakpoint-md) {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2.5rem;
   }
 }
 
 .SecretLair__card {
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.2s ease;
-  background: #1a0a2e;
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 100%);
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  position: relative;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  
+  // Retro scan lines effect
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 2px,
+      rgba(0, 0, 0, 0.1) 4px
+    );
+    pointer-events: none;
+    opacity: 0.3;
+    z-index: 1;
+  }
+  
+  // Glow effect
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
   
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px) scale(1.02);
     border-color: #d4af37;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 
+      0 12px 32px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(212, 175, 55, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    &::after {
+      opacity: 1;
+    }
+    
+    img {
+      filter: brightness(1.1) saturate(1.1);
+    }
   }
   
   img {
     width: 100%;
     height: auto;
     display: block;
+    transition: filter 0.3s ease;
+    position: relative;
+    z-index: 0;
   }
 }
 
@@ -3524,6 +3756,60 @@ $acid-cyan: #00ffff;
   padding: 4rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
+  
+  // Decorative border
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #00ff88 50%, transparent 100%);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  }
+}
+
+.SecretLair__showcase-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+
+.SecretLair__card-count {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: 'Courier New', monospace;
+  padding: 0.5rem 1.5rem;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid #00ff88;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+}
+
+.SecretLair__card-count-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+  line-height: 1;
+}
+
+.SecretLair__card-count-label {
+  font-size: 0.85rem;
+  color: rgba(0, 255, 136, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .SecretLair__showcase-loading {
@@ -3655,19 +3941,45 @@ $acid-cyan: #00ffff;
 
 .SecretLair__showcase-clear {
   display: block;
-  margin: 2rem auto 0;
-  padding: 0.8rem 2rem;
+  margin: 3rem auto 0;
+  padding: 1rem 2.5rem;
   background: transparent;
   color: $acid-green;
-  border: 1px solid $acid-green;
+  border: 2px solid $acid-green;
   font-family: 'Courier New', monospace;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+  
+  // Animated background
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 255, 136, 0.05) 100%);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
   
   &:hover {
-    background: rgba(0, 255, 136, 0.1);
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+    background: rgba(0, 255, 136, 0.15);
+    box-shadow: 
+      0 0 20px rgba(0, 255, 136, 0.4),
+      0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    
+    &::before {
+      transform: translateX(0);
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
   }
 }
 
