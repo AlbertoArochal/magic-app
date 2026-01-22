@@ -4,13 +4,15 @@ import {
     FilteredCardsReducer,
     QueryReducer,
 } from '../../components/reducers/carsreducer/cardsreducer';
-import { ReactNode, useReducer } from 'react';
+import { ReactNode, useReducer, useState } from 'react';
 import { CardType } from '../../models/cardtype';
 import {
     initialCards,
     CardContext,
     initialFilteredCards,
     CollectionType,
+    PaginationInfo,
+    initialPaginationInfo,
 } from './cardcontext';
 
 export const CardProvider = ({ children }: { children: ReactNode }) => {
@@ -30,6 +32,11 @@ export const CardProvider = ({ children }: { children: ReactNode }) => {
     );
 
     const [pagination, paginationDispatch] = useReducer(QueryReducer, 1);
+    
+    // New state for pagination info
+    const [paginationInfo, setPaginationInfo] = useState<PaginationInfo>(initialPaginationInfo);
+    const [activeFilter, setActiveFilter] = useState<{ type: 'year' | 'color' | 'cardType'; value: string } | null>(null);
+    const [isLoadingPage, setIsLoadingPage] = useState(false);
 
     return (
         <CardContext.Provider
@@ -64,8 +71,16 @@ export const CardProvider = ({ children }: { children: ReactNode }) => {
                 },
                 resetPage: () => {
                     paginationDispatch({ type: 'RESET_PAGINATION' });
+                    setPaginationInfo(initialPaginationInfo);
+                    setActiveFilter(null);
                 },
                 pagination: pagination,
+                paginationInfo,
+                setPaginationInfo,
+                activeFilter,
+                setActiveFilter,
+                isLoadingPage,
+                setIsLoadingPage,
             }}
         >
             {children}

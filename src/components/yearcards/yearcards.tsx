@@ -1,33 +1,82 @@
-import Necropotence from '../../assets/img/necropotence.webp';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect, memo } from 'react';
 import { CardContext } from '../../contexts/cards/cardcontext';
 import { useCards } from '../../hooks/logdelete/useCards';
 import { useNavigate } from 'react-router-dom';
+import { ScryfallApi } from '../../services/scryfallapi';
+
 interface Props {
     year: string;
 }
 
-const YearCard = ({ year }: Props) => {
+const api = new ScryfallApi();
+
+const YearCard = memo(({ year }: Props) => {
     const { collections } = useContext(CardContext);
     const { GetFetchCardsByYear } = useCards();
     const sets = collections;
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    const [cardArtUrl, setCardArtUrl] = useState<string | null>(null);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
-    const setCardsHandler = async (year: number) => {
+    useEffect(() => {
+        let isMounted = true;
+        
+        // Small delay to stagger image requests across cards
+        const delay = Math.random() * 300;
+        const timeoutId = setTimeout(async () => {
+            try {
+                const artUrl = await api.getRandomCardArtByYear(parseInt(year));
+                if (isMounted && artUrl) {
+                    setCardArtUrl(artUrl);
+                }
+            } catch (error) {
+                console.error(`Failed to fetch art for year ${year}:`, error);
+            }
+        }, delay);
+        
+        return () => {
+            isMounted = false;
+            clearTimeout(timeoutId);
+        };
+    }, [year]);
+
+    const setCardsHandler = async (yearNum: number) => {
+        if (loading) return; // Prevent double clicks
+        
         setLoading(true);
-        await GetFetchCardsByYear(year, 1);
-        localStorage.setItem('year', year.toString());
-        navigate('/years');
+        localStorage.setItem('year', yearNum.toString());
+        
+        try {
+            // Load data into context first
+            await GetFetchCardsByYear(yearNum, 1);
+            // Then navigate
+            navigate('/years');
+        } catch (e) {
+            console.error('Failed to fetch cards:', e);
+            // Still navigate even on error - YearsPage will handle loading
+            navigate('/years');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <div className="timeline__content timeline__card">
-            <img
-                className="timeline__image"
-                src={Necropotence}
-                alt="necropotence"
-            />
+            <div className={`timeline__image-wrapper ${imageLoaded ? 'loaded' : ''}`}>
+                {cardArtUrl && (
+                    <img
+                        className="timeline__image"
+                        src={cardArtUrl}
+                        alt={`Random card art from ${year}`}
+                        loading="lazy"
+                        onLoad={() => setImageLoaded(true)}
+                    />
+                )}
+                {!imageLoaded && (
+                    <div className="timeline__image-placeholder" />
+                )}
+            </div>
             <h2 className="date">{year}</h2>
             <div className="description">
                 {sets.map((set) => {
@@ -62,6 +111,6 @@ const YearCard = ({ year }: Props) => {
             </div>
         </div>
     );
-};
+});
 
 export default YearCard;

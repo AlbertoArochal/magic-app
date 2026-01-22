@@ -1,6 +1,6 @@
-import { Slide } from 'react-awesome-reveal';
+import { Fade } from 'react-awesome-reveal';
 import { useCards } from '../../hooks/logdelete/useCards';
-import { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy, useEffect, useState, useCallback, useRef } from 'react';
 const YearCard = lazy(() => import('../yearcards/yearcards'));
 
 interface Props {
@@ -10,41 +10,130 @@ interface Props {
 export const Timeline: React.FC<Props> = ({ year }) => {
     const { GetSets } = useCards();
     const currentYear = new Date().getFullYear();
+    const [activeYear, setActiveYear] = useState<number>(currentYear);
+    const [showNav, setShowNav] = useState<boolean>(false);
+    const timelineRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         GetSets();
     }, []);
 
-    const years = [];
-    for (let i = year; i <= currentYear; i++) {
+    const years: number[] = [];
+    for (let i = currentYear; i >= year; i--) {
         years.push(i);
     }
-    const toggle = 'right';
+
+    const scrollToYear = useCallback((targetYear: number) => {
+        const element = document.getElementById(`year-${targetYear}`);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setActiveYear(targetYear);
+        }
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // Check if timeline section is in view to show/hide nav
+            // Only show nav when we've scrolled past the intro section
+            if (timelineRef.current) {
+                const rect = timelineRef.current.getBoundingClientRect();
+                // Show nav only when timeline top is above 30% of viewport
+                const isVisible = rect.top < window.innerHeight * 0.3;
+                setShowNav(isVisible);
+            }
+
+            // Update active year
+            const yearElements = years.map((y) => ({
+                year: y,
+                element: document.getElementById(`year-${y}`),
+            }));
+
+            for (const { year: y, element } of yearElements) {
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+                        setActiveYear(y);
+                        break;
+                    }
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Check on mount
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [years]);
 
     return (
-        <section className="timeline">
-            <div
-                className="container container__timeline"
-                key={new Date().getTime().toString + 'container'}
-            >
-                <div
-                    className="timeline__item"
-                    key={new Date().getTime().toString + 'timeline__item'}
-                >
-                    {years.map((year) => (
-                        <Slide
-                            duration={1000}
-                            direction={toggle === 'right' ? 'left' : 'right'}
-                            key={year.toString() + 'Slide'}
+        <section className="timeline" ref={timelineRef}>
+            {/* Year navigation sidebar - only visible when timeline is in view */}
+            <nav className={`timeline__nav ${showNav ? 'timeline__nav--visible' : ''}`}>
+                <div className="timeline__nav-container">
+                    <h3 className="timeline__nav-title">YEARS</h3>
+                    <ul className="timeline__nav-list">
+                        {years.map((y) => (
+                            <li key={`nav-${y}`} className="timeline__nav-item">
+                                <button
+                                    className={`timeline__nav-button ${
+                                        activeYear === y ? 'active' : ''
+                                    }`}
+                                    onClick={() => scrollToYear(y)}
+                                    aria-label={`Go to year ${y}`}
+                                >
+                                    {y}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </nav>
+
+            {/* Timeline content */}
+            <div className="timeline__wrapper">
+                {/* Central line */}
+                <div className="timeline__line" />
+
+                {/* Year entries */}
+                <div className="timeline__entries">
+                    {years.map((y, index) => (
+                        <Fade
+                            duration={800}
+                            delay={100}
+                            triggerOnce
+                            key={y.toString() + 'Fade'}
                         >
                             <div
-                                className="timeline__img"
-                                key={year.toString() + 'Div'}
-                            ></div>
-                            <Suspense>
-                                <YearCard year={year.toString()} />
-                            </Suspense>
-                        </Slide>
+                                id={`year-${y}`}
+                                className={`timeline__entry ${
+                                    index % 2 === 0
+                                        ? 'timeline__entry--left'
+                                        : 'timeline__entry--right'
+                                }`}
+                            >
+                                {/* Dot on the line */}
+                                <div className="timeline__dot">
+                                    <span className="timeline__dot-year">
+                                        {y}
+                                    </span>
+                                </div>
+
+                                {/* Connector line */}
+                                <div className="timeline__connector" />
+
+                                {/* Card */}
+                                <div className="timeline__card-wrapper">
+                                    <Suspense
+                                        fallback={
+                                            <div className="timeline__loading">
+                                                Loading...
+                                            </div>
+                                        }
+                                    >
+                                        <YearCard year={y.toString()} />
+                                    </Suspense>
+                                </div>
+                            </div>
+                        </Fade>
                     ))}
                 </div>
             </div>

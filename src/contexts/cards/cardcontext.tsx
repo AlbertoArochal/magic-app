@@ -10,6 +10,14 @@ export type CollectionType = {
     name: string;
     icon: string;
     set_type: string;
+    code?: string;
+};
+
+// Pagination info returned from API
+export type PaginationInfo = {
+    hasMore: boolean;
+    totalCards: number;
+    currentPage: number;
 };
 
 export const initialCollections = {
@@ -24,6 +32,12 @@ export const initialFilteredCards = {
     filteredCards: [],
 };
 
+export const initialPaginationInfo: PaginationInfo = {
+    hasMore: false,
+    totalCards: 0,
+    currentPage: 1,
+};
+
 export type CardContextType = {
     collections: CollectionType[];
     setCollections: (collections: CollectionType[]) => void;
@@ -34,27 +48,42 @@ export type CardContextType = {
     page: number;
     setPage: (page: number) => void;
     resetPage: () => void;
-    pagination: number; 
+    pagination: number;
+    // New pagination info
+    paginationInfo: PaginationInfo;
+    setPaginationInfo: (info: PaginationInfo) => void;
+    // Filter state for pagination
+    activeFilter: { type: 'year' | 'color' | 'cardType'; value: string } | null;
+    setActiveFilter: (filter: { type: 'year' | 'color' | 'cardType'; value: string } | null) => void;
+    isLoadingPage: boolean;
+    setIsLoadingPage: (loading: boolean) => void;
 };
 
 
 export const CardContext = createContext<CardContextType>({
     collections: [] as CollectionType[],
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    setCollections: (collections: CollectionType[]) => {},
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setCollections: () => {},
     cards: [] as CardType[],
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    setCards: (cards: CardType[]) => {},
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setCards: () => {},
     filteredCards: [] as CardType[],
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    setFilteredCards: (cards: CardType[]) => {},
+    setFilteredCards: () => {},
     page: 1,
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    setPage: (newPage: number) => {},
+    setPage: () => {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     resetPage: () => {},
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     pagination: 1,
+    // New pagination info
+    paginationInfo: initialPaginationInfo,
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setPaginationInfo: () => {},
+    activeFilter: null,
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setActiveFilter: () => {},
+    isLoadingPage: false,
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setIsLoadingPage: () => {},
 });

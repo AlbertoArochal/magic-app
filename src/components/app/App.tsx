@@ -1,5 +1,4 @@
 import { MainPage } from '../pages/mainpage';
-import { Footer } from '../footer/footer';
 import { Header } from '../header/header';
 
 export const App = () => {
@@ -7,7 +6,6 @@ export const App = () => {
         <div>
             <Header />
             <MainPage />
-            <Footer />
         </div>
     );
 };
